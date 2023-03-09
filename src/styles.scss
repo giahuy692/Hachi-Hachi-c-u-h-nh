@@ -1,12 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
 /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";
-
-.mdc-form-field {
-  display: flex !important;
-  flex-direction: row-reverse !important;
-}
 
 html,
 body {
@@ -15,4 +8,53 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mdc-form-field {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  height: 32px;
+}
+
+.mat-mdc-checkbox
+  .mdc-checkbox
+  .mdc-checkbox__native-control:enabled:checked
+  ~ .mdc-checkbox__background,
+.mat-mdc-checkbox
+  .mdc-checkbox
+  .mdc-checkbox__native-control:enabled:indeterminate
+  ~ .mdc-checkbox__background,
+.mat-mdc-checkbox
+  .mdc-checkbox
+  .mdc-checkbox__native-control[data-indeterminate="true"]:enabled
+  ~ .mdc-checkbox__background {
+  border-color: #008000 !important;
+  background-color: #008000 !important;
+}
+
+.mdc-checkbox {
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+}
+
+.mdc-checkbox__background {
+  top: 10px !important;
+}
+
+.mat-mdc-checkbox-touch-target {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control {
+  width: 32px !important;
+  height: 32px !important ;
+}
+
+ul#custom_dropdown-menu {
+  width: 152px !important;
+}
+
+.mat-mdc-checkbox .mdc-checkbox {
 }

@@ -1,0 +1,46 @@
+$height: 44px;
+
+.sizePagi {
+  width: 35px;
+  height: $height;
+}
+
+.height {
+  height: $height;
+}
+
+.page-link {
+  display: flex;
+  align-items: center;
+  color: #959db3;
+}
+
+.page-link:active {
+  background-color: #959db3;
+  color: #ffffff;
+}
+
+.pagiLeft {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  column-gap: 20px;
+  span {
+    font-size: 1.4rem;
+    color: var(--text-color);
+  }
+
+  select {
+    outline: none;
+    font-size: 1.6rem;
+    border: none;
+    background-color: transparent;
+    width: 45px;
+  }
+
+  select > option {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-color);
+  }
+}

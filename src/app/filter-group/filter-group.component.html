@@ -1,13 +1,39 @@
 <div class="filter_group">
-    <mat-form-field appearance="fill">
-        <mat-select>
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-                {{food.viewValue}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <div class="filter__left">
+        <div class="dropdown dropdown_custom">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                <span>Sản phẩm</span>
+            </button>
+            <ul class="dropdown-menu" id="custom_dropdown-menu">
+                <li>
+                    <a class="dropdown-item active" href="#">
+                        <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                        <span>Sản phẩm</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa-sharp fa-solid fa-gift"></i>
+                        <span>Sản phẩm</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
 
 
 
-    <app-checkbox></app-checkbox>
+        <app-checkbox></app-checkbox>
+    </div>
+    <div class="filter__right">
+        <div class="fright">
+            <button><i class="fa-sharp fa-solid fa-download"></i></button>
+            <button><i class="fa-sharp fa-solid fa-file-excel"></i></button>
+        </div>
+        <button><i class="fa-sharp fa-solid fa-chevron-down"></i></button>
+    </div>
+
+
 </div>

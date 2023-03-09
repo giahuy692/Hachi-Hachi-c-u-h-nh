@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 interface Food {
   value: string;
   viewValue: string;

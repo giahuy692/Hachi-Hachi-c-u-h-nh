@@ -1,0 +1,41 @@
+<div class="d-flex">
+    <div class="pagiLeft">
+        <span>Hiển thị mỗi trang</span>
+        <select>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={50}>50</option>
+        </select>
+    </div>
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link height fw-bold">Đầu</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link sizePagi" href="#" aria-label="Previous">
+                    <span aria-hidden="true">
+                        <i class="fa-sharp fa-solid fa-chevron-left"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="page-item fw-bold "><a class="page-link sizePagi" href="#">1</a></li>
+            <li class="page-item fw-bold "><a class="page-link sizePagi" href="#">2</a></li>
+            <li class="page-item fw-bold "><a class="page-link sizePagi" href="#">3</a></li>
+            <li class="page-item fw-bold ">
+                <a class="page-link sizePagi" href="#" aria-label="Next">
+                    <span aria-hidden="true">
+                        <i class="fa-sharp fa-solid fa-chevron-right"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link height fw-bold" href="#">
+                    Cuối
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

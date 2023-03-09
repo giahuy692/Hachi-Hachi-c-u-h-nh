@@ -1,12 +1,17 @@
+$height_checkbox: 32px;
 .section {
   display: flex;
   column-gap: 21px;
+  height: 32px;
+  align-items: center;
+  align-content: center;
 }
 
 .section_margin {
   box-shadow: 2px 2px 5px rgb(0 0 0 / 20%);
   font-weight: 600 !important;
   color: #959db3 !important;
+  height: $height_checkbox;
 }
 
 .mat-mdc-checkbox-checked {
@@ -23,4 +28,12 @@
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Các trình duyệt khác */
+}
+
+.mdc-form-field {
+  height: 32px !important;
+}
+
+.mat-mdc-checkbox label {
+  font-weight: 700 !important;
 }

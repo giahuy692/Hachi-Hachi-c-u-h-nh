@@ -16,6 +16,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { FilterGroupComponent } from './filter-group/filter-group.component';
 import { SelectDataComponent } from './select-data/select-data.component';
+import { TableProductComponent } from './table-product/table-product.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { SelectDataComponent } from './select-data/select-data.component';
     CheckboxComponent,
     FilterGroupComponent,
     SelectDataComponent,
+    TableProductComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

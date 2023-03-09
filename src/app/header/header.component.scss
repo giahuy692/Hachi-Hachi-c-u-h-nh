@@ -13,6 +13,7 @@ $height_navbar: 50px;
 }
 
 .nav-link {
+  height: 50px;
   font-size: 13px;
   position: relative;
   color: #bbbbbb;
@@ -69,4 +70,13 @@ $height_navbar: 50px;
   }
   .icon_bell {
   }
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.navbar-nav a {
+  display: flex;
+  align-items: center;
 }
