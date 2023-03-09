@@ -1,0 +1,13 @@
+<div class="filter_group">
+    <mat-form-field appearance="fill">
+        <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+
+    <app-checkbox></app-checkbox>
+</div>
