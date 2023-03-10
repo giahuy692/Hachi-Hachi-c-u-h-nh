@@ -16,6 +16,7 @@
   background-color: #edeff3;
   min-height: 100vh;
   column-gap: 5px;
+  flex-direction: row;
 }
 
 .sidebar-container {
@@ -26,5 +27,5 @@
 
 .content-container {
   flex: 1;
-  height: 50px;
+  flex-direction: column;
 }

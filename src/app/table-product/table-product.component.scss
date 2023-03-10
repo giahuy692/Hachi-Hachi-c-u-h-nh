@@ -1,5 +1,9 @@
 $heightTable: 74px;
 
+.wrapper_table {
+  min-height: 63vh;
+}
+
 .lineHeight {
   line-height: $heightTable;
 }
@@ -18,7 +22,7 @@ $heightTable: 74px;
   font-weight: 700;
 }
 
-.subgroups span:nth-child(1) {
+.subgroups span:nth-child(3) {
   font-style: italic;
 }
 
@@ -81,6 +85,10 @@ thead tr td:nth-child(3) {
 td:nth-child(1),
 td:nth-child(3) {
   text-align: start;
+}
+
+tbody tr {
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 20%);
 }
 
 .dropdown-toggle::after {

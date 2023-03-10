@@ -1,15 +1,18 @@
-<div class="d-flex">
+<footer class="wrapper_footer">
     <div class="pagiLeft">
         <span>Hiển thị mỗi trang</span>
-        <select>
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-            <option value={50}>50</option>
-        </select>
+
+        <mat-form-field appearance="fill" id="selectSize">
+            <mat-select [(value)]="selected" class="optionSize">
+                <mat-option value="option1">10</mat-option>
+                <mat-option value="option2">20</mat-option>
+                <mat-option value="option3">50</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
 
 
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation height">
         <ul class="pagination">
             <li class="page-item">
                 <a class="page-link height fw-bold">Đầu</a>
@@ -38,4 +41,4 @@
             </li>
         </ul>
     </nav>
-</div>
+</footer>

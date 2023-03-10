@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 //Angualr material
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+
+//Service
+import { ProductService } from './service/product/product.service';
+import { CategoryService } from './service/category/category.service';
 
 // FontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -32,13 +39,16 @@ import { PaginationComponent } from './pagination/pagination.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    CommonModule,
     FontAwesomeModule,
     MatCheckboxModule,
     MatButtonModule,
     MatSelectModule,
   ],
-  providers: [],
+  providers: [ProductService, CategoryService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

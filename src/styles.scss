@@ -58,3 +58,14 @@ ul#custom_dropdown-menu {
 
 .mat-mdc-checkbox .mdc-checkbox {
 }
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  display: flex;
+  align-items: center;
+  height: 29px !important;
+  background-color: transparent !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  display: none !important;
+}
