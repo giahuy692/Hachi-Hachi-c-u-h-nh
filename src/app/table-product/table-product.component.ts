@@ -10,4 +10,28 @@ import { Product } from '../interface/product';
 })
 export class TableProductComponent {
   @Input() productList?: Product[];
+
+  selectedProduct?: Product;
+
+  onSelect(product: Product): void {
+    this.selectedProduct = product;
+    alert(
+      'Tên sản phẩm: ' +
+        this.selectedProduct.title +
+        ' \nPoscode: ' +
+        this.selectedProduct.poscode +
+        ' \nBarcode: ' +
+        this.selectedProduct.barcode +
+        ' \nNgười bán: ' +
+        this.selectedProduct.seller +
+        ' \nPhân nhóm: ' +
+        this.selectedProduct.subgroup +
+        ' \nXuất xứ: ' +
+        this.selectedProduct.origin +
+        ' \nThương hiệu: ' +
+        this.selectedProduct.brand +
+        ' \nGiá bán lẻ: ' +
+        this.selectedProduct.price
+    );
+  }
 }

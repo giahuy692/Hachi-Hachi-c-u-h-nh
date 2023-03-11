@@ -37,3 +37,8 @@ $height_checkbox: 32px;
 .mat-mdc-checkbox label {
   font-weight: 700 !important;
 }
+
+::ng-deep .mdc-checkbox__background {
+  width: 16px;
+  height: 16px;
+}

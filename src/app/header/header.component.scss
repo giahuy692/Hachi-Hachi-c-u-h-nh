@@ -80,3 +80,20 @@ $height_navbar: 50px;
   display: flex;
   align-items: center;
 }
+
+.bell {
+  position: relative;
+}
+
+.noticeBell {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -4px;
+  right: -12px;
+  background-color: #f1802e;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 15px;
+  text-align: center;
+}

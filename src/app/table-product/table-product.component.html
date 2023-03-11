@@ -50,7 +50,8 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-lg-end dropdown_item-ul">
                             <li>
-                                <button class="dropdown-item" type="button">
+                                <button class="dropdown-item" type="button"
+                                    [class.selected]="product === selectedProduct" (click)="onSelect(product)">
                                     <i class="fa-sharp fa-solid fa-eye"></i>
                                     Xem chi tiết
                                 </button>

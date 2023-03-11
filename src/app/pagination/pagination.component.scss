@@ -21,11 +21,12 @@ $height: 44px;
   display: flex;
   align-items: center;
   color: #959db3;
+  cursor: pointer;
 }
 
-.page-link:active {
-  background-color: #959db3;
-  color: #ffffff;
+.pagiActive {
+  background-color: #959db3 !important;
+  color: #ffffff !important;
 }
 
 .pagination {

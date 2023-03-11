@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class PaginationComponent {
   selected = 'option2';
+
+  isActive: boolean = false;
+
+  buttonActive() {
+    this.isActive = true;
+  }
 }

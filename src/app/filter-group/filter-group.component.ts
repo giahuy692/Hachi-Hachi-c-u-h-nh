@@ -31,6 +31,8 @@ export class FilterGroupComponent {
 
   onSelect(category: Category): void {
     this.selectedCategory = category;
-    this.categorySelected.emit(category.value);
+    console.log(this.selectedCategory.viewValue);
+    this.catrgoryService.setCategorychange(category.value);
+    // this.categorySelected.emit(category.value);
   }
 }

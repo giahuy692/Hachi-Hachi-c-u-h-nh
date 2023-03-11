@@ -12,7 +12,7 @@
         <div class=inputSearch>
             <div class=searchLeft>
                 <fa-icon [icon]="faSearch"></fa-icon>
-                <input placeholder="Tìm theo barcode" />
+                <input #searchBox placeholder="Tìm theo barcode" [(ngModel)]="textSearch" (change)="search()" />
             </div>
             <button>
                 <fa-icon [icon]="faSearch"></fa-icon>

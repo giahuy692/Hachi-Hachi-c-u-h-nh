@@ -1,3 +1,4 @@
+import { ProductService } from './../service/product/product.service';
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -6,12 +7,18 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./checkbox.component.scss'],
 })
 export class CheckboxComponent {
+  constructor(private productService: ProductService) {}
+
   isActive: boolean = false;
   isInActive: boolean = false;
-  @Output() active = new EventEmitter<string>();
-  @Output() InActive = new EventEmitter<string>();
 
-  onCheckboxChangeActive(): void {}
+  onCheckActiveChange() {
+    this.productService.setCheckActiveValue(this.isActive);
+    console.log('checkbox active check_co: ', this.isActive);
+  }
 
-  onCheckboxChangeInAction(): void {}
+  onCheckInActiveChange() {
+    this.productService.setCheckInActiveValue(this.isInActive);
+    console.log('checkbox inactive check_co: ', this.isInActive);
+  }
 }
