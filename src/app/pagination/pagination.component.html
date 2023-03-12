@@ -24,15 +24,11 @@
                     </span>
                 </a>
             </li>
-            <li class="page-item fw-bold ">
-                <a class="page-link sizePagi" (click)="buttonActive()" [ngClass]="{ 'pagiActive': isActive }">1</a>
+            <li *ngFor="let page of pages" class="page-item fw-bold ">
+                <a class="page-link sizePagi" (click)="setCurrentPage(page)"
+                    [class.pagiActive]="page === currentPage">{{page}}</a>
             </li>
-            <li class="page-item fw-bold ">
-                <a class="page-link sizePagi">2</a>
-            </li>
-            <li class="page-item fw-bold ">
-                <a class="page-link sizePagi">3</a>
-            </li>
+
             <li class="page-item fw-bold ">
                 <a class="page-link sizePagi" aria-label="Next">
                     <span aria-hidden="true">
