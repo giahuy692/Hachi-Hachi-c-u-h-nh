@@ -13,8 +13,21 @@ export class ProductService {
   private checkInActiveValue = new BehaviorSubject<boolean>(false);
   private textSearch = new BehaviorSubject<any>('');
 
+  filters: any = {
+    category: 'product',
+    limit: 10,
+    page: 1,
+    active: false,
+    inActive: false,
+    toltal: 0,
+  };
+
+  filterProduct() {}
+
   getProduct(): Observable<Product[]> {
     const productList = of(DataProducts);
+    console.log('Product service: ', this.filters);
+
     return productList;
   }
   getCheckActiveValue() {

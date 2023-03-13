@@ -66,9 +66,9 @@ export class AppComponent implements OnInit {
       this.textSearch = value;
     });
 
-    this.categoryService.getCategoryChange().subscribe((value) => {
-      this.setCategory = value;
-    });
+    // this.categoryService.getCategoryChange().subscribe((value) => {
+    //   this.setCategory = value;
+    // });
 
     this.getProductFromService();
   }

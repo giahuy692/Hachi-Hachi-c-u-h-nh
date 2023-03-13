@@ -3,10 +3,9 @@
         <span>Hiển thị mỗi trang</span>
 
         <mat-form-field appearance="fill" id="selectSize">
-            <mat-select [(value)]="selected" class="optionSize">
-                <mat-option value="option1">10</mat-option>
-                <mat-option value="option2">20</mat-option>
-                <mat-option value="option3">50</mat-option>
+            <mat-select [(ngModel)]="selectedValue" class="optionSize">
+                <mat-option *ngFor="let limit of limits" [value]="limit"
+                    (click)="setLimit(limit)">{{limit}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>

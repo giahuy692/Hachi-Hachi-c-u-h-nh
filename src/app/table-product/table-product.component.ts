@@ -1,3 +1,5 @@
+import { CategoryService } from './../service/category/category.service';
+import { ProductService } from './../service/product/product.service';
 import { Component, Input } from '@angular/core';
 
 //data
@@ -9,9 +11,18 @@ import { Product } from '../interface/product';
   styleUrls: ['./table-product.component.scss'],
 })
 export class TableProductComponent {
+  constructor(
+    private categoryService: CategoryService,
+    private productService: ProductService
+  ) {}
   @Input() productList?: Product[];
 
   selectedProduct?: Product;
+
+  // get filters() {
+  //   console.log('Table: ', this.productService.filters);
+  //   return this.productService.filters; // Lấy giá trị của biến filters từ service
+  // }
 
   onSelect(product: Product): void {
     this.selectedProduct = product;

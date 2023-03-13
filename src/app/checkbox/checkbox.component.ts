@@ -14,11 +14,13 @@ export class CheckboxComponent {
 
   onCheckActiveChange() {
     this.productService.setCheckActiveValue(this.isActive);
+    this.productService.filters.active = this.isActive;
     console.log('checkbox active check_co: ', this.isActive);
   }
 
   onCheckInActiveChange() {
     this.productService.setCheckInActiveValue(this.isInActive);
+    this.productService.filters.inActive = this.isInActive;
     console.log('checkbox inactive check_co: ', this.isInActive);
   }
 }
