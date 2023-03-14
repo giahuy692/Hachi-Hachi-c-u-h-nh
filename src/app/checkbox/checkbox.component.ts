@@ -1,5 +1,10 @@
-import { ProductService } from './../service/product/product.service';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+
+// Interface
+import { Product } from '../interface/product';
+
+//Service
+import { DataService } from './../service/Data/data.service';
 
 @Component({
   selector: 'app-checkbox',
@@ -7,20 +12,25 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./checkbox.component.scss'],
 })
 export class CheckboxComponent {
-  constructor(private productService: ProductService) {}
-
+  constructor(private dataService: DataService) {}
+  data: Product[] = [];
   isActive: boolean = false;
   isInActive: boolean = false;
 
   onCheckActiveChange() {
-    this.productService.setCheckActiveValue(this.isActive);
-    this.productService.filters.active = this.isActive;
-    console.log('checkbox active check_co: ', this.isActive);
+    console.log(this.isActive);
+    this.dataService.active.next(this.isActive);
+
+    // this.productService.filters.active = this.isActive;
+    // this.productService.setCheckActiveValue(this.isActive);
+    // console.log('checkbox active check_co: ', this.isActive);
   }
 
   onCheckInActiveChange() {
-    this.productService.setCheckInActiveValue(this.isInActive);
-    this.productService.filters.inActive = this.isInActive;
-    console.log('checkbox inactive check_co: ', this.isInActive);
+    console.log(this.isInActive);
+    this.dataService.inActive.next(this.isInActive);
+    // this.productService.filters.inActive = this.isInActive;
+    // this.productService.setCheckInActiveValue(this.isInActive);
+    // console.log('checkbox inactive check_co: ', this.isInActive);
   }
 }

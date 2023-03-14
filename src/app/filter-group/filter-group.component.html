@@ -1,16 +1,16 @@
 <div class="filter_group">
     <div class="filter__left">
         <div class="dropdown dropdown_custom">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
+            <button *ngIf="selectedCategory" class="btn btn-primary dropdown-toggle" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-sharp {{selectedCategory.icon}}"></i>
-                <span>{{selectedCategory.value }}{{selectedCategory.viewValue }}{{selectedCategory.text }}</span>
+                <span *ngIf="selectedCategory.viewValue">{{selectedCategory.viewValue}}</span>
             </button>
             <ul class="dropdown-menu" id="custom_dropdown-menu">
                 <li *ngFor="let category of categorys">
                     <a class="dropdown-item" (click)="onSelect(category)">
                         <i class="fa-sharp {{category.icon}}"></i>
-                        <span>{{category.text}}</span>
+                        <span>{{category.viewValue}}</span>
                     </a>
                 </li>
 

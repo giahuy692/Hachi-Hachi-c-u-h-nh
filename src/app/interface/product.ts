@@ -1,4 +1,5 @@
 export class Product {
+  id: number = 0;
   img: string = '';
   title: string = '';
   poscode: number = 0;

@@ -15,29 +15,29 @@
         <tbody *ngIf="productList">
             <tr *ngFor="let product of productList" class="bg-white">
                 <td class="title-product">
-                    <img src="assets/images/product.svg" alt="product">
+                    <img src="{{product.img}}" alt="product">
                     <div class="sub-title">
-                        <span>{{product.title}}</span>
+                        <span class="title">{{product.title}}</span>
                         <div class="ncode">
-                            <span>{{product.poscode}}</span>
-                            <span>{{product.barcode}}</span>
+                            <span class="poscode">{{product.poscode}}</span>
+                            <span class="barcode">{{product.barcode}}</span>
                         </div>
                     </div>
                 </td>
-                <td class="lineHeight">
-                    <div>{{product.seller}}</div>
+                <td class="lineHeight ">
+                    <div class="seller">{{product.seller}}</div>
                 </td>
                 <td class="subgroups text-start">
-                    <span *ngFor="let subgroup of product.subgroup">{{subgroup}}</span>
+                    <span class="subClass" *ngFor="let subgroup of product.subgroup">{{subgroup}}</span>
                 </td>
                 <td class="lineHeight">
-                    <div>{{product.origin}}</div>
+                    <div class="origin">{{product.origin}}</div>
                 </td>
                 <td class="lineHeight">
-                    <div>{{product.brand}}</div>
+                    <div class="brand">{{product.brand}}</div>
                 </td>
                 <td class="text-end lineHeight">
-                    <div>{{product.price | number: '1.0-3'}}</div>
+                    <div class="price">{{product.price | number: '1.0-3'}}</div>
                 </td>
                 <td class="lineHeight">
                     <input type="checkbox" name="Doing business" id="Doingbusiness">

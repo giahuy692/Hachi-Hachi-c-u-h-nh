@@ -28,10 +28,14 @@ $heightTable: 74px;
 
 .title-product {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   align-content: center;
   align-items: center;
   column-gap: 10px;
+
+  img {
+    height: 65px;
+  }
 }
 
 thead,
@@ -44,7 +48,34 @@ th {
 }
 
 th:nth-child(1) {
-  width: 30%;
+  width: 23%;
+}
+
+.sub-title span {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+th:nth-child(2) th:nth-child(6) th:nth-child(7) {
+  width: 15%;
+}
+
+th:nth-child(4) {
+  width: 12%;
+}
+
+th:nth-child(3) {
+  width: 20%;
+}
+
+th:nth-child(5) {
+  width: 12%;
+}
+
+td:nth-child(3) {
+  margin: 0 6px;
 }
 
 .ncode {
@@ -72,18 +103,13 @@ th:nth-child(1) {
 thead tr th,
 tbody tr td {
   text-align: center;
-  padding: 0;
+  padding: 0 5px;
 }
 
 thead tr th:nth-child(1),
 thead tr th:nth-child(3),
 thead tr td:nth-child(1),
 thead tr td:nth-child(3) {
-  text-align: start;
-}
-
-td:nth-child(1),
-td:nth-child(3) {
   text-align: start;
 }
 
@@ -144,4 +170,32 @@ tbody tr {
 .dropdown_item-ul li button:active,
 .dropdown_item-ul li button:hover {
   background-color: #959db3;
+}
+
+.brand {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 104px;
+}
+
+.title {
+  width: 230px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.seller {
+  width: 114px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.subClass {
+  width: 248px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

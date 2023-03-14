@@ -1,8 +1,10 @@
 import { ProductService } from './../service/product/product.service';
 import { Component } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+import { Product } from 'src/app/interface/product';
 
 @Component({
   selector: 'app-select-data',
@@ -11,13 +13,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class SelectDataComponent {
   private searchTerms = new Subject<string>();
+  textSearch = new Observable<Product[]>();
 
   constructor(private productService: ProductService) {}
 
-  textSearch: string = '';
   faSearch = faSearch;
-
-  search(): void {
-    this.productService.setSearch(this.searchTerms.next(this.textSearch));
-  }
 }

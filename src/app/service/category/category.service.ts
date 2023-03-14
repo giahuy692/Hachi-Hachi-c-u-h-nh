@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class CategoryService {
-  private category = new BehaviorSubject<Category>(new Category());
+  private category = new BehaviorSubject<string>('');
 
   constructor() {}
 
@@ -19,7 +19,7 @@ export class CategoryService {
     return this.category.asObservable();
   }
 
-  setCategorychange(value: Category) {
+  setCategorychange(value: string) {
     this.category.next(value);
   }
 }
