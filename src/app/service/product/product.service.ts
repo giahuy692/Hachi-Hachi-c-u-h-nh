@@ -15,6 +15,7 @@ export class ProductService {
 
   getProduct(): Observable<Product[]> {
     const productList = of(DataProducts);
+
     return productList;
   }
   getCheckActiveValue() {

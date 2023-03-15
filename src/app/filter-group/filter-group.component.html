@@ -4,12 +4,11 @@
             <button *ngIf="selectedCategory" class="btn btn-primary dropdown-toggle" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-sharp {{selectedCategory.icon}}"></i>
-                <span>{{selectedCategory.viewValue}}</span>
+                <span *ngIf="selectedCategory.viewValue">{{selectedCategory.viewValue}}</span>
             </button>
             <ul class="dropdown-menu" id="custom_dropdown-menu">
                 <li *ngFor="let category of categorys">
-                    <a class="dropdown-item" [class.selected]="category === selectedCategory"
-                        (click)="onSelect(category)">
+                    <a class="dropdown-item" (click)="onSelect(category)">
                         <i class="fa-sharp {{category.icon}}"></i>
                         <span>{{category.viewValue}}</span>
                     </a>

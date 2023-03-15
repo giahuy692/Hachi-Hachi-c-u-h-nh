@@ -1,6 +1,6 @@
+import { DataService } from './../service/Data/data.service';
 import { ProductService } from './../service/product/product.service';
 import { Component } from '@angular/core';
-import { Subject } from 'rxjs';
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,14 +10,27 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./select-data.component.scss'],
 })
 export class SelectDataComponent {
-  private searchTerms = new Subject<string>();
-
-  constructor(private productService: ProductService) {}
-
   textSearch: string = '';
   faSearch = faSearch;
 
-  search(): void {
-    this.productService.setSearch(this.searchTerms.next(this.textSearch));
+  constructor(private dataService: DataService) {}
+
+  handleReset() {
+    this.dataService.active.next(true);
+    this.dataService.pageIndex.next(1);
+    this.dataService.resetActive.next(true);
+    this.dataService.resetInActive.next(false);
+  }
+
+  handleSearch() {
+    this.dataService.textSearch.next(this.textSearch);
+    this.dataService.pageIndex.next(1);
+  }
+
+  onKeyUp(event: any) {
+    if (event.target.value === '') {
+      this.dataService.textSearch.next((this.textSearch = ''));
+      this.dataService.pageIndex.next(1);
+    }
   }
 }

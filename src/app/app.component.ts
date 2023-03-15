@@ -62,27 +62,10 @@ export class AppComponent implements OnInit {
       this.isInActive = value;
     });
 
-    this.productService.getTextSearch().subscribe((value) => {
-      this.textSearch = value;
-    });
-
-    this.categoryService.getCategoryChange().subscribe((value) => {
-      this.setCategory = value;
-    });
-
     this.getProductFromService();
   }
 
   getProductFromService(): void {
     this.totalProduct = this.products.length;
-    console.log(this.totalProduct);
   }
-
-  // clickSelected(category: string) {
-  //   this.categoryService.getCategoryChange().subscribe((category) => (this.category = category.;))
-
-  //   console.log('category nhan duoc tu child: ', category);
-  //   console.log('Checked active: ', this.isActive);
-  //   console.log('Checked inactive: ', this.isInActive);
-  // }
 }

@@ -4,6 +4,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Category } from '../interface/category';
 
 //service
+import { DataService } from './../service/Data/data.service';
 import { CategoryService } from '../service/category/category.service';
 
 @Component({
@@ -18,7 +19,10 @@ export class FilterGroupComponent {
 
   categorys: Category[] = [];
 
-  constructor(private catrgoryService: CategoryService) {}
+  constructor(
+    private catrgoryService: CategoryService,
+    private dataService: DataService
+  ) {}
 
   getCategoryFromCateService(): void {
     this.categorys = this.catrgoryService.getCategory();
@@ -30,9 +34,8 @@ export class FilterGroupComponent {
   selectedCategory: Category = this.catrgoryService.getCategory()[0];
 
   onSelect(category: Category): void {
+    console.log(category.value);
     this.selectedCategory = category;
-    console.log(this.selectedCategory.viewValue);
-    this.catrgoryService.setCategorychange(category.value);
-    // this.categorySelected.emit(category.value);
+    this.dataService.category.next(category.value);
   }
 }

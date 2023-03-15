@@ -25,6 +25,7 @@ import { FilterGroupComponent } from './filter-group/filter-group.component';
 import { SelectDataComponent } from './select-data/select-data.component';
 import { TableProductComponent } from './table-product/table-product.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { ProductFilterPipe } from './pipe/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     SelectDataComponent,
     TableProductComponent,
     PaginationComponent,
+    ProductFilterPipe,
   ],
   imports: [
     BrowserModule,

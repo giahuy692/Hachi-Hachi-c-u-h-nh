@@ -3,10 +3,9 @@
         <span>Hiển thị mỗi trang</span>
 
         <mat-form-field appearance="fill" id="selectSize">
-            <mat-select [(value)]="selected" class="optionSize">
-                <mat-option value="option1">10</mat-option>
-                <mat-option value="option2">20</mat-option>
-                <mat-option value="option3">50</mat-option>
+            <mat-select [(ngModel)]="selectedValue" class="optionSize">
+                <mat-option *ngFor="let limit of limits" [value]="limit"
+                    (click)="setLimit(limit)">{{limit}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
@@ -15,29 +14,30 @@
     <nav aria-label="Page navigation height">
         <ul class="pagination">
             <li class="page-item">
-                <a class="page-link height fw-bold">Đầu</a>
+                <a class="page-link height fw-bold" (click)="clickFirst()">Đầu</a>
             </li>
-            <li class="page-item">
-                <a class="page-link sizePagi">
+            <li class="page-item page">
+                <a class="page-link sizePagi" (click)="clickPrev()">
                     <span aria-hidden="true">
                         <i class="fa-sharp fa-solid fa-chevron-left"></i>
                     </span>
                 </a>
             </li>
-            <li *ngFor="let page of pages" class="page-item fw-bold ">
+            <li *ngFor="let page of pages | slice:currentPage-1 : currentPage+3" class="page-item fw-bold page">
                 <a class="page-link sizePagi" (click)="setCurrentPage(page)"
                     [class.pagiActive]="page === currentPage">{{page}}</a>
+
             </li>
 
-            <li class="page-item fw-bold ">
-                <a class="page-link sizePagi" aria-label="Next">
+            <li class="page-item fw-bold page">
+                <a class="page-link sizePagi" aria-label="Next" (click)="clickNext()">
                     <span aria-hidden="true">
                         <i class="fa-sharp fa-solid fa-chevron-right"></i>
                     </span>
                 </a>
             </li>
             <li class="page-item">
-                <a class="page-link height fw-bold">
+                <a class="page-link height fw-bold" (click)="clickLast()">
                     Cuối
                 </a>
             </li>

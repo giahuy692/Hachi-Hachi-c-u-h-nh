@@ -1,10 +1,10 @@
 <section class="section">
     <mat-checkbox labelPosition="after" class="section_margin" [(ngModel)]="isActive"
-        (change)="onCheckActiveChange()">6,100 -
+        (change)="onCheckActiveChange()">{{currentActive}} -
         Đang kinh doanh
     </mat-checkbox>
     <mat-checkbox labelPosition="after" class="section_margin" [(ngModel)]="isInActive"
-        (change)="onCheckInActiveChange()">2,570 -
+        (change)="onCheckInActiveChange()">{{currentInActive}} -
         Ngừng
         kinhdoanh</mat-checkbox>
 </section>

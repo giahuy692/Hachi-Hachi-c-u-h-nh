@@ -11,8 +11,6 @@ $height: 44px;
 
 .wrapper_footer {
   display: flex;
-  align-content: center;
-  align-items: center;
   justify-content: space-between;
   padding: 0 20px 0px 15px;
 }
@@ -22,6 +20,7 @@ $height: 44px;
   align-items: center;
   color: #959db3;
   cursor: pointer;
+  width: 100%;
 }
 
 .pagiActive {
@@ -40,10 +39,10 @@ $height: 44px;
   align-content: center;
   column-gap: 20px;
 
-  // span {
-  //   font-size: 16px;
-  //   color: #959db3;
-  // }
+  span {
+    font-size: 16px;
+    color: #959db3;
+  }
 
   // select {
   //   outline: none;
@@ -76,4 +75,35 @@ $height: 44px;
 
 ::ng-deep .mdc-menu-surface.mat-mdc-select-panel {
   padding: 0 !important;
+}
+
+::ng-deep .page-item:first-child .page-link,
+.page-item:last-child .page-link {
+  display: block !important;
+  width: 45px !important;
+  height: 29px !important;
+  font-size: 13px !important;
+  padding: 4px !important;
+  text-align: center !important;
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard syntax */
+}
+
+.page a {
+  /* margin-left: -1px; */
+  display: block;
+  width: 20px;
+  height: 29px;
+  text-align: center;
+  padding: 0px;
+  line-height: 29px;
+  font-size: 13px;
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard syntax */
 }
