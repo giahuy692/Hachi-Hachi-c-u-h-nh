@@ -5,14 +5,15 @@
 
             <h2>LỌC DỮ LIỆU</h2>
         </div>
-        <button>Reset bộ lọc</button>
+        <button (click)="handleReset()">Reset bộ lọc</button>
     </div>
     <div class=searchWrapper>
         <span>Tìm kiếm sản phẩm</span>
         <div class=inputSearch>
             <div class=searchLeft>
                 <fa-icon [icon]="faSearch"></fa-icon>
-                <input #searchBox placeholder="Tìm theo barcode" [(ngModel)]="textSearch" />
+                <input placeholder="Tìm theo barcode, tên sản phẩm, người bán, thương hiệu" [(ngModel)]="textSearch"
+                    (change)="handleSearch()" (keyup.enter)="handleSearch()" (keyup)="onKeyUp($event)" />
             </div>
             <button>
                 <fa-icon [icon]="faSearch"></fa-icon>

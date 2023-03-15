@@ -67,6 +67,5 @@ export class AppComponent implements OnInit {
 
   getProductFromService(): void {
     this.totalProduct = this.products.length;
-    console.log(this.totalProduct);
   }
 }

@@ -1,10 +1,8 @@
+import { DataService } from './../service/Data/data.service';
 import { ProductService } from './../service/product/product.service';
 import { Component } from '@angular/core';
-import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
-import { Product } from 'src/app/interface/product';
 
 @Component({
   selector: 'app-select-data',
@@ -12,10 +10,27 @@ import { Product } from 'src/app/interface/product';
   styleUrls: ['./select-data.component.scss'],
 })
 export class SelectDataComponent {
-  private searchTerms = new Subject<string>();
-  textSearch = new Observable<Product[]>();
-
-  constructor(private productService: ProductService) {}
-
+  textSearch: string = '';
   faSearch = faSearch;
+
+  constructor(private dataService: DataService) {}
+
+  handleReset() {
+    this.dataService.active.next(true);
+    this.dataService.pageIndex.next(1);
+    this.dataService.resetActive.next(true);
+    this.dataService.resetInActive.next(false);
+  }
+
+  handleSearch() {
+    this.dataService.textSearch.next(this.textSearch);
+    this.dataService.pageIndex.next(1);
+  }
+
+  onKeyUp(event: any) {
+    if (event.target.value === '') {
+      this.dataService.textSearch.next((this.textSearch = ''));
+      this.dataService.pageIndex.next(1);
+    }
+  }
 }

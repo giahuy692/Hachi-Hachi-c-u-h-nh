@@ -19,9 +19,12 @@ export class DataService {
   pageIndex = new Subject<any>();
   limit = new Subject<any>();
   textSearch = new Subject<any>();
+  resetActive = new Subject<boolean>();
+  resetInActive = new Subject<boolean>();
 
-  total_Product = new Subject<number>();
-  total_Pages = new Subject<number>();
+  pageQuality = new Subject<number>();
+  currentActive = new Subject<number>();
+  currentInActive = new Subject<number>();
 }
 
 export function filterData(
@@ -29,15 +32,14 @@ export function filterData(
   inActive: boolean,
   category: string,
   pageIndex: number,
-  limit: number
+  limit: number,
+  textSearch: any
 ) {
   var data = DataProducts;
   var totalData: number;
-  console.log(category, active, inActive);
   if (category != '' && active == false && inActive == false) {
     data = data.filter((item) => item.category == category);
     totalData = data.length;
-    console.log(data);
   }
 
   if (active == true) {
@@ -45,8 +47,21 @@ export function filterData(
       return item.status == 'active' && item.category == category;
     });
     totalData = data.length;
-    console.log('data dk 2:', data);
-    console.log('totalData dk 2:', totalData);
+  }
+
+  if (textSearch !== '') {
+    data = data.filter((item) => {
+      return (
+        item.title.toLocaleLowerCase().includes(textSearch) ||
+        item.origin.toLocaleLowerCase().includes(textSearch) ||
+        item.poscode.toString().includes(textSearch) ||
+        item.barcode.toString().includes(textSearch) ||
+        item.brand.toLocaleLowerCase().includes(textSearch) ||
+        item.price.toString().includes(textSearch) ||
+        item.seller.toLocaleLowerCase().includes(textSearch) ||
+        item.subgroup.includes(textSearch)
+      );
+    });
   }
 
   if (inActive == true) {
@@ -54,27 +69,28 @@ export function filterData(
       return item.status == 'inActive' && item.category == category;
     });
     totalData = data.length;
-    console.log('data dk 3:', data);
-    console.log('totalData dk 3:', totalData);
   }
 
   if (inActive == true && active == true) {
     data = DataProducts.filter((item) => item.category == category);
     totalData = data.length;
-    console.log('data dk 4:', data);
-    console.log('totalData dk 4:', totalData);
   }
 
   const offset = (pageIndex - 1) * limit;
   const dataList = data.slice(offset).slice(0, limit);
   const total_pages = Math.ceil(data.length / limit);
-
-  console.log('data ', data);
-  console.log('data ', data);
+  const currentActive = DataProducts.filter(
+    (item) => item.category == category && item.status == 'active'
+  ).length;
+  const currentInActive = DataProducts.filter(
+    (item) => item.category == category && item.status == 'inActive'
+  ).length;
 
   return {
     total_product: data.length,
     total_pages: total_pages,
     data: dataList,
+    currentActive: currentActive,
+    currentInActive: currentInActive,
   };
 }

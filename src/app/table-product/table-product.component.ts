@@ -25,8 +25,10 @@ export class TableProductComponent {
   pageIndex: number = 1;
   limit: number = 10;
 
+  textSearch: any = '';
   total_pages: number = 0;
-  total_product: number = 0;
+  currentActive: number = 0;
+  currentInActive: number = 0;
 
   ngOnInit() {
     this.productList = filterData(
@@ -34,25 +36,36 @@ export class TableProductComponent {
       this.inActive,
       this.category,
       this.pageIndex,
-      this.limit
+      this.limit,
+      this.textSearch
     ).data;
+
     this.total_pages = filterData(
       this.active,
       this.inActive,
       this.category,
       this.pageIndex,
-      this.limit
+      this.limit,
+      this.textSearch
     ).total_pages;
-    this.total_product = filterData(
+
+    this.currentActive = filterData(
       this.active,
       this.inActive,
       this.category,
       this.pageIndex,
-      this.limit
-    ).total_product;
-    this.dataService.total_Product.next(this.total_product);
-    this.dataService.total_Pages.next(this.total_pages);
-    console.log('total_pages: ', this.total_pages);
+      this.limit,
+      this.textSearch
+    ).currentActive;
+
+    this.currentInActive = filterData(
+      this.active,
+      this.inActive,
+      this.category,
+      this.pageIndex,
+      this.limit,
+      this.textSearch
+    ).currentInActive;
 
     this.dataService.active.subscribe((value) => {
       this.active = value;
@@ -61,24 +74,19 @@ export class TableProductComponent {
         this.inActive,
         this.category,
         this.pageIndex,
-        this.limit
+        this.limit,
+        this.textSearch
       ).data;
+
       this.total_pages = filterData(
         this.active,
         this.inActive,
         this.category,
         this.pageIndex,
-        this.limit
+        this.limit,
+        this.textSearch
       ).total_pages;
-      this.total_product = filterData(
-        this.active,
-        this.inActive,
-        this.category,
-        this.pageIndex,
-        this.limit
-      ).total_product;
-      this.dataService.total_Product.next(this.total_product);
-      this.dataService.total_Pages.next(this.total_pages);
+      this.dataService.pageQuality.next(this.total_pages);
     });
 
     this.dataService.inActive.subscribe((value) => {
@@ -88,24 +96,19 @@ export class TableProductComponent {
         this.inActive,
         this.category,
         this.pageIndex,
-        this.limit
+        this.limit,
+        this.textSearch
       ).data;
+
       this.total_pages = filterData(
         this.active,
         this.inActive,
         this.category,
         this.pageIndex,
-        this.limit
+        this.limit,
+        this.textSearch
       ).total_pages;
-      this.total_product = filterData(
-        this.active,
-        this.inActive,
-        this.category,
-        this.pageIndex,
-        this.limit
-      ).total_product;
-      this.dataService.total_Product.next(this.total_product);
-      this.dataService.total_Pages.next(this.total_pages);
+      this.dataService.pageQuality.next(this.total_pages);
     });
 
     this.dataService.category.subscribe((value) => {
@@ -115,24 +118,37 @@ export class TableProductComponent {
         this.inActive,
         this.category,
         this.pageIndex,
-        this.limit
+        this.limit,
+        this.textSearch
       ).data;
       this.total_pages = filterData(
         this.active,
         this.inActive,
         this.category,
         this.pageIndex,
-        this.limit
+        this.limit,
+        this.textSearch
       ).total_pages;
-      this.total_product = filterData(
+      this.currentActive = filterData(
         this.active,
         this.inActive,
         this.category,
         this.pageIndex,
-        this.limit
-      ).total_product;
-      this.dataService.total_Product.next(this.total_product);
-      this.dataService.total_Pages.next(this.total_pages);
+        this.limit,
+        this.textSearch
+      ).currentActive;
+
+      this.currentInActive = filterData(
+        this.active,
+        this.inActive,
+        this.category,
+        this.pageIndex,
+        this.limit,
+        this.textSearch
+      ).currentInActive;
+      this.dataService.pageQuality.next(this.total_pages);
+      this.dataService.currentActive.next(this.currentActive);
+      this.dataService.currentInActive.next(this.currentInActive);
     });
 
     this.dataService.pageIndex.subscribe((value) => {
@@ -142,25 +158,67 @@ export class TableProductComponent {
         this.inActive,
         this.category,
         this.pageIndex,
-        this.limit
+        this.limit,
+        this.textSearch
       ).data;
       this.total_pages = filterData(
         this.active,
         this.inActive,
         this.category,
         this.pageIndex,
-        this.limit
+        this.limit,
+        this.textSearch
       ).total_pages;
-      this.total_product = filterData(
+      this.dataService.pageQuality.next(this.total_pages);
+    });
+
+    this.dataService.textSearch.subscribe((value) => {
+      this.textSearch = value;
+      this.productList = filterData(
         this.active,
         this.inActive,
         this.category,
         this.pageIndex,
-        this.limit
-      ).total_product;
-      this.dataService.total_Product.next(this.total_product);
-      this.dataService.total_Pages.next(this.total_pages);
+        this.limit,
+        this.textSearch
+      ).data;
+      this.total_pages = filterData(
+        this.active,
+        this.inActive,
+        this.category,
+        this.pageIndex,
+        this.limit,
+        this.textSearch
+      ).total_pages;
+      this.dataService.pageQuality.next(this.total_pages);
     });
+
+    this.dataService.limit.subscribe((value) => {
+      this.limit = value;
+      this.productList = filterData(
+        this.active,
+        this.inActive,
+        this.category,
+        this.pageIndex,
+        this.limit,
+        this.textSearch
+      ).data;
+      this.total_pages = filterData(
+        this.active,
+        this.inActive,
+        this.category,
+        this.pageIndex,
+        this.limit,
+        this.textSearch
+      ).total_pages;
+      this.dataService.pageQuality.next(this.total_pages);
+    });
+  }
+
+  ngAfterViewInit() {
+    this.dataService.pageQuality.next(this.total_pages);
+    this.dataService.currentActive.next(this.currentActive);
+    this.dataService.currentInActive.next(this.currentInActive);
   }
 
   onSelect(product: Product): void {

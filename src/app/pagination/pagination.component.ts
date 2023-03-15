@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 // service
 import { DataService } from './../service/Data/data.service';
@@ -8,27 +8,30 @@ import { DataService } from './../service/Data/data.service';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],
 })
-export class PaginationComponent implements OnInit {
-  constructor(private dataService: DataService) {}
+export class PaginationComponent {
+  constructor(
+    private dataService: DataService,
+    private cdRef: ChangeDetectorRef
+  ) {}
 
   limits: number[] = [10, 20, 50];
   selectedValue: number = 10;
 
   currentPage: number = 1;
 
-  total_Product: number = 0;
   total_Pages: number = 0;
 
-  pages = Array.from({ length: this.total_Pages }, (_, i) => i + 1);
+  pages: number[] = [];
 
   ngOnInit() {
-    this.dataService.total_Product.subscribe((item) => {
-      this.total_Product = item;
-      console.log('total_product', item);
+    this.cdRef.detectChanges(); // thông báo cho Angular cập nhật lại giá trị
+
+    this.dataService.pageQuality.subscribe((item) => {
+      this.pages = Array.from({ length: item }, (_, i) => i + 1);
     });
-    this.dataService.total_Pages.subscribe((item) => {
-      this.total_Pages = item;
-      console.log('total_Pages', item);
+
+    this.dataService.pageIndex.subscribe((item) => {
+      this.currentPage = item;
     });
   }
 
@@ -39,5 +42,38 @@ export class PaginationComponent implements OnInit {
   setCurrentPage(page: number) {
     this.currentPage = page;
     this.dataService.pageIndex.next(page);
+  }
+
+  clickFirst() {
+    this.currentPage = 1;
+    this.dataService.pageIndex.next(1);
+  }
+
+  clickLast() {
+    this.currentPage = this.pages[this.pages.length - 1];
+    this.dataService.pageIndex.next(this.pages.pop());
+  }
+
+  clickPrev() {
+    if (this.currentPage == 1) {
+      this.currentPage = 1;
+      this.dataService.pageIndex.next(this.currentPage);
+    } else {
+      this.currentPage = this.currentPage - 1;
+      this.dataService.pageIndex.next(this.currentPage);
+    }
+  }
+  clickNext() {
+    if (this.currentPage == this.pages[this.pages.length - 1]) {
+      this.currentPage = this.pages[this.pages.length - 1];
+      this.dataService.pageIndex.next(this.currentPage);
+      console.log('currentPage', this.currentPage);
+      console.log('selectedValue', this.currentPage);
+    } else {
+      this.currentPage = this.currentPage + 1;
+      this.dataService.pageIndex.next(this.currentPage);
+      // console.log('currentPage', this.currentPage);
+      // console.log('selectedValue', this.currentPage);
+    }
   }
 }
