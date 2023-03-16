@@ -37,5 +37,6 @@ export class FilterGroupComponent {
     console.log(category.value);
     this.selectedCategory = category;
     this.dataService.category.next(category.value);
+    this.dataService.pageIndex.next(1);
   }
 }
