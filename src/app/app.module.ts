@@ -16,6 +16,13 @@ import { CategoryService } from './service/category/category.service';
 // FontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+//kendon
+import { LabelModule } from '@progress/kendo-angular-label'; //11:39 - 17/3
+import { InputsModule } from '@progress/kendo-angular-inputs'; //11:35 - 17/3
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns'; //3:35 - 17/3
+import { GridModule } from '@progress/kendo-angular-grid'; //3:50 - 17/3
+
+//Componenet
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,7 +32,6 @@ import { FilterGroupComponent } from './filter-group/filter-group.component';
 import { SelectDataComponent } from './select-data/select-data.component';
 import { TableProductComponent } from './table-product/table-product.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import { ProductFilterPipe } from './pipe/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,6 @@ import { ProductFilterPipe } from './pipe/filter.pipe';
     SelectDataComponent,
     TableProductComponent,
     PaginationComponent,
-    ProductFilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,10 @@ import { ProductFilterPipe } from './pipe/filter.pipe';
     MatCheckboxModule,
     MatButtonModule,
     MatSelectModule,
+    InputsModule,
+    LabelModule,
+    DropDownsModule,
+    GridModule,
   ],
   providers: [ProductService, CategoryService],
   bootstrap: [AppComponent],

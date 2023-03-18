@@ -1,5 +1,5 @@
 <div class="wrapper_table">
-    <table class="table mt-2">
+    <!-- <table class="table mt-2">
         <thead>
             <tr>
                 <th scope="col">Tên sản phẩm</th>
@@ -50,8 +50,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-lg-end dropdown_item-ul">
                             <li>
-                                <button class="dropdown-item" type="button"
-                                    [class.selected]="product === selectedProduct" (click)="onSelect(product)">
+                                <button class="dropdown-item" type="button" (click)="onSelect(product)">
                                     <i class="fa-sharp fa-solid fa-eye"></i>
                                     Xem chi tiết
                                 </button>
@@ -66,5 +65,70 @@
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
+
+    <kendo-grid [kendoGridBinding]="productList" [pageSize]="limit" [selectable]="false" [scrollable]="'none'">
+        <kendo-grid-column field="title" title="Tên sản phẩm" [width]="322"
+            [headerStyle]="{ 'background-color': '#edeff3' }" class="text-start">
+            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <div class="title-product">
+                    <img src="{{dataItem.img}}" alt="product">
+                    <div class="sub-title">
+                        <span class="title">{{dataItem.title}}</span>
+                        <div class="ncode">
+                            <span class="poscode">{{dataItem.poscode}}</span>
+                            <span class="barcode">{{dataItem.barcode}}</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="seller" title="Người bán" [width]="65" class="text-center"> </kendo-grid-column>
+        <kendo-grid-column field="subgroups" title=" Phân nhóm" [width]="200" class="text-start">
+            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <div class="subgroups">
+                    <span class="subClass" *ngFor="let subgroup of dataItem.subgroup">{{subgroup}}</span>
+                </div>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="origin" title="Xuất xứ" [width]="80" class="text-center"> </kendo-grid-column>
+        <kendo-grid-column field="brand" title="Thương hiệu" [width]="104" class="brand text-start">
+            <ng-template kendoGridCellTemplate let-dataItem let-column="column">
+                <span>{{dataItem.brand}}</span>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="price" title="Giá bán lẻ" format="n0" [width]="95" class="text-end">
+            <ng-template kendoGridCellTemplate let-dataItem let-column="column">
+                <span class="k-span-price">{{dataItem.price}}</span>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-checkbox-column field="checkdate" title="Quản lý date" [width]="116" class="text-center">
+            <ng-template kendoGridCellTemplate let-dataItem let-column="column">
+                <input type="checkbox" name="Doing business" id="Doingbusiness" [checked]="dataItem.checkdate">
+            </ng-template>
+        </kendo-grid-checkbox-column>
+        <kendo-grid-column field="" title="" [width]="45">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle ActionInTable"
+                        data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                        <i class="fa-sharp fa-solid fa-ellipsis"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-lg-end dropdown_item-ul">
+                        <li>
+                            <button class="dropdown-item" type="button" (click)="onButtonClickViewDetail(dataItem)">
+                                <i class="fa-sharp fa-solid fa-eye"></i>
+                                Xem chi tiết
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item " type="button">
+                                <i class="fa-sharp fa-solid fa-pen"></i> Chỉnh sửa
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </ng-template>
+        </kendo-grid-column>
+    </kendo-grid>
 </div>

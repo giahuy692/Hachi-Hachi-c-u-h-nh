@@ -15,7 +15,7 @@ import { Subject } from 'rxjs';
 })
 export class TableProductComponent {
   constructor(private dataService: DataService) {}
-  @Input() productList?: Product[];
+  @Input() public productList: Product[] = [];
 
   selectedProduct?: Product;
 
@@ -220,26 +220,28 @@ export class TableProductComponent {
     this.dataService.currentActive.next(this.currentActive);
     this.dataService.currentInActive.next(this.currentInActive);
   }
-
-  onSelect(product: Product): void {
-    this.selectedProduct = product;
+  onButtonClickViewDetail(dataItem: any): void {
     alert(
       'Tên sản phẩm: ' +
-        this.selectedProduct.title +
+        dataItem.title +
         ' \nPoscode: ' +
-        this.selectedProduct.poscode +
+        dataItem.poscode +
         ' \nBarcode: ' +
-        this.selectedProduct.barcode +
+        dataItem.barcode +
         ' \nNgười bán: ' +
-        this.selectedProduct.seller +
+        dataItem.seller +
         ' \nPhân nhóm: ' +
-        this.selectedProduct.subgroup +
+        dataItem.subgroup +
         ' \nXuất xứ: ' +
-        this.selectedProduct.origin +
+        dataItem.origin +
         ' \nThương hiệu: ' +
-        this.selectedProduct.brand +
+        dataItem.brand +
         ' \nGiá bán lẻ: ' +
-        this.selectedProduct.price
+        dataItem.price
     );
   }
+
+  // onChecked(dataItem: any): void {
+  //   console.log(dataItem);
+  // }
 }

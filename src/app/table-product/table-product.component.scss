@@ -123,6 +123,9 @@ tbody tr {
 
 .sub-title {
   text-align: start;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .ActionInTable {
@@ -203,6 +206,97 @@ tbody tr {
 .origin {
   width: 79px;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+::ng-deep {
+  .k-grid td,
+  .k-grid .k-table-td {
+    border: none;
+  }
+
+  .k-grid td {
+    overflow: visible !important;
+  }
+
+  .k-master-row {
+    background-color: #fff;
+  }
+
+  .k-grid td:first-child {
+    border-left: none !important;
+  }
+
+  /* Selector cho column cuối cùng */
+  .k-grid td:last-child {
+    border-right: none !important;
+  }
+
+  /* Selector cho các column giữa */
+  .k-grid {
+    border: none;
+
+    .k-table {
+      border-spacing: 0px 5px;
+    }
+
+    th {
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: none !important;
+    }
+
+    td {
+      border-left: none !important;
+      border-right: none !important;
+    }
+
+    .k-table-row.k-table-alt-row {
+      background-color: #fff;
+    }
+
+    .k-table-row {
+      background-color: #fff;
+    }
+
+    .k-grid-header {
+      border: none;
+    }
+
+    .k-grid-header .k-table-row {
+      background-color: #edeff3; /* Đổi màu nền tại đây */
+    }
+
+    .k-grid-header .k-table-th {
+      border: none;
+    }
+
+    .k-column-title {
+      font-size: 13px;
+      font-weight: 700;
+    }
+  }
+  .k-grid-md td,
+  .k-grid-md .k-table-td {
+    width: 104px !important;
+    height: 74px;
+    box-sizing: border-box;
+    padding: 4px 8px !important;
+  }
+
+  .k-grid-md .brand span {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+  }
+  .k-grid-md td:nth-child(2),
+  .k-grid-md .k-table-td:nth-child(2) .k-grid-md td:nth-child(4),
+  .k-grid-md .k-table-td:nth-child(4) .k-grid-md td:nth-child(7),
+  .k-grid-md .k-table-td:nth-child(7) {
+    text-align: center;
+  }
 }

@@ -12,13 +12,10 @@ $height_navbar: 50px;
   height: $height_navbar;
 }
 
-.nav-link {
-  height: 50px;
-  font-size: 13px;
+.wrapper_link {
   position: relative;
-  color: #bbbbbb;
-  padding: 13px 15px !important;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
 
   &::before {
     content: "";
@@ -34,19 +31,29 @@ $height_navbar: 50px;
   }
 }
 
+.nav-link {
+  position: relative;
+  height: 50px;
+  font-size: 13px;
+  color: #bbbbbb;
+  margin: 0px 15px !important;
+  font-weight: 700;
+  border-bottom: 3px solid transparent;
+  padding: 0 !important;
+}
+
 .active {
   color: #008000 !important;
+  // border-bottom: 3px solid #008000;
 
   &::after {
     content: "";
     position: absolute;
-    width: 90%;
-    height: 2px;
+    width: 100%;
+    height: 3px;
     border-radius: 10px;
     background-color: #008000;
-    bottom: 0;
-    left: 5px;
-    right: 5px;
+    bottom: -3px;
   }
 }
 

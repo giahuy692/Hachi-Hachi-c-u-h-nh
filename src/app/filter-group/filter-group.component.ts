@@ -24,13 +24,13 @@ export class FilterGroupComponent {
     private dataService: DataService
   ) {}
 
+  ngOnInit() {
+    this.getCategoryFromCateService();
+  }
   getCategoryFromCateService(): void {
     this.categorys = this.catrgoryService.getCategory();
   }
 
-  ngOnInit() {
-    this.getCategoryFromCateService();
-  }
   selectedCategory: Category = this.catrgoryService.getCategory()[0];
 
   onSelect(category: Category): void {

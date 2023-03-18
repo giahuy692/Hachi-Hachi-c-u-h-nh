@@ -8,10 +8,42 @@ $height_checkbox: 32px;
 }
 
 .section_margin {
-  box-shadow: 2px 2px 5px rgb(0 0 0 / 20%);
+  height: $height_checkbox;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   font-weight: 600 !important;
   color: #959db3 !important;
-  height: $height_checkbox;
+  border-radius: 14px;
+  padding: 0 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 6px;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Các trình duyệt khác */
+
+  input {
+    width: 14px;
+    height: 14px;
+    border-color: #999999;
+  }
+
+  kendo-label {
+    cursor: pointer;
+    font-size: 13px;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Các trình duyệt khác */
+  }
+
+  ::ng-deep {
+    .k-checkbox {
+      background-color: none !important;
+    }
+  }
 }
 
 .mat-mdc-checkbox-checked {
