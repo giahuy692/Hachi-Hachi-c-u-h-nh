@@ -149,11 +149,12 @@ tbody tr {
 .dropdown-menu-lg-end {
   padding: 0;
   top: 34px;
-  border-radius: 5px 0 5px 0;
+  border-radius: 5px 0 5px 5px;
   border: none;
   background-color: #bdc2d2;
   box-shadow: 2px 6px 5px rgb(0 0 0 / 20%);
   color: #fff !important;
+  overflow: hidden;
 }
 
 .dropdown_item-ul li {
@@ -276,13 +277,51 @@ tbody tr {
       font-size: 13px;
       font-weight: 700;
     }
+
+    .title {
+      text-align: left;
+    }
+
+    .seller {
+      text-align: center;
+    }
+
+    .subgroups {
+      text-align: left;
+    }
+
+    .origin {
+      text-align: center;
+    }
+
+    .brand {
+      text-align: left;
+    }
+
+    .price {
+      text-align: right;
+    }
+
+    .checkdate {
+      text-align: center;
+    }
+
+    .btn-grid {
+      width: 45px !important;
+      outline: none;
+      padding: 0 !important;
+    }
+
+    .k-table-tbody > .k-table-row:not(.k-detail-row):hover,
+    .k-grid .k-table-tbody > .k-table-row:not(.k-detail-row).k-hover {
+      background-color: #fff !important;
+    }
   }
   .k-grid-md td,
   .k-grid-md .k-table-td {
-    width: 104px !important;
     height: 74px;
     box-sizing: border-box;
-    padding: 4px 8px !important;
+    // padding: 4px 8px !important;
   }
 
   .k-grid-md .brand span {
