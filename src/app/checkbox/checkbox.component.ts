@@ -40,12 +40,10 @@ export class CheckboxComponent implements OnInit {
 
   ngAfterViewInit() {} //------------- dang dev ......
   onCheckActiveChange() {
-    console.log(this.isActive);
     this.dataService.active.next(this.isActive);
   }
 
   onCheckInActiveChange() {
-    console.log(this.isInActive);
     this.dataService.inActive.next(this.isInActive);
   }
 }

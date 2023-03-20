@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 
 // Interface
@@ -10,8 +10,12 @@ import { DataProducts } from 'src/app/data/mock-products';
 @Injectable({
   providedIn: 'root',
 })
-export class DataService {
+export class DataService implements OnInit {
   constructor() {}
+
+  ngOnInit() {}
+
+  ngAfterViewInit() {}
 
   active = new Subject<any>();
   inActive = new Subject<any>();
@@ -32,7 +36,7 @@ export function filterData(
   inActive: boolean,
   category: string,
   pageIndex: number,
-  limit: number,
+  // limit: number,
   textSearch: any
 ) {
   var data = DataProducts;
@@ -76,9 +80,9 @@ export function filterData(
     totalData = data.length;
   }
 
-  const offset = (pageIndex - 1) * limit;
-  const dataList = data.slice(offset).slice(0, limit);
-  const total_pages = Math.ceil(data.length / limit);
+  // const offset = (pageIndex - 1) * limit;
+  // const dataList = data.slice(offset).slice(0, limit);
+  // const total_pages = Math.ceil(data.length / limit);
   const currentActive = DataProducts.filter(
     (item) => item.category == category && item.status == 'active'
   ).length;
@@ -88,8 +92,8 @@ export function filterData(
 
   return {
     total_product: data.length,
-    total_pages: total_pages,
-    data: dataList,
+    // total_pages: total_pages,
+    data: data,
     currentActive: currentActive,
     currentInActive: currentInActive,
   };

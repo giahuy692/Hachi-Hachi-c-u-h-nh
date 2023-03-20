@@ -1,73 +1,8 @@
 <div class="wrapper_table">
-    <!-- <table class="table mt-2">
-        <thead>
-            <tr>
-                <th scope="col">Tên sản phẩm</th>
-                <th scope="col">Người bán</th>
-                <th scope="col">Phân nhóm</th>
-                <th scope="col">Xuất xứ</th>
-                <th scope="col">Thương hiệu</th>
-                <th scope="col">Giá bán lẻ</th>
-                <th scope="col">Quản lý date</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody *ngIf="productList">
-            <tr *ngFor="let product of productList" class="bg-white">
-                <td class="title-product">
-                    <img src="{{product.img}}" alt="product">
-                    <div class="sub-title">
-                        <span class="title">{{product.title}}</span>
-                        <div class="ncode">
-                            <span class="poscode">{{product.poscode}}</span>
-                            <span class="barcode">{{product.barcode}}</span>
-                        </div>
-                    </div>
-                </td>
-                <td class="lineHeight ">
-                    <div class="seller">{{product.seller}}</div>
-                </td>
-                <td class="subgroups text-start">
-                    <span class="subClass" *ngFor="let subgroup of product.subgroup">{{subgroup}}</span>
-                </td>
-                <td class="lineHeight">
-                    <div class="origin">{{product.origin}}</div>
-                </td>
-                <td class="lineHeight">
-                    <div class="brand">{{product.brand}}</div>
-                </td>
-                <td class="text-end lineHeight">
-                    <div class="price">{{product.price | number: '1.0-3'}}</div>
-                </td>
-                <td class="lineHeight">
-                    <input type="checkbox" name="Doing business" id="Doingbusiness">
-                </td>
-                <td class="lineHeight dropdown_item">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle ActionInTable"
-                            data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                            <i class="fa-sharp fa-solid fa-ellipsis"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-lg-end dropdown_item-ul">
-                            <li>
-                                <button class="dropdown-item" type="button" (click)="onSelect(product)">
-                                    <i class="fa-sharp fa-solid fa-eye"></i>
-                                    Xem chi tiết
-                                </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item " type="button">
-                                    <i class="fa-sharp fa-solid fa-pen"></i> Chỉnh sửa
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table> -->
 
-    <kendo-grid [kendoGridBinding]="productList" [pageSize]="limit" [selectable]="false" [scrollable]="'none'">
+
+    <kendo-grid [kendoGridBinding]="productList" [pageSize]="limit" [selectable]="false" [scrollable]="'none'"
+        [skip]="skip" [pageable]="true" (pageChange)="pageChange($event)">
 
         <kendo-grid-column field="title" title="Tên sản phẩm" [width]="322"
             [headerStyle]="{ 'background-color': '#edeff3', 'justify-content': 'flex-start' }" [class]="'title'">
@@ -145,5 +80,13 @@
                 </div>
             </ng-template>
         </kendo-grid-column>
+        <ng-template kendoPagerTemplate let-totalPages="totalPages" let-currentPage="currentPage">
+            <kendo-pager-page-sizes [pageSizes]="limits" class="pageSize dropup"></kendo-pager-page-sizes>
+            <div class="pagi">
+                <kendo-pager-prev-buttons [className]="'k_prev'"></kendo-pager-prev-buttons>
+                <kendo-pager-numeric-buttons [buttonCount]="buttonCount"></kendo-pager-numeric-buttons>
+                <kendo-pager-next-buttons [className]="'k_next'"></kendo-pager-next-buttons>
+            </div>
+        </ng-template>
     </kendo-grid>
 </div>

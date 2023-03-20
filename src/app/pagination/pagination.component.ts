@@ -21,6 +21,8 @@ export class PaginationComponent {
 
   total_Pages: number = 0;
 
+  public buttonCount = 4;
+
   pages: number[] = [];
 
   ngOnInit() {
