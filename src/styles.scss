@@ -72,3 +72,16 @@ ul#custom_dropdown-menu {
     display: none !important;
   }
 }
+
+/* Thiết lập chiều rộng của thanh cuộn */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 245.88px;
+}
+
+/* Thiết lập màu sắc của thanh cuộn */
+::-webkit-scrollbar-thumb {
+  background-color: #eaeaea;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}

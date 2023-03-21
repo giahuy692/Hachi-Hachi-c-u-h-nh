@@ -11,12 +11,10 @@
 }
 
 .wrapper {
-  padding: 0;
   display: flex;
   background-color: #edeff3;
-  min-height: 100vh;
+  padding: 0;
   column-gap: 5px;
-  flex-direction: row;
 }
 
 .sidebar-container {
@@ -28,4 +26,5 @@
 .content-container {
   flex: 1;
   flex-direction: column;
+  overflow: auto;
 }

@@ -331,6 +331,12 @@ tbody tr {
       align-items: center;
       flex: 1;
       column-gap: 9px;
+
+      .k-pager-nav {
+        min-width: 20px;
+        min-height: 29px;
+        padding: 0 2px;
+      }
     }
 
     .pageSize {
@@ -472,5 +478,9 @@ tbody tr {
   .k-list-content .k-list-ul .k-list-item:hover {
     color: #26282e !important;
     background-color: #f5f6f8 !important;
+  }
+
+  .k-focus {
+    box-shadow: none !important;
   }
 }

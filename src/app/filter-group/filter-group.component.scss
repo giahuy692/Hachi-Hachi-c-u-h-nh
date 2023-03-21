@@ -111,3 +111,13 @@ $height__filter-group: 32px;
   outline: none;
   border: none;
 }
+
+::ng-deep {
+  span.k-input-inner {
+    column-gap: 7px;
+  }
+
+  span.k-input-inner span {
+    color: #959db3 !important;
+  }
+}
