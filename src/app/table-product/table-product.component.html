@@ -2,9 +2,9 @@
 
 
     <kendo-grid [kendoGridBinding]="productList" [pageSize]="limit" [selectable]="false" [skip]="skip" [pageable]="true"
-        (pageChange)="pageChange($event)" [scrollable]="'none'">
+        (pageChange)="pageChange($event)" [height]="523">
 
-        <kendo-grid-column field="title" title="Tên sản phẩm" [width]="322"
+        <kendo-grid-column field="title" title="Tên sản phẩm" [width]="300"
             [headerStyle]="{ 'background-color': '#edeff3', 'justify-content': 'flex-start' }" [class]="'title'">
             <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                 <div class="title-product">
@@ -20,7 +20,7 @@
             </ng-template>
         </kendo-grid-column>
 
-        <kendo-grid-column field="seller" title="Người bán" [width]="65"
+        <kendo-grid-column field="seller" title="Người bán" [width]="87"
             [headerStyle]="{  'justify-content': 'center' }" [class]="'seller'"> </kendo-grid-column>
 
         <kendo-grid-column field="subgroups" title=" Phân nhóm" [width]="200" [class]="'subgroups'"

@@ -242,6 +242,10 @@ tbody tr {
       border-spacing: 0px 5px;
     }
 
+    .k-grid-header-wrap {
+      border: none;
+    }
+
     th {
       border-left: none !important;
       border-right: none !important;
@@ -263,6 +267,8 @@ tbody tr {
 
     .k-grid-header {
       border: none;
+      background-color: transparent;
+      padding: 0;
     }
 
     .k-grid-header .k-table-row {
