@@ -483,4 +483,13 @@ tbody tr {
   .k-focus {
     box-shadow: none !important;
   }
+
+  .k-popup {
+    width: 100%;
+    position: absolute;
+    bottom: 26px;
+  }
+  .k-picker-solid:focus-within {
+    box-shadow: none;
+  }
 }

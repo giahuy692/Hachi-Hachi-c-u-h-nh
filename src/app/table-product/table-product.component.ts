@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 //Jquery
 
-import * as $ from 'jquery'; 
+import * as $ from 'jquery';
 
 //data
 import { Product } from '../interface/product';
