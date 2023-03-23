@@ -1,3 +1,14 @@
-<div class="btn_sidebar">
-    <button class="btn_link">Danh sách sản phẩm</button>
+<div *ngFor="let nav of navbars" class="btn_sidebar">
+  <kendo-button
+    class="btn_link"
+    imageUrl="assets/images/iconMenu.svg"
+    (click)="onClickSub(nav)"
+  >
+    {{ nav.title }}
+  </kendo-button>
+  <div *ngIf="nav.subtitle != undefined" class="subContainer">
+    <kendo-button *ngFor="let sub of nav.subtitle" class="submenu">
+      {{ sub }}
+    </kendo-button>
+  </div>
 </div>

@@ -1,29 +1,23 @@
 <section class="section">
-    <div class="section_margin">
-        <label class="k-checkbox-label" for="active">
-            {{currentActive}} - Đang kinh doanh
-        </label>
-        <input type="checkbox" id="active" kendoCheckBox [(ngModel)]="isActive" (change)="onCheckActiveChange()" />
-    </div>
+  <div class="section_margin">
+    <label class="k-checkbox-label" for="active"> Phiếu mua hàng </label>
+    <input
+      type="checkbox"
+      id="active"
+      kendoCheckBox
+      [(ngModel)]="isActive"
+      (change)="onCheckActiveChange()"
+    />
+  </div>
 
-    <div class="section_margin">
-        <label class="k-checkbox-label" for="isInActive">
-            {{currentInActive}} - Ngừng kinh doanh
-        </label>
-        <input type="checkbox" id="isInActive" kendoCheckBox [(ngModel)]="isInActive"
-            (change)="onCheckInActiveChange()" />
-    </div>
-
-
-
-    <!-- <mat-checkbox labelPosition="after" class="section_margin" [(ngModel)]="isActive"
-        (change)="onCheckActiveChange()">{{currentActive}} -
-        Đang kinh doanh
-    </mat-checkbox>
-
-    <mat-checkbox labelPosition="after" class="section_margin" [(ngModel)]="isInActive"
-        (change)="onCheckInActiveChange()">{{currentInActive}} -
-        Ngừng
-        kinh doanh</mat-checkbox> -->
-
+  <div class="section_margin">
+    <label class="k-checkbox-label" for="isInActive"> Coupon </label>
+    <input
+      type="checkbox"
+      id="isInActive"
+      kendoCheckBox
+      [(ngModel)]="isInActive"
+      (change)="onCheckInActiveChange()"
+    />
+  </div>
 </section>

@@ -1,44 +1,10 @@
 <div class="filter_group">
-    <div class="filter__left">
-        <div class="dropdown dropdown_custom">
-            <button *ngIf="selectedCategory" class="btn btn-primary dropdown-toggle" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-sharp {{selectedCategory.icon}}"></i>
-                <span *ngIf="selectedCategory.viewValue">{{selectedCategory.viewValue}}</span>
-            </button>
-            <ul class="dropdown-menu" id="custom_dropdown-menu">
-                <li *ngFor="let category of categorys">
-                    <a class="dropdown-item" (click)="onSelect(category)">
-                        <i class="fa-sharp {{category.icon}}"></i>
-                        <span>{{category.viewValue}}</span>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-        <!-- <div class="DropDownList-wrapper">
-            <kendo-dropdownlist [data]="categorys" textField="viewValue" valueField="value"
-                [value]="selectedCategory.value" [valuePrimitive]="true">
-                <ng-template kendoDropDownListItemTemplate let-dataItem>
-                    <a (click)="onSelect(dataItem)">
-                        <i class="fa-sharp {{dataItem.icon}}"></i> {{ dataItem.viewValue}}
-                    </a>
-                </ng-template>
-            </kendo-dropdownlist>
-        </div> -->
-
-
-
-        <app-checkbox></app-checkbox>
-    </div>
-    <div class="filter__right">
-        <div class="fright">
-            <button><img src="assets/images/export.svg" alt="export"></button>
-            <button><img src="assets/images/xlsx.svg" alt="xlsx"></button>
-        </div>
-        <button class="chevron"><img src="assets/images/chevron.svg" alt="chevron"></button>
-    </div>
-
-
+  <div class="filter__left">
+    <app-checkbox></app-checkbox>
+  </div>
+  <div class="filter__right">
+    <kendo-button class="btn_link" imageUrl="assets/images/iconMenu.svg"
+      >TẠO MỚI
+    </kendo-button>
+  </div>
 </div>
