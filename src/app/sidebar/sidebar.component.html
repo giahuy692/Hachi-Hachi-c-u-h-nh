@@ -1,14 +1,5 @@
-<div *ngFor="let nav of navbars" class="btn_sidebar">
-  <kendo-button
-    class="btn_link"
-    imageUrl="assets/images/iconMenu.svg"
-    (click)="onClickSub(nav)"
-  >
-    {{ nav.title }}
-  </kendo-button>
-  <div *ngIf="nav.subtitle != undefined" class="subContainer">
-    <kendo-button *ngFor="let sub of nav.subtitle" class="submenu">
-      {{ sub }}
-    </kendo-button>
+<div class="Sidebar-wapper">
+  <div class="panelbar-wrapper">
+    <kendo-panelbar [items]="items" class="panel-tag"></kendo-panelbar>
   </div>
 </div>

@@ -1,4 +1,11 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+
+//Kendo
+import { PanelBarItemModel } from '@progress/kendo-angular-layout';
+
+// icon
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 // Jquery
 import * as $ from 'jquery';
@@ -14,46 +21,46 @@ class navbars {
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements AfterViewInit {
-  navbars: navbars[] = [
-    { title: 'KHUYẾN MÃI', subtitle: undefined },
-    { title: 'NỘI DUNG WEBSITE', subtitle: undefined },
-    { title: 'QUẢN LÝ BANNER', subtitle: undefined },
-    {
+  iconChevron = faChevronDown;
+  imageUrl: SafeUrl; //khi bạn muốn truyền một giá trị URL vào một thuộc tính, cần phải sử dụng một đối tượng có kiểu dữ liệu là "SafeUrl", khi bạn muốn truyền một giá trị URL vào một thuộc tính, cần phải sử dụng một đối tượng có kiểu dữ liệu là "SafeUrl"
+  public items: Array<PanelBarItemModel> = [
+    <PanelBarItemModel>{ title: 'KHUYẾN MÃI' },
+    <PanelBarItemModel>{ title: 'NỘI DUNG WEBSITE' },
+    <PanelBarItemModel>{ title: 'QUẢN LÝ BANNER' },
+    <PanelBarItemModel>{
       title: 'CHÍNH SÁCH',
-      subtitle: [
-        'Coupon',
-        'xxxxxxxxxxxxx',
-        'xxxxxxxxxxxxx',
-        'xxxxxxxxxxxxx',
-        'xxxxxxxxxxxxx',
-        'xxxxxxxxxxxxx',
+      expanded: true,
+      selected: true,
+      children: [
+        <PanelBarItemModel>{ title: 'Coupon' },
+        <PanelBarItemModel>{ title: 'xxxxxxxxxxxxx' },
+        <PanelBarItemModel>{ title: 'xxxxxxxxxxxxx' },
+        <PanelBarItemModel>{ title: 'xxxxxxxxxxxxx' },
+        <PanelBarItemModel>{ title: 'xxxxxxxxxxxxx' },
+        <PanelBarItemModel>{ title: 'xxxxxxxxxxxxx' },
       ],
     },
-    { title: 'BÁO CÁO EXCEL', subtitle: undefined },
+    <PanelBarItemModel>{ title: 'BÁO CÁO EXCEL' },
   ];
 
-  onClickSub(value: navbars) {
-    if (value.subtitle != undefined) {
-      $(document).ready(function () {
-        $('.subContainer').off().addClass('showSub');
-      });
-    } else {
-      $(document).ready(function () {
-        $('.subContainer').off().removeClass('showSub');
-      });
-    }
+  constructor(private sanitizer: DomSanitizer) {
+    const imagePath = 'assets/images/iconMenu.svg';
+    this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(imagePath);
   }
+
+  ngOnInit() {}
 
   ngAfterViewInit() {
     $(document).ready(() => {
-      $('.submenu').removeClass('k-rounded-md');
-      $('.btn_link')
-        .off()
-        .on('click', function () {
-          $('.btn_link').removeClass('h-btn-active');
-          $('.btn_link').removeClass('k-rounded-md');
-          $(this).addClass('h-btn-active');
-        });
+      $(
+        "<img src='assets/images/iconMenu.svg' class='imgSidebar'>"
+      ).insertBefore(
+        '.Sidebar-wapper .panel-tag .k-panelbar > .k-panelbar-header > .k-link .k-panelbar-item-text'
+      );
+      $('.k-panelbar-group .ng-tns-c514-4 .k-panelbar-item-text ').css({
+        'font-weight': '700',
+        color: '#FFF',
+      });
     });
   }
 }

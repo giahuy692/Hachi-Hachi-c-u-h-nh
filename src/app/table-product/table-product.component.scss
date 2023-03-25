@@ -490,10 +490,12 @@ tbody tr {
     box-shadow: none !important;
   }
 
-  .k-popup {
-    width: 100%;
-    position: absolute;
-    bottom: 26px;
+  .wrapper_pagi {
+    .k-popup {
+      width: 100%;
+      position: absolute;
+      bottom: 26px;
+    }
   }
   .k-picker-solid:focus-within {
     box-shadow: none;

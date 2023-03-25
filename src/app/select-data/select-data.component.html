@@ -1,24 +1,29 @@
 <div class="wrapper">
-    <div class="FilterTheData">
-        <div class="filterTitle">
-            <img src="assets/images/filter.svg" alt="icon filter">
+  <div class="FilterTheData">
+    <div class="filterTitle">
+      <img src="assets/images/filter.svg" alt="icon filter" />
 
-            <h2>LỌC DỮ LIỆU</h2>
-        </div>
-        <button (click)="handleReset()">Reset bộ lọc</button>
+      <h2>LỌC DỮ LIỆU</h2>
     </div>
-    <div class=searchWrapper>
-        <span>Tìm kiếm sản phẩm</span>
-        <div class=inputSearch>
-            <div class=searchLeft>
-                <fa-icon [icon]="faSearch"></fa-icon>
-                <input placeholder="Tìm theo barcode, tên sản phẩm, người bán, thương hiệu" [(ngModel)]="textSearch"
-                    (change)="handleSearch()" (keyup.enter)="handleSearch()" (keyup)="onKeyUp($event)" />
-            </div>
-            <button>
-                <fa-icon [icon]="faSearch"></fa-icon>
-                Tìm
-            </button>
-        </div>
+    <button (click)="handleReset()">Reset bộ lọc</button>
+  </div>
+  <div class="searchWrapper">
+    <span>Tìm kiếm sản phẩm</span>
+    <div class="inputSearch">
+      <div class="searchLeft">
+        <fa-icon [icon]="faSearch"></fa-icon>
+        <input
+          placeholder="Tìm theo barcode, tên sản phẩm, người bán, thương hiệu"
+          [(ngModel)]="textSearch"
+          (change)="handleSearch()"
+          (keyup.enter)="handleSearch()"
+          (keyup)="onKeyUp($event)"
+        />
+      </div>
+      <button>
+        <fa-icon [icon]="faSearch"></fa-icon>
+        Tìm
+      </button>
     </div>
+  </div>
 </div>

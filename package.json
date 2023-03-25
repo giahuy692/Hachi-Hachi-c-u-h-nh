@@ -40,6 +40,9 @@
     "@progress/kendo-angular-intl": "11.4.0",
     "@progress/kendo-angular-l10n": "11.4.0",
     "@progress/kendo-angular-label": "11.4.0",
+    "@progress/kendo-angular-layout": "^11.4.0",
+    "@progress/kendo-angular-listview": "11.4.0",
+    "@progress/kendo-angular-navigation": "11.4.0",
     "@progress/kendo-angular-pdf-export": "11.4.0",
     "@progress/kendo-angular-popup": "11.4.0",
     "@progress/kendo-angular-treelist": "^11.4.0",
@@ -55,8 +58,7 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0",
-    "@progress/kendo-angular-listview": "11.4.0",
-    "@progress/kendo-angular-navigation": "11.4.0"
+    "@progress/kendo-angular-progressbar": "11.4.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.1",

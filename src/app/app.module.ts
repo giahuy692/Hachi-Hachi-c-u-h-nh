@@ -21,8 +21,8 @@ import { LabelModule } from '@progress/kendo-angular-label';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { GridModule } from '@progress/kendo-angular-grid';
-import { TreeListModule } from '@progress/kendo-angular-treelist';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { LayoutModule } from '@progress/kendo-angular-layout';
 
 //Componenet
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +33,9 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { FilterGroupComponent } from './filter-group/filter-group.component';
 import { SelectDataComponent } from './select-data/select-data.component';
 import { TableProductComponent } from './table-product/table-product.component';
+import { NavigationModule } from '@progress/kendo-angular-navigation';
+import { InfomationCouponComponent } from './infomation-coupon/infomation-coupon.component';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +46,7 @@ import { TableProductComponent } from './table-product/table-product.component';
     FilterGroupComponent,
     SelectDataComponent,
     TableProductComponent,
+    InfomationCouponComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,8 +62,9 @@ import { TableProductComponent } from './table-product/table-product.component';
     LabelModule,
     DropDownsModule,
     GridModule,
-    TreeListModule,
     ButtonsModule,
+    LayoutModule,
+    NavigationModule,
   ],
   providers: [ProductService, CategoryService],
   bootstrap: [AppComponent],

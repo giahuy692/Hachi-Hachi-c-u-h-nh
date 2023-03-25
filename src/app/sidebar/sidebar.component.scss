@@ -1,51 +1,53 @@
-.wrapper {
-  width: 220px;
-  background-color: #5a6276;
-  padding-top: 51px;
-}
+:host ::ng-deep {
+  .Sidebar-wapper {
+    min-height: 95vh;
 
-.btn_sidebar {
-  .btn_link {
-    width: 100%;
-    height: 51.58px;
-    padding-left: 16px;
-    color: #fff;
-    font-weight: 700;
-    background-color: transparent;
-    justify-content: flex-start;
-    outline: none;
-    border: none;
-    box-shadow: none;
-    align-items: center;
-    column-gap: 16px;
-  }
+    .panelbar-wrapper {
+      .k-link {
+        color: #fff;
+        background-color: #5a6276;
+        border: none;
 
-  .h-btn-active {
-    background-color: #1a2334 !important;
-  }
-  .subContainer {
-    display: none;
-    text-align: left;
-    transition: display 0.3s ease-in-out;
-    -webkit-transition: display 0.3s ease-in;
-    -moz-transition: display 0.3s ease-in;
-    -o-transition: display 0.3s ease-in;
-    -ms-transition: display 0.3s ease-in;
-    transition: display 0.3s ease-in;
+        .ng-trigger {
+          background-color: #1a2334;
+        }
+      }
+      .panel-tag {
+        border: none;
 
-    .submenu {
-      display: block;
+        .k-panelbar > .k-item > .k-link.k-selected,
+        .k-panelbar > .k-panelbar-header > .k-link.k-selected {
+          color: #fff !important;
+          font-weight: 700;
+          background-color: #1a2334;
+        }
+
+        .k-panelbar-item {
+          border: none;
+        }
+      }
+    }
+    .k-panelbar > .k-panelbar-header > .k-link.k-selected:hover {
+      background-color: #5a6276;
+    }
+    .k-panelbar > .k-item > .k-link.k-selected,
+    .k-panelbar > .k-panelbar-header > .k-link.k-selected {
+      background: #1a2334 !important;
+      color: #fff !important;
+      border-left: 3px solid #fff;
+    }
+
+    .k-panelbar .k-group > .k-panelbar-item > .k-link:hover {
       background-color: #1a2334;
-      box-shadow: 0 3px 6px rgba(149, 157, 179, 0.2);
-      text-align: left;
-      color: #fff;
-      padding: 10px 53px;
+    }
+
+    .k-panelbar .k-group > .k-panelbar-item > .k-link.k-selected {
       font-weight: 700;
-      font-size: 13px;
+      background: #1a2334 !important;
+    }
+
+    .k-panelbar > .k-panelbar-header > .ng-trigger .k-link {
+      background: #1a2334 !important;
     }
   }
-}
-
-.showSub {
-  display: block !important;
 }
