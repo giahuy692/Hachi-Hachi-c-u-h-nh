@@ -2,51 +2,126 @@
   <div class="info-coupon">
     <div class="header-coupon">
       <div class="info-left">
-        <h3>THÔNG TIN COUPON</h3>
-        <span>Coupon giảm giá đơn hàng</span>
+        <h5 class="text-1">THÔNG TIN COUPON</h5>
+        <span class="text-2">Coupon giảm giá đơn hàng</span>
       </div>
       <div class="infi-right">
-        <button class="btn-1">Tiếng Việt</button>
-        <button class="btn-2">日本語</button>
-        <button class="btn-3">English</button>
+        <div>
+          <button class="btn-1 h-btn">Tiếng Việt</button>
+        </div>
+        <div class="line">
+          <button class="btn-2 h-btn">日本語</button>
+        </div>
+        <div class="line">
+          <button class="btn-3 h-btn">English</button>
+        </div>
       </div>
     </div>
 
     <div class="coupon-body">
       <kendo-gridlayout
-        [rows]="[50, 50, 50, 50, 50]"
-        [cols]="[89, 45, 119, '100%']"
-        [gap]="5"
+        [rows]="['auto', 'auto', 'auto', 'auto', 'auto']"
+        [cols]="['119px', '32px', '76px', 'auto']"
+        [gap]="11"
       >
-        <kendo-gridlayout-item [colSpan]="2" class="box rect">
-          <span>1</span>
-        </kendo-gridlayout-item>
-        <kendo-gridlayout-item class="box">
-          <span>2</span>
-        </kendo-gridlayout-item>
-        <kendo-gridlayout-item class="box">
-          <span>3</span>
-        </kendo-gridlayout-item>
-        <kendo-gridlayout-item [colSpan]="3" class="box big">
-          <span>4</span>
-        </kendo-gridlayout-item>
-        <kendo-gridlayout-item class="box rect">
-          <span>5</span>
-        </kendo-gridlayout-item>
-        <kendo-gridlayout-item [colSpan]="3" class="box">
-          <span>6</span>
-        </kendo-gridlayout-item>
-        <kendo-gridlayout-item [rowSpan]="3" class="box">
-          <span>7</span>
-        </kendo-gridlayout-item>
         <kendo-gridlayout-item [colSpan]="2" class="box">
-          <span>8</span>
+          <kendo-label class="k-form" text="Mã bắt đầu coupon">
+            <kendo-textbox [readonly]="true" [value]="'KMGBL22'">
+            </kendo-textbox>
+          </kendo-label>
         </kendo-gridlayout-item>
+
         <kendo-gridlayout-item class="box">
-          <span>9</span>
+          <kendo-label class="k-form" text="SL phát hành">
+            <kendo-textbox [readonly]="true" [value]="'10'" id="quality-coupon">
+            </kendo-textbox>
+          </kendo-label>
         </kendo-gridlayout-item>
+
+        <kendo-gridlayout-item class="box">
+          <kendo-label class="k-form" text="Tên coupon">
+            <kendo-textbox [readonly]="true" [value]="'Giảm 100K'">
+            </kendo-textbox>
+          </kendo-label>
+        </kendo-gridlayout-item>
+
         <kendo-gridlayout-item [colSpan]="3" class="box">
-          <span>10</span>
+          <div class="checkbox">
+            <kendo-label
+              class="k-checkbox-label"
+              [for]="checkbox"
+              text="Mã coupon ngẫu nhiên gấp (x) lần"
+            ></kendo-label>
+            <input type="checkbox" #checkbox kendoCheckBox />
+          </div>
+
+          <kendo-textbox [readonly]="true" [value]="'1'"> </kendo-textbox>
+        </kendo-gridlayout-item>
+
+        <kendo-gridlayout-item class="box">
+          <kendo-label class="k-form" text="Mô tả điều kiện áp dụng">
+            <kendo-textbox
+              [readonly]="true"
+              [value]="'Áp dụng cho đơn hàng có giá trị trên 600.00 đ'"
+            >
+            </kendo-textbox>
+          </kendo-label>
+        </kendo-gridlayout-item>
+
+        <kendo-gridlayout-item [colSpan]="3" class="box">
+          <div class="checkbox">
+            <kendo-label
+              class="k-form"
+              text="Giá trị coupon"
+              [for]="valueCoupon"
+            >
+            </kendo-label>
+            <div class="checkboxScale">
+              <kendo-label
+                class="k-checkbox-label"
+                [for]="checkbox2"
+                text="tỷ lệ %"
+              ></kendo-label>
+              <input type="checkbox" #checkbox2 kendoCheckBox />
+            </div>
+          </div>
+
+          <kendo-textbox [readonly]="true" [value]="'100,000'" #valueCoupon>
+          </kendo-textbox>
+        </kendo-gridlayout-item>
+
+        <kendo-gridlayout-item [rowSpan]="3" class="box">
+          <kendo-label text="Diễn giải ">
+            <kendo-textarea
+              [readonly]="true"
+              resizable="auto"
+              [(ngModel)]="textAreaValue"
+            >
+            </kendo-textarea>
+          </kendo-label>
+        </kendo-gridlayout-item>
+
+        <kendo-gridlayout-item [colSpan]="3" class="box">
+          <kendo-label text="Thời gian hiệu lực">
+            <div class="datepicker">
+              <kendo-datepicker
+                [(value)]="value"
+                calendarType="classic"
+              ></kendo-datepicker>
+              <kendo-datepicker
+                [(value)]="value"
+                calendarType="classic"
+              ></kendo-datepicker>
+            </div>
+          </kendo-label>
+        </kendo-gridlayout-item>
+
+        <kendo-gridlayout-item [colSpan]="3" class="box">
+          <div class="status-coupon">
+            <kendo-label class="status-label" text="Tình trạng">
+              <span class="status-textbox">Đã phê duyệt áp dụng</span>
+            </kendo-label>
+          </div>
         </kendo-gridlayout-item>
       </kendo-gridlayout>
     </div>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +23,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { LayoutModule } from '@progress/kendo-angular-layout';
+import { IntlModule } from '@progress/kendo-angular-intl';
 
 //Componenet
 import { AppRoutingModule } from './app-routing.module';
@@ -35,7 +36,7 @@ import { SelectDataComponent } from './select-data/select-data.component';
 import { TableProductComponent } from './table-product/table-product.component';
 import { NavigationModule } from '@progress/kendo-angular-navigation';
 import { InfomationCouponComponent } from './infomation-coupon/infomation-coupon.component';
-
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,8 @@ import { InfomationCouponComponent } from './infomation-coupon/infomation-coupon
     ButtonsModule,
     LayoutModule,
     NavigationModule,
+    DateInputsModule,
+    IntlModule,
   ],
   providers: [ProductService, CategoryService],
   bootstrap: [AppComponent],
