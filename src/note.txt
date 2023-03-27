@@ -1,0 +1,18 @@
+"vi", "en", "ja" là các mã ngôn ngữ được hỗ trợ, tương ứng với tiếng Việt, tiếng Anh và tiếng Nhật.
+"translation" là đường dẫn đến tệp tin dịch của ngôn ngữ đó.
+"sourceLocale" là ngôn ngữ mặc định của dự án, thường là tiếng Anh.
+"outFile" là đường dẫn đến tệp tin xuất ra của quá trình dịch.
+
+
+"vi-VN": {
+            "translation": "src/locale/messages.vi.xlf",
+            "baseHref": "/"
+          },
+          "en-US": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": "/"
+          },
+          "ja-JP": {
+            "translation": "src/locale/messages.ja.xlf",
+            "baseHref": "/"
+          }

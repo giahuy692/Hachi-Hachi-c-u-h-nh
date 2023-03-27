@@ -37,6 +37,7 @@ import { TableProductComponent } from './table-product/table-product.component';
 import { NavigationModule } from '@progress/kendo-angular-navigation';
 import { InfomationCouponComponent } from './infomation-coupon/infomation-coupon.component';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { ApplicableConditionsComponent } from './applicable-conditions/applicable-conditions.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
     SelectDataComponent,
     TableProductComponent,
     InfomationCouponComponent,
+    ApplicableConditionsComponent,
   ],
   imports: [
     BrowserModule,

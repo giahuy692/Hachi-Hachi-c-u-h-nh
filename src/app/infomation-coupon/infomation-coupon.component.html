@@ -7,13 +7,19 @@
       </div>
       <div class="infi-right">
         <div>
-          <button class="btn-1 h-btn">Tiếng Việt</button>
+          <button class="btn-1 h-btn" (click)="onTranslate('vi')">
+            Tiếng Việt
+          </button>
         </div>
         <div class="line">
-          <button class="btn-2 h-btn">日本語</button>
+          <button class="btn-2 h-btn" (click)="onTranslate('ja')">
+            日本語
+          </button>
         </div>
         <div class="line">
-          <button class="btn-3 h-btn">English</button>
+          <button class="btn-3 h-btn" (click)="onTranslate('en')">
+            English
+          </button>
         </div>
       </div>
     </div>
@@ -25,21 +31,21 @@
         [gap]="11"
       >
         <kendo-gridlayout-item [colSpan]="2" class="box">
-          <kendo-label class="k-form" text="Mã bắt đầu coupon">
+          <kendo-label class="k-form" text="{{ storeTitle[0] }}">
             <kendo-textbox [readonly]="true" [value]="'KMGBL22'">
             </kendo-textbox>
           </kendo-label>
         </kendo-gridlayout-item>
 
         <kendo-gridlayout-item class="box">
-          <kendo-label class="k-form" text="SL phát hành">
+          <kendo-label class="k-form" text="{{ storeTitle[1] }}">
             <kendo-textbox [readonly]="true" [value]="'10'" id="quality-coupon">
             </kendo-textbox>
           </kendo-label>
         </kendo-gridlayout-item>
 
         <kendo-gridlayout-item class="box">
-          <kendo-label class="k-form" text="Tên coupon">
+          <kendo-label class="k-form" text="{{ storeTitle[2] }}">
             <kendo-textbox [readonly]="true" [value]="'Giảm 100K'">
             </kendo-textbox>
           </kendo-label>
@@ -50,7 +56,7 @@
             <kendo-label
               class="k-checkbox-label"
               [for]="checkbox"
-              text="Mã coupon ngẫu nhiên gấp (x) lần"
+              text="{{ storeTitle[3] }}"
             ></kendo-label>
             <input type="checkbox" #checkbox kendoCheckBox />
           </div>
@@ -59,7 +65,7 @@
         </kendo-gridlayout-item>
 
         <kendo-gridlayout-item class="box">
-          <kendo-label class="k-form" text="Mô tả điều kiện áp dụng">
+          <kendo-label class="k-form" text="{{ storeTitle[4] }}">
             <kendo-textbox
               [readonly]="true"
               [value]="'Áp dụng cho đơn hàng có giá trị trên 600.00 đ'"
@@ -72,7 +78,7 @@
           <div class="checkbox">
             <kendo-label
               class="k-form"
-              text="Giá trị coupon"
+              text="{{ storeTitle[5] }}"
               [for]="valueCoupon"
             >
             </kendo-label>
@@ -80,7 +86,7 @@
               <kendo-label
                 class="k-checkbox-label"
                 [for]="checkbox2"
-                text="tỷ lệ %"
+                text="{{ storeTitle[6] }}"
               ></kendo-label>
               <input type="checkbox" #checkbox2 kendoCheckBox />
             </div>
@@ -91,7 +97,7 @@
         </kendo-gridlayout-item>
 
         <kendo-gridlayout-item [rowSpan]="3" class="box">
-          <kendo-label text="Diễn giải ">
+          <kendo-label text="{{ storeTitle[7] }}">
             <kendo-textarea
               [readonly]="true"
               resizable="auto"
@@ -102,15 +108,21 @@
         </kendo-gridlayout-item>
 
         <kendo-gridlayout-item [colSpan]="3" class="box">
-          <kendo-label text="Thời gian hiệu lực">
+          <kendo-label text="{{ storeTitle[8] }}">
             <div class="datepicker">
               <kendo-datepicker
-                [(value)]="value"
+                [(value)]="firstDayOfMonth"
                 calendarType="classic"
+                class="DateStart DateClass"
+                [rangeValidation]="true"
+                [disabledDates]="disabledDates"
               ></kendo-datepicker>
               <kendo-datepicker
-                [(value)]="value"
+                format="d/M/y"
+                [(value)]="lastDayOfMonth"
                 calendarType="classic"
+                class="DateEnd DateClass"
+                [disabledDates]="disabledDates"
               ></kendo-datepicker>
             </div>
           </kendo-label>
@@ -118,7 +130,7 @@
 
         <kendo-gridlayout-item [colSpan]="3" class="box">
           <div class="status-coupon">
-            <kendo-label class="status-label" text="Tình trạng">
+            <kendo-label class="status-label" text="{{ storeTitle[9] }}">
               <span class="status-textbox">Đã phê duyệt áp dụng</span>
             </kendo-label>
           </div>
