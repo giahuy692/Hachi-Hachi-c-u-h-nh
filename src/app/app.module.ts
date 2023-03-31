@@ -1,5 +1,5 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -24,6 +24,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { IntlModule } from '@progress/kendo-angular-intl';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 
 //Componenet
 import { AppRoutingModule } from './app-routing.module';
@@ -36,8 +37,12 @@ import { SelectDataComponent } from './select-data/select-data.component';
 import { TableProductComponent } from './table-product/table-product.component';
 import { NavigationModule } from '@progress/kendo-angular-navigation';
 import { InfomationCouponComponent } from './infomation-coupon/infomation-coupon.component';
-import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { ApplicableConditionsComponent } from './applicable-conditions/applicable-conditions.component';
+import '@progress/kendo-angular-intl/locales/vi/all';
+import { DatepickerComponent } from './datepicker/datepicker.component';
+import { TranslatePipe } from './pipe/translate.pipe';
+import { TreeViewModule } from '@progress/kendo-angular-treeview';
+
 
 @NgModule({
   declarations: [
@@ -50,6 +55,8 @@ import { ApplicableConditionsComponent } from './applicable-conditions/applicabl
     TableProductComponent,
     InfomationCouponComponent,
     ApplicableConditionsComponent,
+    DatepickerComponent,
+    TranslatePipe,
   ],
   imports: [
     BrowserModule,
@@ -70,8 +77,13 @@ import { ApplicableConditionsComponent } from './applicable-conditions/applicabl
     NavigationModule,
     DateInputsModule,
     IntlModule,
+    TreeViewModule,
   ],
-  providers: [ProductService, CategoryService],
+  providers: [
+    ProductService,
+    CategoryService,
+    { provide: LOCALE_ID, useValue: 'vi-VN' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

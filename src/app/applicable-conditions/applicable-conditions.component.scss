@@ -1,0 +1,58 @@
+::ng-deep {
+  * {
+    font-weight: 400;
+    font-size: 13px;
+  }
+
+  .wapper-Ac {
+    padding: 19px 13px;
+
+    .AC-body {
+      width: 100%;
+      background-color: #fff;
+      padding: 13px 32px 18px 20px;
+
+      .A-unit {
+        display: flex;
+        column-gap: 80px;
+
+        .A-unit-limit {
+          display: flex;
+          flex-direction: column;
+          width: fit-content;
+          row-gap: 10px;
+        }
+        .f-double {
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+        }
+        .A-unit-popular {
+          display: flex;
+          column-gap: 10px;
+          align-items: center;
+        }
+
+        .individual {
+          margin-left: 25px;
+        }
+
+        .A-title-conditions {
+          font-weight: 700;
+          font-size: 13px;
+          color: #959db3;
+          padding-bottom: 5px;
+        }
+      }
+    }
+
+    .A-unit-check {
+    }
+
+    .k-radio:checked,
+    .k-radio.k-checked {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3e%3ccircle cx='50%25' cy='50%25' r='4' fill='green'/%3e%3c/svg%3e");
+      background-color: #ffff;
+    }
+  }
+}

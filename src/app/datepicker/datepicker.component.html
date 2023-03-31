@@ -1,0 +1,45 @@
+<div class="datepicker">
+  <kendo-datepicker
+    format="d/M/y"
+    [(value)]="today"
+    calendarType="classic"
+    class="DateEnd DateClass"
+    [fillMode]="'flat'"
+    [disabledDates]="disabled"
+  >
+    <ng-template kendoCalendarMonthCellTemplate let-date>
+      <span [ngClass]="isHidden(date)">{{ date.getDate() }}</span>
+    </ng-template>
+    <ng-template kendoCalendarHeaderTitleTemplate let-title let-date>
+      <span class="titlePicker" [attr.data-title]="title">
+        {{
+          title.split(" ").slice(0, 2).join(" ") +
+            ", " +
+            title.split(" ").slice(2) | translate
+        }}
+      </span>
+    </ng-template>
+  </kendo-datepicker>
+
+  <kendo-datepicker
+    format="d/M/y"
+    [(value)]="lastDayOfMonth"
+    calendarType="classic"
+    class="DateEnd DateClass"
+    [fillMode]="'flat'"
+    [disabledDates]="disabled"
+  >
+    <ng-template kendoCalendarMonthCellTemplate let-date>
+      <span [ngClass]="isHidden(date)">{{ date.getDate() }}</span>
+    </ng-template>
+    <ng-template kendoCalendarHeaderTitleTemplate let-title let-date>
+      <span class="titlePicker" [attr.data-title]="title">
+        {{
+          title.split(" ").slice(0, 2).join(" ") +
+            ", " +
+            title.split(" ").slice(2) | translate
+        }}
+      </span>
+    </ng-template>
+  </kendo-datepicker>
+</div>

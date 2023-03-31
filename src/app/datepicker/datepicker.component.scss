@@ -1,0 +1,135 @@
+::ng-deep {
+  .datepicker {
+    display: flex;
+    column-gap: 11px;
+  }
+  .k-calendar {
+    width: 289px;
+
+    .k-calendar-nav-next,
+    .k-calendar-nav-prev {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: transparent !important;
+    }
+
+    .k-calendar-nav-next:active,
+    .k-calendar-nav-next:focus,
+    .k-calendar-nav-next:hover,
+    .k-calendar-nav-prev:active,
+    .k-calendar-nav-prev:focus,
+    .k-calendar-nav-prev:hover {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: #f5f6f8 !important;
+    }
+
+    .k-calendar-nav-today {
+      display: none;
+    }
+  }
+
+  .k-calendar .k-calendar-td .k-link {
+    width: 35px;
+    height: 35px;
+    box-sizing: border-box;
+  }
+
+  .k-calendar .k-calendar-td.k-selected .k-calendar-cell-inner,
+  .k-calendar .k-calendar-td.k-selected .k-link {
+    background-color: #36c8cf !important;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: #fff !important;
+  }
+  .k-calendar .k-calendar-td:hover .k-calendar-cell-inner,
+  .k-calendar .k-calendar-td:hover .k-link,
+  .k-calendar .k-calendar-td.k-hover .k-calendar-cell-inner,
+  .k-calendar .k-calendar-td.k-hover .k-link {
+    box-sizing: border-box !important;
+    background-color: #ffffff !important;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #36c8cf;
+    color: #000 !important;
+  }
+
+  .k-calendar .k-calendar-td:focus .k-calendar-cell-inner,
+  .k-calendar .k-calendar-td:focus .k-link,
+  .k-calendar .k-calendar-td.k-focus .k-calendar-cell-inner,
+  .k-calendar .k-calendar-td.k-focus .k-link {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    color: #000;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+  }
+
+  .k-calendar {
+    background-color: #ffffff !important;
+    .k-calendar-table {
+      background-color: #ffffff !important ;
+    }
+
+    .k-calendar-td:has(.d-none_ceil) {
+      display: none;
+    }
+  }
+
+  .DateClass {
+    flex-direction: row-reverse;
+    background-color: #f5f6f8;
+    button {
+      background-color: transparent;
+      outline: none;
+      border: none;
+    }
+  }
+
+  .DateStart {
+  }
+
+  .k-checkbox {
+    border: 1px solid #1a6634;
+    background-color: #fff;
+  }
+
+  thead.k-calendar-thead.ng-star-inserted {
+    display: none;
+  }
+
+  .titlePicker {
+    text-transform: capitalize;
+  }
+
+  .d-none_ceil {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .k-calendar .k-calendar-view .k-today {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #f5f6f8;
+    color: #26282e;
+  }
+
+  .k-other-month {
+    visibility: hidden !important;
+  }
+
+  .k-calendar-view {
+    min-height: auto !important;
+  }
+
+  .k-justify-content-center {
+    margin-bottom: 10px !important;
+  }
+}

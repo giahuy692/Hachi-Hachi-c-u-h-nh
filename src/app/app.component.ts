@@ -1,16 +1,8 @@
-import {
-  Component,
-  Pipe,
-  PipeTransform,
-  OnChanges,
-  SimpleChanges,
-  OnInit,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 //data
 // import { DataProducts } from './data/mock-products';
 import { Product } from './interface/product';
-import { Category } from './interface/category';
 
 //service
 import { CategoryService } from './service/category/category.service';

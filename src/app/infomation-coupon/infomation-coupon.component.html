@@ -110,20 +110,7 @@
         <kendo-gridlayout-item [colSpan]="3" class="box">
           <kendo-label text="{{ storeTitle[8] }}">
             <div class="datepicker">
-              <kendo-datepicker
-                [(value)]="firstDayOfMonth"
-                calendarType="classic"
-                class="DateStart DateClass"
-                [rangeValidation]="true"
-                [disabledDates]="disabledDates"
-              ></kendo-datepicker>
-              <kendo-datepicker
-                format="d/M/y"
-                [(value)]="lastDayOfMonth"
-                calendarType="classic"
-                class="DateEnd DateClass"
-                [disabledDates]="disabledDates"
-              ></kendo-datepicker>
+              <app-datepicker></app-datepicker>
             </div>
           </kendo-label>
         </kendo-gridlayout-item>

@@ -6,13 +6,177 @@
 
     <div class="AC-body">
       <div class="A-unit">
+        <!-- Layer 1 -->
         <div class="A-unit-check">
-          <kendo-label
-            class="k-checkbox-label"
-            [for]="checkbox2"
-            text="tỷ lệ %"
-          ></kendo-label>
-          <input type="checkbox" #checkbox2 kendoCheckBox />
+          <div class="A-title-conditions">Đơn vị áp dụng</div>
+          <!-- TreeView -->
+          <kendo-treeview
+            [nodes]="dataApply"
+            [children]="children"
+            [hasChildren]="hasChildren"
+            textField="text"
+            kendoTreeViewCheckable
+          >
+          </kendo-treeview>
+        </div>
+
+        <!-- Layer 2 -->
+        <div class="A-unit-limit">
+          <div class="A-quality-coupon">
+            <div class="A-title-conditions">Hạn mức sử dụng</div>
+            <div class="f-double">
+              <div class="A-unit-popular">
+                <kendo-label class="k-form" text="Số lượt sử dùng của coupon">
+                </kendo-label>
+                <kendo-textbox
+                  [readonly]="true"
+                  [value]="'5,000'"
+                  [fillMode]="'outline'"
+                  [style.width.px]="100"
+                ></kendo-textbox>
+              </div>
+
+              <div class="A-unit-popular">
+                <kendo-label
+                  class="k-form"
+                  text="Số lượt dùng tồi đa/1 giao dịch"
+                ></kendo-label>
+                <kendo-textbox
+                  [readonly]="true"
+                  [style.width.px]="100"
+                  [fillMode]="'outline'"
+                  [value]="'1'"
+                >
+                </kendo-textbox>
+              </div>
+            </div>
+          </div>
+
+          <div class="A-quality-deal">
+            <div class="A-title-conditions">
+              Giá trị đơn hàng được áp dụng coupon
+            </div>
+            <div>
+              <div class="A-unit-popular">
+                <kendo-label class="k-form" text="Giá trị đơn hàng tối thiểu">
+                </kendo-label>
+                <kendo-textbox
+                  [readonly]="true"
+                  [style.width.px]="100"
+                  [fillMode]="'outline'"
+                  [value]="'0'"
+                >
+                </kendo-textbox>
+              </div>
+            </div>
+          </div>
+
+          <div class="A-quality-deal">
+            <div class="A-title-conditions">
+              Giá trị chiết khấu tối đa của coupon
+            </div>
+            <div class="A-unit-popular">
+              <kendo-label class="k-form" text="Giá trị đơn hàng tối thiểu">
+              </kendo-label>
+              <kendo-textbox
+                [readonly]="true"
+                [style.width.px]="100"
+                [fillMode]="'outline'"
+                [value]="'100,000'"
+              >
+              </kendo-textbox>
+            </div>
+          </div>
+
+          <div class="A-quality-deal">
+            <div class="A-title-conditions">
+              Giá trị chiết khấu tối đa của coupon
+            </div>
+            <div class="A-unit-popular">
+              <kendo-label class="k-form" text="Giá trị chiết khấu tối đa">
+              </kendo-label>
+              <kendo-textbox
+                [readonly]="true"
+                [style.width.px]="66"
+                [fillMode]="'outline'"
+                [value]="'100,000'"
+              >
+              </kendo-textbox>
+            </div>
+          </div>
+        </div>
+
+        <div class="A-subgroups-coupon A-unit-limit">
+          <div class="A-title-conditions">Phân loại coupon</div>
+          <div class="A-unit-limit">
+            <div class="A-unit-popular">
+              <input
+                type="radio"
+                #subgroupsCoupon1
+                kendoRadioButton
+                name="subgroupsCoupon"
+              />
+              <kendo-label
+                class="k-checkbox-label"
+                [for]="subgroupsCoupon1"
+                text="công khai"
+              ></kendo-label>
+            </div>
+            <div class="A-unit-popular">
+              <input
+                type="radio"
+                #subgroupsCoupon2
+                kendoRadioButton
+                name="subgroupsCoupon"
+                [size]="'large'"
+              />
+              <kendo-label
+                class="k-checkbox-label"
+                [for]="subgroupsCoupon2"
+                text="cá nhân"
+              ></kendo-label>
+            </div>
+
+            <div class="A-unit-popular individual">
+              <input type="checkbox" #individual kendoCheckBox />
+              <kendo-label
+                class="k-checkbox-label"
+                [for]="individual"
+                text="đích danh"
+              ></kendo-label>
+            </div>
+          </div>
+          <div class="A-title-conditions">
+            Giá trị chiết khấu tối đa của coupon
+          </div>
+          <div class="A-unit-popular">
+            <input
+              type="radio"
+              #quanlityCoupon
+              kendoRadioButton
+              name="couponOption"
+              [size]="'large'"
+            />
+            <kendo-label
+              class="k-checkbox-label"
+              [for]="quanlityCoupon"
+              text="số coupon cho từng cá nhân"
+            ></kendo-label>
+          </div>
+          <div class="A-unit-popular">
+            <input
+              type="radio"
+              #quanlityAllCoupon
+              kendoRadioButton
+              name="couponOption"
+              [size]="'large'"
+            />
+            <kendo-label
+              class="k-checkbox-label"
+              [for]="quanlityAllCoupon"
+              text="coupon dùng chung cho tất cả"
+            ></kendo-label>
+          </div>
         </div>
       </div>
     </div>
