@@ -115,6 +115,10 @@
                 #subgroupsCoupon1
                 kendoRadioButton
                 name="subgroupsCoupon"
+                [size]="'medium'"
+                [(ngModel)]="selectedSubgroups"
+                [disabled]="identitys"
+                value="public"
               />
               <kendo-label
                 class="k-checkbox-label"
@@ -128,7 +132,9 @@
                 #subgroupsCoupon2
                 kendoRadioButton
                 name="subgroupsCoupon"
-                [size]="'large'"
+                [size]="'medium'"
+                [(ngModel)]="selectedSubgroups"
+                value="personal"
               />
               <kendo-label
                 class="k-checkbox-label"
@@ -137,11 +143,17 @@
               ></kendo-label>
             </div>
 
-            <div class="A-unit-popular individual">
-              <input type="checkbox" #individual kendoCheckBox />
+            <div class="A-unit-popular identity">
+              <input
+                type="checkbox"
+                #identityRef
+                [(ngModel)]="identitys"
+                [disabled]="selectedSubgroups === 'public'"
+                kendoCheckBox
+              />
               <kendo-label
                 class="k-checkbox-label"
-                [for]="individual"
+                [for]="identityRef"
                 text="đích danh"
               ></kendo-label>
             </div>
@@ -155,7 +167,7 @@
               #quanlityCoupon
               kendoRadioButton
               name="couponOption"
-              [size]="'large'"
+              [size]="'medium'"
             />
             <kendo-label
               class="k-checkbox-label"
@@ -169,7 +181,7 @@
               #quanlityAllCoupon
               kendoRadioButton
               name="couponOption"
-              [size]="'large'"
+              [size]="'medium'"
             />
             <kendo-label
               class="k-checkbox-label"

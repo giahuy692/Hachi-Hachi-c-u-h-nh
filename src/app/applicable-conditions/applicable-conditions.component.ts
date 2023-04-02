@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { of, Observable } from 'rxjs';
 
 @Component({
@@ -41,4 +41,17 @@ export class ApplicableConditionsComponent {
 
   public children = (dataItem: any): Observable<any[]> => of(dataItem.items);
   public hasChildren = (dataItem: any): boolean => !!dataItem.items;
+
+  selectedSubgroups: any;
+  identitys: boolean = false;
+
+  handleCheckboxChangeIdentity(event: any) {
+    this.identitys = event.target.value; // giá trị của radio button được chọn
+    console.log('person: ', this.identitys);
+  }
+
+  handleCheckboxChange(event: any): void {
+    this.selectedSubgroups = event.target.checked; // true nếu checkbox được chọn, false nếu checkbox bị bỏ chọn
+    console.log('radio: ', this.selectedSubgroups);
+  }
 }

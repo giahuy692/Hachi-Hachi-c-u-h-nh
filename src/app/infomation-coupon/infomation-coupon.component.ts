@@ -74,6 +74,7 @@ export class InfomationCouponComponent implements OnInit {
         overflow: 'hidden',
         'white-space': 'nowrap',
         'text-overflow': 'ellipsis',
+        'font-weight': '700',
       });
       $('.coupon-body .k-checkbox').css({ 'margin-bottom': '9px' });
     });
