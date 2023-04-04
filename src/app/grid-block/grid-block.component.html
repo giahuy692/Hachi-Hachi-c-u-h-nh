@@ -1,0 +1,36 @@
+<div class="wrapper_table">
+  <kendo-grid
+    [kendoGridBinding]="dataView"
+    [pageSize]="limit"
+    [selectable]="false"
+    [skip]="skip"
+    [pageable]="true"
+    [height]="523"
+    #cumstomGrid
+  >
+    <ng-content></ng-content>
+
+    <ng-template
+      kendoPagerTemplate
+      let-totalPages="totalPages"
+      let-currentPage="currentPage"
+      class="wrapper_pagi"
+    >
+      <kendo-pager-page-sizes
+        [pageSizes]="limits"
+        class="pageSize"
+      ></kendo-pager-page-sizes>
+      <div class="pagi">
+        <kendo-pager-prev-buttons
+          [className]="'k_prev'"
+        ></kendo-pager-prev-buttons>
+        <kendo-pager-numeric-buttons
+          [buttonCount]="buttonCount"
+        ></kendo-pager-numeric-buttons>
+        <kendo-pager-next-buttons
+          [className]="'k_next'"
+        ></kendo-pager-next-buttons>
+      </div>
+    </ng-template>
+  </kendo-grid>
+</div>

@@ -1,0 +1,96 @@
+<div class="wrapper-notice">
+  <div class="config-notice">
+    <div class="headerConfigNotice">
+      <div class="title">
+        <h5 class="text-1">CẤU HÌNH GỞI THÔNG BÁO</h5>
+      </div>
+      <div class="option">
+        <div>
+          <button class="btn-1 h-btn">SMS</button>
+        </div>
+        <div class="line">
+          <button class="btn-2 h-btn">Mobile App</button>
+        </div>
+        <div class="line">
+          <button class="btn-3 h-btn">Giỏ hàng</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bodyConfigNotice">
+      <div class="d-flex_both">
+        <input
+          type="checkbox"
+          class="check-notice-1"
+          #notification
+          kendoCheckBox
+        />
+        <kendo-label
+          class="k-checkbox-label lable-notice-1"
+          [for]="notification"
+          text="Gởi thông báo trên app mobile với tiêu đề"
+        ></kendo-label>
+      </div>
+      <kendo-textbox
+        class="textbox-notice-1"
+        fillMode="outline"
+        [value]="'Hachi Hachi chúc mừng bạn nhận được Coupon mã [COUPONID]'"
+      ></kendo-textbox>
+      <div>
+        <kendo-label text="Nội dung thông báo" class="k-checkbox-label">
+        </kendo-label>
+        <kendo-textarea
+          class="content-notice"
+          [style.width.%]="100"
+          [style.height.px]="200"
+          resizable="none"
+          [value]="textAreaValue"
+          fillMode="flat"
+          flow="horizontal"
+        >
+        </kendo-textarea>
+      </div>
+
+      <div class="d-flex_column">
+        <kendo-label
+          class="k-checkbox-label lable-notice-1 mb-2"
+          text="Thời điểm gởi thông báo trên App mobile"
+        ></kendo-label>
+        <app-date-time-picker></app-date-time-picker>
+      </div>
+
+      <div class="d-flex_column">
+        <kendo-label
+          class="k-checkbox-label lable-notice-1 mb-2"
+          text="Đối tượng gởi thông báo trên App mobile"
+        ></kendo-label>
+        <div class="d-flex_between">
+          <div>
+            <input type="radio" name="object" #terms1 kendoRadioButton />
+            <kendo-label
+              class="k-radio-label"
+              [for]="terms1"
+              text="Tất cả đối tượng nhận coupon tải app"
+            ></kendo-label>
+          </div>
+          <div>
+            <input type="radio" name="object" #terms2 kendoRadioButton />
+            <kendo-label
+              class="k-radio-label"
+              [for]="terms2"
+              text="Tất cả KHTT tải app"
+            ></kendo-label>
+          </div>
+          <div>
+            <input type="radio" name="object" #terms3 kendoRadioButton />
+            <kendo-label
+              class="k-radio-label"
+              [for]="terms3"
+              text="Tất cả khách hàng tải app"
+            ></kendo-label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

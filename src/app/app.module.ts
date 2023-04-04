@@ -3,6 +3,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 //Angualr material
 import { MatButtonModule } from '@angular/material/button';
@@ -42,7 +43,11 @@ import '@progress/kendo-angular-intl/locales/vi/all';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { TranslatePipe } from './pipe/translate.pipe';
 import { TreeViewModule } from '@progress/kendo-angular-treeview';
-
+import { ConfigNoticeComponent } from './config-notice/config-notice.component';
+import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
+import { GridBlockComponent } from './grid-block/grid-block.component';
+import { DetailProgramComponent } from './detail-program/detail-program.component';
+import { IconsModule } from '@progress/kendo-angular-icons';
 
 @NgModule({
   declarations: [
@@ -57,9 +62,14 @@ import { TreeViewModule } from '@progress/kendo-angular-treeview';
     ApplicableConditionsComponent,
     DatepickerComponent,
     TranslatePipe,
+    ConfigNoticeComponent,
+    DateTimePickerComponent,
+    GridBlockComponent,
+    DetailProgramComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -78,6 +88,7 @@ import { TreeViewModule } from '@progress/kendo-angular-treeview';
     DateInputsModule,
     IntlModule,
     TreeViewModule,
+    IconsModule,
   ],
   providers: [
     ProductService,

@@ -16,72 +16,45 @@ body {
   font-family: "Mulish";
 }
 
-.mdc-form-field {
+.k-checkbox-label {
+  user-select: none !important;
+}
+
+.d-flex_around {
   display: flex !important;
-  flex-direction: row-reverse !important;
-  height: 32px;
+  justify-content: space-around !important;
+  align-items: center !important ;
 }
 
-.mat-mdc-checkbox
-  .mdc-checkbox
-  .mdc-checkbox__native-control:enabled:checked
-  ~ .mdc-checkbox__background,
-.mat-mdc-checkbox
-  .mdc-checkbox
-  .mdc-checkbox__native-control:enabled:indeterminate
-  ~ .mdc-checkbox__background,
-.mat-mdc-checkbox
-  .mdc-checkbox
-  .mdc-checkbox__native-control[data-indeterminate="true"]:enabled
-  ~ .mdc-checkbox__background {
-  border-color: #008000 !important;
-  background-color: #008000 !important;
+.d-flex_between {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
 }
 
-.mdc-checkbox {
-  width: 32px;
-  height: 32px;
-  padding: 7px;
+.d-flex_both {
+  display: flex !important;
+  align-items: center !important;
 }
 
-.mdc-checkbox__background {
-  top: 10px !important;
+.d-flex_column {
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-.mat-mdc-checkbox-touch-target {
-  width: 32px !important;
-  height: 32px !important;
+.k-radio {
+  background-color: #fff;
+  border: 1px solid #999999;
 }
 
-.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control {
-  width: 32px !important;
-  height: 32px !important ;
-}
-
-ul#custom_dropdown-menu {
-  width: 152px !important;
-}
-
-.mat-mdc-checkbox .mdc-checkbox {
-}
-
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-  display: flex;
-  align-items: center;
-  height: 29px !important;
-  background-color: transparent !important;
-}
-
-::ng-deep {
-  .mat-form-field-underline {
-    display: none !important;
-  }
+.k-checkbox:disabled,
+.k-checkbox.k-disabled {
+  border: #1a663459;
 }
 
 /* Thiết lập chiều rộng của thanh cuộn */
 ::-webkit-scrollbar {
   width: 8px;
-  height: 245.88px;
 }
 
 /* Thiết lập màu sắc của thanh cuộn */

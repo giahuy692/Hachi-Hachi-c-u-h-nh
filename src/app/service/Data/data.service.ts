@@ -13,10 +13,13 @@ import { DataProducts } from 'src/app/data/mock-products';
 export class DataService implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.Data.next(DataProducts);
+  }
 
   ngAfterViewInit() {}
 
+  Data = new Subject<any>();
   active = new Subject<any>();
   inActive = new Subject<any>();
   category = new Subject<any>();
