@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PopupSettings } from '@progress/kendo-angular-dateinputs';
 
 @Component({
   selector: 'app-datepicker',
@@ -21,9 +22,6 @@ export class DatepickerComponent {
   disabled = (date: Date): boolean => {
     const valueToday = new Date();
     var isDisable = false;
-    const value = $('.k-calendar-table .k-calendar-tbody').attr(
-      'ng-reflect-view-date'
-    );
 
     if (date < valueToday) isDisable = true;
 
@@ -44,4 +42,10 @@ export class DatepickerComponent {
     var valueChange = new Date(value ?? '');
     return date.getMonth() > valueChange.getMonth() ? 'd-none_ceil' : '';
   }
+
+  public popupSettings: PopupSettings = {
+    appendTo: 'component',
+    animate: true,
+    popupClass: 'wrapper-datepicker',
+  };
 }

@@ -1,4 +1,4 @@
-<div class="datepicker">
+<div class="wrapper-datepicker">
   <kendo-datepicker
     format="d/M/y"
     [(value)]="today"
@@ -6,6 +6,7 @@
     class="DateEnd DateClass"
     [fillMode]="'flat'"
     [disabledDates]="disabled"
+    [popupSettings]="popupSettings"
   >
     <ng-template kendoCalendarMonthCellTemplate let-date>
       <span [ngClass]="isHidden(date)">{{ date.getDate() }}</span>
@@ -28,6 +29,7 @@
     class="DateEnd DateClass"
     [fillMode]="'flat'"
     [disabledDates]="disabled"
+    [popupSettings]="popupSettings"
   >
     <ng-template kendoCalendarMonthCellTemplate let-date>
       <span [ngClass]="isHidden(date)">{{ date.getDate() }}</span>

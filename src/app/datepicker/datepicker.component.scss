@@ -1,137 +1,147 @@
 ::ng-deep {
-  .datepicker {
-    display: flex;
-    column-gap: 11px;
-  }
-  .k-calendar {
-    width: 289px;
+  app-datepicker {
+    .wrapper-datepicker {
+      display: flex;
+      column-gap: 11px;
 
-    .k-calendar-nav-next,
-    .k-calendar-nav-prev {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background-color: transparent !important;
+      .DateClass {
+        background-color: #f5f6f8;
+      }
     }
 
-    .k-calendar-nav-next:active,
-    .k-calendar-nav-next:focus,
-    .k-calendar-nav-next:hover,
-    .k-calendar-nav-prev:active,
-    .k-calendar-nav-prev:focus,
-    .k-calendar-nav-prev:hover {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background-color: #f5f6f8 !important;
-    }
-
-    .k-calendar-nav-today {
+    .d-none_ceil {
       display: none;
     }
-  }
 
-  .k-calendar .k-calendar-td .k-link {
-    width: 35px;
-    height: 35px;
-    box-sizing: border-box;
-  }
+    .k-animation-container {
+      height: auto;
+      width: 287px;
+      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
 
-  .k-calendar .k-calendar-td.k-selected .k-calendar-cell-inner,
-  .k-calendar .k-calendar-td.k-selected .k-link {
-    background-color: #36c8cf !important;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    box-sizing: border-box;
-    color: #fff !important;
-  }
-  .k-calendar .k-calendar-td:hover .k-calendar-cell-inner,
-  .k-calendar .k-calendar-td:hover .k-link,
-  .k-calendar .k-calendar-td.k-hover .k-calendar-cell-inner,
-  .k-calendar .k-calendar-td.k-hover .k-link {
-    box-sizing: border-box !important;
-    background-color: #ffffff !important;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: 1px solid #36c8cf;
-    color: #000 !important;
-  }
+      .k-calendar-container {
+        height: 100%;
+        border: none;
 
-  .k-calendar .k-calendar-td:focus .k-calendar-cell-inner,
-  .k-calendar .k-calendar-td:focus .k-link,
-  .k-calendar .k-calendar-td.k-focus .k-calendar-cell-inner,
-  .k-calendar .k-calendar-td.k-focus .k-link {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    color: #000;
-    box-sizing: border-box !important;
-    box-shadow: none !important;
-  }
+        .k-calendar {
+          width: 100%;
 
-  .k-calendar {
-    background-color: #ffffff !important;
-    .k-calendar-table {
-      background-color: #ffffff !important ;
+          .k-calendar-header {
+            padding-bottom: 0;
+
+            .k-calendar-nav {
+              .k-calendar-nav-today {
+                display: none;
+              }
+
+              .k-button-flat:hover {
+                background-color: #f5f6f8;
+                border-radius: 30px;
+              }
+
+              .k-button-flat {
+                margin-left: 10px;
+              }
+            }
+
+            .k-calendar-title {
+              font-weight: 700;
+              font-size: 13px;
+              color: #5a6276;
+              text-transform: capitalize;
+            }
+          }
+
+          .k-calendar-view {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            min-height: 205px;
+
+            .k-calendar-table {
+              width: 100%;
+              padding: 5px;
+              min-width: 293px;
+              min-height: 205px;
+              max-height: 246px;
+
+              .k-calendar-thead {
+                display: none;
+              }
+
+              .k-calendar-tbody {
+                border-spacing: 0;
+
+                .k-calendar-tr {
+                  .k-calendar-td {
+                    width: 35px;
+                    height: 35px;
+                    background-color: transparent !important;
+                    padding: 3px;
+                    font-size: 13px;
+                    font-weight: 400;
+
+                    .k-link {
+                      width: 35px;
+                      height: 35px;
+                      border-radius: 30px;
+                    }
+                  }
+
+                  .k-calendar-td:has(.d-none_ceil) {
+                    display: none;
+                  }
+
+                  .k-selected,
+                  .k-today.k-selected {
+                    .k-link {
+                      width: 35px;
+                      height: 35px;
+                      outline: none;
+                      box-shadow: none;
+                      color: #ffffff;
+                      background-color: #008000;
+                    }
+                  }
+
+                  .k-today {
+                    .k-link {
+                      width: 35px;
+                      height: 35px;
+                      outline: none;
+                      box-shadow: none;
+                      background-color: #f5f6f8;
+                      color: #26282e;
+                    }
+                  }
+
+                  .k-calendar-td:hover,
+                  .k-today:hover,
+                  .k-selected:hover {
+                    .k-link {
+                      width: 35px;
+                      height: 35px;
+                      outline: #008000 solid 1px;
+                      color: #26282e;
+                      background-color: transparent;
+                    }
+                  }
+
+                  .k-disabled {
+                    .k-link {
+                      width: 35px;
+                      height: 35px;
+                    }
+                  }
+
+                  .k-other-month {
+                    visibility: hidden;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
-
-    .k-calendar-td:has(.d-none_ceil) {
-      display: none;
-    }
-  }
-
-  .DateClass {
-    flex-direction: row-reverse;
-    background-color: #f5f6f8;
-    button {
-      background-color: transparent;
-      outline: none;
-      border: none;
-    }
-  }
-
-  .DateStart {
-  }
-
-  .k-checkbox {
-    border: 1px solid #1a6634;
-    background-color: #fff;
-  }
-
-  thead.k-calendar-thead.ng-star-inserted {
-    display: none;
-  }
-
-  .titlePicker {
-    text-transform: capitalize;
-    font-weight: 700;
-    color: #5a6276;
-  }
-
-  .d-none_ceil {
-    visibility: hidden;
-    pointer-events: none;
-  }
-
-  .k-calendar .k-calendar-view .k-today {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-color: #f5f6f8;
-    color: #26282e;
-  }
-
-  .k-other-month {
-    visibility: hidden !important;
-  }
-
-  .k-calendar-view {
-    min-height: auto !important;
-  }
-
-  .k-justify-content-center {
-    margin-bottom: 10px !important;
   }
 }

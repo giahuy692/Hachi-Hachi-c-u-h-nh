@@ -2,7 +2,10 @@
   #whenSendNotice
   class="h-DateTimePicker"
   [style.width.px]="235.77"
-  [format]="'MM/dd/yyyy HH:mm'"
+  [format]="'MM/dd/yyyy HH:mm a'"
   [(value)]="valueToday"
+  [popupSettings]="popupSettings"
+  [fillMode]="'flat'"
+  calendarType="classic"
 >
 </kendo-datetimepicker>

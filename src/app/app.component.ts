@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 //data
 // import { DataProducts } from './data/mock-products';
@@ -12,6 +12,7 @@ import { ProductService } from './service/product/product.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {
   filters = [

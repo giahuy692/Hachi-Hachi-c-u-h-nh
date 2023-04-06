@@ -47,11 +47,9 @@ export class ApplicableConditionsComponent {
 
   handleCheckboxChangeIdentity(event: any) {
     this.identitys = event.target.value; // giá trị của radio button được chọn
-    console.log('person: ', this.identitys);
   }
 
   handleCheckboxChange(event: any): void {
-    this.selectedSubgroups = event.target.checked; // true nếu checkbox được chọn, false nếu checkbox bị bỏ chọn
-    console.log('radio: ', this.selectedSubgroups);
+    this.identitys = false;
   }
 }

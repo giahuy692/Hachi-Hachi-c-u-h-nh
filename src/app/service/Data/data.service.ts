@@ -1,8 +1,9 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 // Interface
-import { Product } from 'src/app/interface/product';
+import { ProductList } from 'src/app/interface/product';
 
 // Data
 import { DataProducts } from 'src/app/data/mock-products';
@@ -11,14 +12,6 @@ import { DataProducts } from 'src/app/data/mock-products';
   providedIn: 'root',
 })
 export class DataService implements OnInit {
-  constructor() {}
-
-  ngOnInit() {
-    this.Data.next(DataProducts);
-  }
-
-  ngAfterViewInit() {}
-
   Data = new Subject<any>();
   active = new Subject<any>();
   inActive = new Subject<any>();
@@ -32,6 +25,21 @@ export class DataService implements OnInit {
   pageQuality = new Subject<number>();
   currentActive = new Subject<number>();
   currentInActive = new Subject<number>();
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.Data.next(DataProducts);
+  }
+
+  ngAfterViewInit() {}
+
+  getDataApi(): Observable<ProductList> {
+    return this.http.post<ProductList>(
+      'http://test.lapson.vn/api/product/GetListProduct',
+      {}
+    );
+  }
 }
 
 export function filterData(

@@ -117,8 +117,8 @@
                 name="subgroupsCoupon"
                 [size]="'medium'"
                 [(ngModel)]="selectedSubgroups"
-                [disabled]="identitys"
                 value="public"
+                (change)="handleCheckboxChange($event)"
               />
               <kendo-label
                 class="k-checkbox-label"

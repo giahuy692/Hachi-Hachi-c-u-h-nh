@@ -7,6 +7,7 @@ import {
   QueryList,
   ElementRef,
 } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 //Jquery
 
@@ -39,7 +40,10 @@ export class GridBlockComponent implements OnInit {
   total_Pages: number = 0;
   public buttonCount = 4;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private http: HttpClient
+  ) {}
 
   @Input() dataView: any;
 
@@ -69,7 +73,10 @@ export class GridBlockComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.GridRef.columns.reset([this.columns.toArray()]);
+    this.GridRef.columns.reset([
+      this.GridRef.toolbarTemplateChildren.toArray(),
+      this.columns.toArray(),
+    ]);
     this.GridRef.autoFitColumns();
   }
 }

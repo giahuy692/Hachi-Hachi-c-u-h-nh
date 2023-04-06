@@ -13,3 +13,45 @@ export class Product {
   category: string = '';
   status: string = 'active';
 }
+
+export class ProductApi {
+  Code: number;
+  Barcode: string;
+  ProductName: string;
+  Alias: null;
+  ImageThumb: string;
+  ImageSmall: null;
+  ImageLarge: null;
+  FreeShippingImage: string;
+  TypeData: string;
+  StatusID: number;
+  IsNew: boolean;
+  IsHachi24h: boolean;
+  IsBestPrice: boolean;
+  IsSpecial: boolean;
+  IsGift: boolean;
+  IsPromotion: boolean;
+  PromotionID: null;
+  GroupIDList: [];
+  IsCombo: boolean;
+  Price: number;
+  PriceBase: number;
+  PriceVIP: number;
+  Discount: number;
+  CategoryID: number;
+  OrginalID: number;
+  OrginalName: string;
+  BrandID: number;
+  BrandName: string;
+}
+
+export class ProductList {
+  StatusCode: number;
+  ErrorString: any;
+  ObjectReturn: {
+    Data: ProductApi[];
+    Total: number;
+    AggregateResults: null;
+    Errors: null;
+  };
+}

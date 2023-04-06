@@ -1,15 +1,126 @@
 ::ng-deep {
-  .k-radio:checked,
-  .k-radio.k-checked {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3e%3ccircle cx='50%25' cy='50%25' r='4' fill='green'/%3e%3c/svg%3e") !important;
-    background-color: #ffff !important;
-  }
+  app-date-time-picker {
+    .d-none_ceil {
+      display: none;
+    }
 
-  .h-DateTimePicker {
-    flex-direction: row-reverse;
+    .k-animation-container {
+      .k-datetime-container {
+        .k-time-tab {
+          .k-datetime-buttongroup {
+            display: none;
+          }
 
-    button {
-      background: transparent;
+          .k-datetime-selector {
+            flex-direction: column;
+          }
+        }
+        .k-date-tab {
+          .k-datetime-buttongroup {
+            display: none;
+          }
+
+          .k-datetime-selector {
+            flex-direction: column;
+            .k-datetime-calendar-wrap {
+              .k-calendar {
+                .k-calendar-header {
+                  .k-calendar-nav {
+                    .k-calendar-nav-prev {
+                      border-radius: 100%;
+                    }
+                    .k-calendar-nav-today {
+                      display: none;
+                    }
+                    .k-calendar-nav-next {
+                      border-radius: 100%;
+                    }
+                  }
+                }
+                .k-calendar-view {
+                  min-height: auto;
+                  .k-calendar-table {
+                    .k-calendar-thead {
+                      display: none;
+                    }
+
+                    .k-calendar-tbody {
+                      padding: 5px 0;
+                      .k-calendar-tr {
+                        &:has(.d-none_ceil) {
+                          display: none;
+                        }
+
+                        .k-calendar-td {
+                          width: 35px;
+                          height: 35px;
+                        }
+
+                        .k-selected,
+                        .k-today.k-selected {
+                          .k-link {
+                            width: 35px;
+                            height: 35px;
+                            outline: none;
+                            box-shadow: none;
+                            color: #ffffff;
+                            background-color: #008000;
+                            border-radius: 100%;
+                          }
+                        }
+
+                        .k-today {
+                          .k-link {
+                            width: 35px;
+                            height: 35px;
+                            outline: none;
+                            box-shadow: none;
+                            background-color: #f5f6f8;
+                            color: #26282e;
+                            border-radius: 100%;
+                          }
+                        }
+
+                        .k-calendar-td:hover,
+                        .k-today:hover,
+                        .k-selected:hover {
+                          .k-link {
+                            width: 35px;
+                            height: 35px;
+                            outline: #008000 solid 1px;
+                            color: #26282e;
+                            background-color: transparent;
+                            border-radius: 100%;
+                          }
+                        }
+
+                        .k-disabled {
+                          .k-link {
+                            width: 35px;
+                            height: 35px;
+                            border-radius: 100%;
+                          }
+                        }
+
+                        .k-other-month {
+                          visibility: hidden;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .k-datetime-time-wrap {
+              .k-disabled {
+                pointer-events: auto;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { HttpClient } from '@angular/common/http';
-
-//Interface
-import { Product } from '../interface/product';
-
-//data
-import { DataProducts } from '../data/mock-products';
 
 //Service
 import { DataService } from '../service/Data/data.service';
+
+//interface
+import { ProductList, ProductApi } from '../interface/product';
 
 @Component({
   selector: 'app-detail-program',
@@ -20,15 +16,27 @@ export class DetailProgramComponent {
   textSearch: string = '';
   faSearch = faSearch;
 
-  productList: Product[] = [];
-  constructor(private dataService: DataService, private http: HttpClient) {}
+  constructor(private dataService: DataService) {}
 
+  arrProduct: ProductApi[];
+  productList: any;
   ngOnInit() {
-    this.productList = DataProducts;
-    this.http
-      .get('https://jsonplaceholder.typicode.com/todos')
-      .subscribe((data) => {
-        console.log(data);
-      });
+    this.productList = this.dataService.getDataApi().subscribe((data) => {
+      this.productList = data.ObjectReturn.Data;
+    });
+  }
+
+  ngOnDestroy() {
+    this.productList.unsubscribe();
+  }
+
+  onAdd(value: any) {
+    this.productList = this.arrProduct.push(...value);
+  }
+
+  onDelete(value: any) {
+    alert(
+      `Đã xóa sản phẩm:\n  - ProductName: ${value.ProductName}\n  - Barcode: ${value.Barcode}`
+    );
   }
 }
