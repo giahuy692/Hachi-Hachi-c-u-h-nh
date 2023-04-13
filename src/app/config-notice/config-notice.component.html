@@ -6,13 +6,17 @@
       </div>
       <div class="option">
         <div>
-          <button class="btn-1 h-btn">SMS</button>
+          <button class="btn-1 h-btn" (click)="onTranslate('SMS')">SMS</button>
         </div>
         <div class="line">
-          <button class="btn-2 h-btn">Mobile App</button>
+          <button class="btn-2 h-btn" (click)="onTranslate('Mobile')">
+            Mobile App
+          </button>
         </div>
         <div class="line">
-          <button class="btn-3 h-btn">Giỏ hàng</button>
+          <button class="btn-3 h-btn" (click)="onTranslate('Cart')">
+            Giỏ hàng
+          </button>
         </div>
       </div>
     </div>
@@ -24,6 +28,25 @@
           class="check-notice-1"
           #notification
           kendoCheckBox
+          [(ngModel)]="isCheckSMS"
+          [ngStyle]="{ display: isSMS ? 'none' : 'block' }"
+        />
+        <input
+          type="checkbox"
+          class="check-notice-1"
+          #notification
+          kendoCheckBox
+          [(ngModel)]="isCheckMobile"
+          [ngStyle]="{ display: isMobile ? 'none' : 'block' }"
+        />
+
+        <input
+          type="checkbox"
+          class="check-notice-1"
+          #notification
+          kendoCheckBox
+          [(ngModel)]="isCheckCart"
+          [ngStyle]="{ display: isCart ? 'none' : 'block' }"
         />
         <kendo-label
           class="k-checkbox-label lable-notice-1"
@@ -34,7 +57,20 @@
       <kendo-textbox
         class="textbox-notice-1"
         fillMode="outline"
-        [value]="'Hachi Hachi chúc mừng bạn nhận được Coupon mã [COUPONID]'"
+        [value]="isTitleSMS"
+        [hidden]="isSMS"
+      ></kendo-textbox>
+      <kendo-textbox
+        class="textbox-notice-1"
+        fillMode="outline"
+        [value]="isTitleMobile"
+        [hidden]="isMobile"
+      ></kendo-textbox>
+      <kendo-textbox
+        class="textbox-notice-1"
+        fillMode="outline"
+        [value]="isTitleCart"
+        [hidden]="isCart"
       ></kendo-textbox>
       <div>
         <kendo-label text="Nội dung thông báo" class="k-checkbox-label">
@@ -44,9 +80,32 @@
           [style.width.%]="100"
           [style.height.px]="200"
           resizable="none"
-          [value]="textAreaValue"
+          [value]="isContentSMS"
           fillMode="flat"
           flow="horizontal"
+          [hidden]="isSMS"
+        >
+        </kendo-textarea>
+        <kendo-textarea
+          class="content-notice"
+          [style.width.%]="100"
+          [style.height.px]="200"
+          resizable="none"
+          [value]="isContentMobile"
+          fillMode="flat"
+          flow="horizontal"
+          [hidden]="isMobile"
+        >
+        </kendo-textarea>
+        <kendo-textarea
+          class="content-notice"
+          [style.width.%]="100"
+          [style.height.px]="200"
+          resizable="none"
+          [value]="isContentCart"
+          fillMode="flat"
+          flow="horizontal"
+          [hidden]="isCart"
         >
         </kendo-textarea>
       </div>
@@ -56,7 +115,18 @@
           class="k-checkbox-label lable-notice-1 mb-2"
           text="Thời điểm gởi thông báo trên App mobile"
         ></kendo-label>
-        <app-date-time-picker></app-date-time-picker>
+        <app-date-time-picker
+          [date]="dateSMS"
+          [hidden]="isSMS"
+        ></app-date-time-picker>
+        <app-date-time-picker
+          [date]="dateMobile"
+          [hidden]="isMobile"
+        ></app-date-time-picker>
+        <app-date-time-picker
+          [date]="dateCart"
+          [hidden]="isCart"
+        ></app-date-time-picker>
       </div>
 
       <div class="d-flex_column">
@@ -66,7 +136,14 @@
         ></kendo-label>
         <div class="d-flex_between">
           <div>
-            <input type="radio" name="object" #terms1 kendoRadioButton />
+            <input
+              type="radio"
+              value="option1"
+              name="object"
+              [(ngModel)]="isRadioSMS"
+              #terms1
+              kendoRadioButton
+            />
             <kendo-label
               class="k-radio-label"
               [for]="terms1"
@@ -74,7 +151,14 @@
             ></kendo-label>
           </div>
           <div>
-            <input type="radio" name="object" #terms2 kendoRadioButton />
+            <input
+              type="radio"
+              value="option2"
+              name="object"
+              [(ngModel)]="isRadioSMS"
+              #terms2
+              kendoRadioButton
+            />
             <kendo-label
               class="k-radio-label"
               [for]="terms2"
@@ -82,7 +166,14 @@
             ></kendo-label>
           </div>
           <div>
-            <input type="radio" name="object" #terms3 kendoRadioButton />
+            <input
+              type="radio"
+              value="option2"
+              name="object"
+              [(ngModel)]="isRadioSMS"
+              #terms3
+              kendoRadioButton
+            />
             <kendo-label
               class="k-radio-label"
               [for]="terms3"

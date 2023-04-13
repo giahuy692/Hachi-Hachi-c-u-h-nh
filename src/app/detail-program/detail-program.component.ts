@@ -21,17 +21,13 @@ export class DetailProgramComponent {
   arrProduct: ProductApi[];
   productList: any;
   ngOnInit() {
-    this.productList = this.dataService.getDataApi().subscribe((data) => {
+    this.dataService.getDataApi().subscribe((data: ProductList) => {
       this.productList = data.ObjectReturn.Data;
     });
   }
 
   ngOnDestroy() {
     this.productList.unsubscribe();
-  }
-
-  onAdd(value: any) {
-    this.productList = this.arrProduct.push(...value);
   }
 
   onDelete(value: any) {

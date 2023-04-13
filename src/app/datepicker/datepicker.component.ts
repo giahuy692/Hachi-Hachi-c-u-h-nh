@@ -35,7 +35,7 @@ export class DatepickerComponent {
     return isDisable;
   };
 
-  public isHidden(date: Date) {
+  isHidden(date: Date) {
     var value = $('.k-calendar-table .k-calendar-tbody').attr(
       'ng-reflect-view-date'
     );

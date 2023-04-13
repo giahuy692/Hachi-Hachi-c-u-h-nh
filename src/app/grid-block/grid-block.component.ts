@@ -31,6 +31,7 @@ export class GridBlockComponent implements OnInit {
   @ContentChildren(ColumnComponent) columns: any;
   @ViewChild('cumstomGrid') public GridRef: GridComponent;
 
+  @Input() dataView: any;
   pageIndex: number = 1;
   skip: number = 0;
   limit: number = 20;
@@ -44,8 +45,6 @@ export class GridBlockComponent implements OnInit {
     private productService: ProductService,
     private http: HttpClient
   ) {}
-
-  @Input() dataView: any;
 
   ngOnInit() {
     $(document).ready(function () {

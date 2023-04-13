@@ -31,23 +31,40 @@
         [gap]="11"
       >
         <kendo-gridlayout-item [colSpan]="2" class="box">
-          <kendo-label class="k-form" text="{{ storeTitle[0] }}">
-            <kendo-textbox [readonly]="true" [value]="'KMGBL22'">
-            </kendo-textbox>
+          <kendo-label class="k-form" text="{{ titles[0] }}">
+            <kendo-textbox [value]="'KMGBL22'"> </kendo-textbox>
           </kendo-label>
         </kendo-gridlayout-item>
 
         <kendo-gridlayout-item class="box">
-          <kendo-label class="k-form" text="{{ storeTitle[1] }}">
-            <kendo-textbox [readonly]="true" [value]="'10'" id="quality-coupon">
-            </kendo-textbox>
+          <kendo-label class="k-form" text="{{ titles[1] }}">
+            <kendo-textbox [value]="'10'" id="quality-coupon"> </kendo-textbox>
           </kendo-label>
         </kendo-gridlayout-item>
 
         <kendo-gridlayout-item class="box">
-          <kendo-label class="k-form" text="{{ storeTitle[2] }}">
-            <kendo-textbox [readonly]="true" [value]="'Giảm 100K'">
-            </kendo-textbox>
+          <kendo-label class="k-form" text="{{ titles[2] }}">
+            <kendo-textbox
+              [style.width.%]="'100'"
+              [ngModel]="ProductNameVi"
+              [hidden]="isVi"
+              (blur)="onBlur()"
+              (valueChange)="onChangeProductNameVi($event)"
+            ></kendo-textbox>
+            <kendo-textbox
+              [style.width.%]="'100'"
+              [ngModel]="ProductNameJa"
+              [hidden]="isJa"
+              (blur)="onBlur()"
+              (valueChange)="onChangeProductNameJa($event)"
+            ></kendo-textbox>
+            <kendo-textbox
+              [style.width.%]="'100'"
+              [ngModel]="ProductNameEn"
+              [hidden]="isEn"
+              (blur)="onBlur()"
+              (valueChange)="onChangeProductNameEn($event)"
+            ></kendo-textbox>
           </kendo-label>
         </kendo-gridlayout-item>
 
@@ -56,19 +73,35 @@
             <kendo-label
               class="k-checkbox-label"
               [for]="checkbox"
-              text="{{ storeTitle[3] }}"
+              text="{{ titles[3] }}"
             ></kendo-label>
             <input type="checkbox" #checkbox kendoCheckBox />
           </div>
 
-          <kendo-textbox [readonly]="true" [value]="'1'"> </kendo-textbox>
+          <kendo-textbox [value]="'1'"> </kendo-textbox>
         </kendo-gridlayout-item>
 
         <kendo-gridlayout-item class="box">
-          <kendo-label class="k-form" text="{{ storeTitle[4] }}">
+          <kendo-label class="k-form" text="{{ titles[4] }}">
             <kendo-textbox
-              [readonly]="true"
-              [value]="'Áp dụng cho đơn hàng có giá trị trên 600.00 đ'"
+              [hidden]="isVi"
+              [ngModel]="ConditionVi"
+              (blur)="onBlur()"
+              (valueChange)="onChangeConditionVi($event)"
+            >
+            </kendo-textbox>
+            <kendo-textbox
+              [hidden]="isJa"
+              [value]="ConditionJa"
+              (blur)="onBlur()"
+              (valueChange)="onChangeConditionJa($event)"
+            >
+            </kendo-textbox>
+            <kendo-textbox
+              [hidden]="isEn"
+              [value]="ConditionEn"
+              (blur)="onBlur()"
+              (valueChange)="onChangeConditionEn($event)"
             >
             </kendo-textbox>
           </kendo-label>
@@ -78,7 +111,7 @@
           <div class="checkbox">
             <kendo-label
               class="k-form"
-              text="{{ storeTitle[5] }}"
+              text="{{ titles[5] }}"
               [for]="valueCoupon"
             >
             </kendo-label>
@@ -86,29 +119,52 @@
               <kendo-label
                 class="k-checkbox-label"
                 [for]="checkbox2"
-                text="{{ storeTitle[6] }}"
+                text="{{ titles[6] }}"
               ></kendo-label>
               <input type="checkbox" #checkbox2 kendoCheckBox />
             </div>
           </div>
 
-          <kendo-textbox [readonly]="true" [value]="'100,000'" #valueCoupon>
-          </kendo-textbox>
+          <kendo-textbox [value]="''" #valueCoupon> </kendo-textbox>
         </kendo-gridlayout-item>
 
         <kendo-gridlayout-item [rowSpan]="3" class="box">
-          <kendo-label text="{{ storeTitle[7] }}">
+          <kendo-label text="{{ titles[7] }}">
             <kendo-textarea
-              [readonly]="true"
+              class="textbox"
+              [style.width.%]="100"
+              [hidden]="isVi"
               resizable="auto"
-              [(ngModel)]="textAreaValue"
-            >
-            </kendo-textarea>
+              [(ngModel)]="DescriptionVi"
+              resizable="none"
+              (blur)="onBlur()"
+              (valueChange)="onChangeDescriptionVi($event)"
+            ></kendo-textarea>
+            <kendo-textarea
+              class="textbox"
+              [style.width.%]="100"
+              [hidden]="isJa"
+              resizable="auto"
+              [(ngModel)]="DescriptionJa"
+              resizable="none"
+              (blur)="onBlur()"
+              (valueChange)="onChangeDescriptionJa($event)"
+            ></kendo-textarea>
+            <kendo-textarea
+              class="textbox"
+              [style.width.%]="100"
+              [hidden]="isEn"
+              resizable="auto"
+              [(ngModel)]="DescriptionEn"
+              resizable="none"
+              (blur)="onBlur()"
+              (valueChange)="onChangeDescriptionEn($event)"
+            ></kendo-textarea>
           </kendo-label>
         </kendo-gridlayout-item>
 
         <kendo-gridlayout-item [colSpan]="3" class="box">
-          <kendo-label text="{{ storeTitle[8] }}">
+          <kendo-label text="{{ titles[8] }}">
             <div class="datepicker">
               <app-datepicker></app-datepicker>
             </div>
@@ -117,7 +173,7 @@
 
         <kendo-gridlayout-item [colSpan]="3" class="box">
           <div class="status-coupon">
-            <kendo-label class="status-label" text="{{ storeTitle[9] }}">
+            <kendo-label class="status-label" text="{{ titles[9] }}">
               <span class="status-textbox">Đã phê duyệt áp dụng</span>
             </kendo-label>
           </div>
