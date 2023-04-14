@@ -1,0 +1,61 @@
+::ng-deep {
+  app-Layout {
+    .Wrapper-drawer {
+      display: flex;
+      column-gap: 5px;
+      .Sidebar {
+        .custom-toolbar {
+          display: flex;
+          align-items: center;
+          width: 241px;
+          height: 50px;
+          background-color: #ffffff;
+          button {
+            width: 62px;
+            background-color: #fff;
+            border: none;
+            outline: none;
+            box-shadow: none;
+
+            &:focus {
+              border: none;
+              outline: none;
+              box-shadow: none;
+            }
+
+            &:hover {
+              background-color: transparent;
+              box-shadow: none !important;
+            }
+          }
+          .zoomout {
+            width: 100%;
+            margin-top: 8px;
+            border-bottom: 1px solid #ffffff;
+            background-color: #fff;
+
+            img {
+              background-color: #fff;
+              height: 40px;
+            }
+          }
+        }
+        .drawer {
+          min-height: 90vh;
+          background-color: #5a6276;
+          .k-drawer-item {
+            background-color: #5a6276;
+
+            span {
+              background: transparent;
+              color: #fff;
+            }
+          }
+        }
+      }
+
+      .k-drawer-content {
+      }
+    }
+  }
+}

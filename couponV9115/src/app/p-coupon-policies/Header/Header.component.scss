@@ -1,0 +1,63 @@
+::ng-deep {
+  app-Header {
+    .Wrapper-header {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      background-color: #fff;
+      box-shadow: 8px 0px 5px #000;
+
+      .buttongroup {
+        background-color: transparent;
+
+        button {
+          position: relative;
+          font-weight: 700;
+          color: #bbbbbb;
+          background-color: transparent;
+          outline: none;
+          border-top: none;
+          border-left: none;
+          border-bottom: none;
+          border-right: 2px solid #c4c4c4 !important;
+
+          &:focus {
+            box-shadow: none;
+          }
+
+          &::after {
+            content: "";
+            height: 30px;
+            width: 3px;
+            border-radius: 3px;
+            opacity: 1;
+            position: absolute;
+            left: 100%;
+            background-color: #c4c4c4;
+          }
+        }
+
+        .k-selected {
+          position: relative;
+          color: #008000;
+          background-color: transparent;
+          outline: none;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            display: block;
+            width: 80%;
+            height: 4px;
+            border-radius: 10px;
+            background-color: #008000;
+            opacity: 1;
+            margin: 0 auto;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}
