@@ -1,0 +1,231 @@
+$width_drop: 158.4px;
+$height__filter-group: 32px;
+
+.filter_group {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  column-gap: 29px;
+  height: 61px;
+  border-bottom: 1px solid #bdc2d2;
+}
+
+.dropdown_custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 32px;
+}
+
+.dropdown-menu {
+  padding: 0 !important;
+  box-shadow: 0px 3px 6px rgba(149, 157, 179, 0.2);
+
+  li {
+    width: $width_drop;
+    margin: 0 !important;
+  }
+}
+
+.dropdown-toggle {
+  width: $width_drop;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  column-gap: 10px;
+  border: 1px solid #dbdee7;
+  box-shadow: 0px 3px 6px rgba(149, 157, 179, 0.2);
+}
+
+.dropdown-item {
+  width: $width_drop;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  align-content: center;
+  color: #959db3;
+}
+
+.btn-primary {
+  background-color: #ffffff !important;
+  color: #959db3 !important;
+  border-radius: 4px;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  background-color: #008000;
+}
+
+.filter__left {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  column-gap: 29px;
+}
+
+.filter__right {
+  display: flex;
+  flex: 1 0 98px;
+  width: 98px;
+  height: $height__filter-group;
+  // column-gap: 9px;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0px 3px 6px rgba(149, 157, 179, 0.2);
+  border-radius: 3px;
+  margin-right: 15px;
+  justify-content: space-between;
+
+  .fright button {
+    background-color: transparent;
+    color: #959db3;
+    outline: none;
+    border: none;
+    column-gap: 0;
+    font-size: 11px;
+  }
+}
+
+.fright {
+  display: flex;
+  justify-content: space-between;
+  width: 63%;
+  padding-left: 5px;
+
+  &::after {
+    content: "";
+    width: 2px;
+    height: 20px;
+    background-color: #dbdee7;
+    margin: auto 0;
+  }
+}
+
+.chevron {
+  padding: 0 9px;
+  background-color: transparent;
+  color: #959db3;
+  outline: none;
+  border: none;
+}
+
+::ng-deep {
+  span.k-input-inner {
+    column-gap: 7px;
+  }
+
+  span.k-input-inner span {
+    color: #959db3 !important;
+  }
+
+  .breadcrumFilter {
+    background-color: transparent;
+    .k-breadcrumb-container {
+      column-gap: 15px;
+
+      .k-breadcrumb-item {
+        column-gap: 9px;
+      }
+      .k-breadcrumb-root-item {
+        .item__index {
+          color: #1a6634 !important;
+        }
+      }
+      .item {
+        font-weight: 700;
+        color: #959db3;
+        .item__index {
+        }
+      }
+    }
+  }
+
+  .containerTool {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 43px;
+    width: 60%;
+    overflow: hidden;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+      height: 4px;
+      padding-top: 5px;
+    }
+  }
+
+  .filter__center {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+
+    .btn-1 {
+      column-gap: 5px;
+      height: 32px;
+      box-shadow: 2px 2px 5px rgba(54, 200, 207, 0.2);
+      background-color: #fff;
+
+      .k-button-text {
+        color: #008000;
+        font-weight: 700;
+        font-size: 11px;
+      }
+    }
+
+    .btn-2 {
+      width: 42px;
+      height: 32px;
+      padding: 11px;
+      background-color: #fff;
+      box-shadow: 2px 2px 5px rgba(54, 200, 207, 0.2);
+    }
+
+    .btn-3 {
+      column-gap: 5px;
+      height: 32px;
+      background-color: #fff;
+      box-shadow: 2px 2px 5px rgba(54, 200, 207, 0.2);
+
+      .k-button-text {
+        color: #008000;
+        font-weight: 700;
+        font-size: 11px;
+      }
+    }
+
+    .btn-4 {
+      background-color: #bdc2d2;
+      color: #fff;
+      height: 32px;
+      box-shadow: 2px 2px 5px rgba(54, 200, 207, 0.2);
+
+      .k-button-text {
+        color: #fff !important;
+        font-weight: 700;
+        font-size: 11px;
+      }
+    }
+
+    .btn-5 {
+      // width: 98px;
+      height: 32px;
+      color: #fff;
+      background-color: #1a6634;
+      box-shadow: 2px 2px 5px rgba(54, 200, 207, 0.2);
+
+      .k-input-inner {
+        .k-input-value-text {
+          color: #fff !important;
+          font-weight: 700;
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}

@@ -3,9 +3,10 @@
     .Wrapper-header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       height: 50px;
       background-color: #fff;
-      box-shadow: 8px 0px 5px #000;
+      box-shadow: 2px 0px 5px #edeff3;
 
       .buttongroup {
         background-color: transparent;
@@ -20,6 +21,7 @@
           border-left: none;
           border-bottom: none;
           border-right: 2px solid #c4c4c4 !important;
+          font-size: 13px;
 
           &:focus {
             box-shadow: none;
@@ -57,6 +59,47 @@
             outline: none;
           }
         }
+      }
+
+      .action {
+        display: flex;
+        column-gap: 29px;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        color: #5a6276;
+        padding-right: 30px;
+        .icon_search {
+          font-weight: 500;
+        }
+        .icon_bell {
+        }
+      }
+
+      .navbar-nav {
+        align-items: center;
+      }
+
+      .navbar-nav a {
+        display: flex;
+        align-items: center;
+      }
+
+      .bell {
+        position: relative;
+      }
+
+      .noticeBell {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: -4px;
+        right: -12px;
+        background-color: #f1802e;
+        font-size: 12px;
+        color: #fff;
+        border-radius: 15px;
+        text-align: center;
       }
     }
   }

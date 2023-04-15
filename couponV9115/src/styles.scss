@@ -5,13 +5,12 @@
   margin: 0;
   text-decoration: none;
   list-style: none;
-  background-color: #edeff3;
   font-family: "Mulish", sans-serif;
   font-size: 13px;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+body {
+  background-color: #edeff3;
 }
 
 /* Thiết lập màu sắc của thanh cuộn */
@@ -19,4 +18,14 @@
   background-color: #eaeaea;
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::ng-deep {
+  //Check
+  .k-checkbox:checked,
+  .k-checkbox.k-checked {
+    border-color: #008000;
+    color: white;
+    background-color: #008000;
+  }
 }

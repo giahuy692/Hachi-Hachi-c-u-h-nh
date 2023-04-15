@@ -1,0 +1,20 @@
+<div class="wrapper-datepicker">
+  <kendo-datepicker
+    format="d/M/y"
+    [(value)]="today"
+    calendarType="classic"
+    class="DateEnd DateClass"
+    [fillMode]="'flat'"
+    [disabledDates]="disabled"
+    [popupSettings]="popupSettings"
+  >
+    <ng-template kendoCalendarMonthCellTemplate let-date>
+      <span [ngClass]="isHidden(date)">{{ date.getDate() }}</span>
+    </ng-template>
+    <ng-template kendoCalendarHeaderTitleTemplate let-title let-date>
+      <span class="titlePicker" [attr.data-title]="title">
+        {{ title | translate }}
+      </span>
+    </ng-template>
+  </kendo-datepicker>
+</div>

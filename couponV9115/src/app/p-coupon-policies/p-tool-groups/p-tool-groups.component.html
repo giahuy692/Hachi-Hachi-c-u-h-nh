@@ -1,0 +1,45 @@
+<div class="filter_group">
+  <div class="filter__left">
+    <kendo-breadcrumb
+      class="breadcrumFilter"
+      [items]="items"
+      [collapseMode]="'none'"
+    >
+      <ng-template kendoBreadCrumbItemTemplate let-item let-index="index">
+        <div class="item" role="button">
+          <span class="item__index">{{ item.text }}</span>
+        </div>
+      </ng-template>
+    </kendo-breadcrumb>
+  </div>
+  <div class="containerTool">
+    <div class="filter__center">
+      <button kendoButton class="btn-1" imageUrl="assets/img/coupon-list.svg">
+        DANH SÁCH COUPON
+      </button>
+      <button
+        kendoButton
+        class="btn-2"
+        imageUrl="assets/img/print.svg"
+      ></button>
+      <button kendoButton class="btn-3" imageUrl="assets/img/n-check.svg">
+        ÁP DỤNG
+      </button>
+      <button kendoButton class="btn-4">XÓA ĐỢT PHÁT HÀNH</button>
+      <kendo-dropdownlist
+        class="btn-5"
+        [data]="listItems"
+        defaultItem="TẠO MỚI"
+      ></kendo-dropdownlist>
+    </div>
+    <div class="filter__right">
+      <div class="fright">
+        <button><img src="assets/img/export.svg" alt="export" /></button>
+        <button><img src="assets/img/xlsx.svg" alt="xlsx" /></button>
+      </div>
+      <button class="chevron">
+        <img src="assets/img/xổ xuog.svg" alt="chevron" />
+      </button>
+    </div>
+  </div>
+</div>

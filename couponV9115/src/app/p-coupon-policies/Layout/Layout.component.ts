@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DrawerItem, DrawerSelectEvent } from '@progress/kendo-angular-layout';
 
 @Component({
@@ -10,13 +10,13 @@ export class LayoutComponent implements OnInit {
   public selected = 'Inbox';
 
   public items: Array<DrawerItem> = [
-    { text: 'Inbox', icon: 'k-i-inbox', selected: true },
+    { text: 'KHUYẾN MÃI', icon: 'k-i-overlap', selected: true },
     { separator: true },
-    { text: 'Notifications', icon: 'k-i-bell' },
-    { text: 'Calendar', icon: 'k-i-calendar' },
+    { text: 'NỘI DUNG WEBSITE', icon: 'k-i-overlap' },
+    { text: 'QUẢN LÝ BANNER', icon: 'k-i-overlap' },
     { separator: true },
-    { text: 'Attachments', icon: 'k-i-envelop-link' },
-    { text: 'Favourites', icon: 'k-i-star-outline' },
+    { text: 'CHÍNH SÁCH', icon: 'k-i-overlap' },
+    { text: 'BÁO CÁO EXCEL', icon: 'k-i-overlap' },
   ];
 
   public onSelect(ev: DrawerSelectEvent): void {
