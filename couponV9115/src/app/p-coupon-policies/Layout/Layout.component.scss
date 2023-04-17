@@ -1,14 +1,52 @@
 ::ng-deep {
   app-Layout {
-    my-app {
-      display: flex;
-      flex-direction: column;
+    .selectedItem {
+      background-color: #1a2334 !important;
+      color: #fff;
     }
 
     kendo-drawer-container {
       flex: 1 1 auto;
       overflow-y: auto;
       column-gap: 5px;
+
+      .p-kendo-drawer {
+        background-color: #5a6276;
+
+        .k-drawer-item {
+          flex-direction: column;
+          padding: 15px 8px;
+          .title-menu {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+
+            .item-descr-wrap {
+              display: flex;
+              width: 100%;
+              padding-right: 5px;
+              align-items: center;
+              justify-content: space-between;
+            }
+          }
+
+          .child {
+            width: 100%;
+            .btnChild {
+              background-color: transparent;
+              border: none;
+              justify-content: flex-start;
+              padding: 10px 0;
+
+              .k-selected {
+                border-color: none;
+                background-color: none;
+              }
+            }
+          }
+        }
+      }
 
       .k-drawer-wrapper {
         .k-drawer-items {
@@ -19,16 +57,33 @@
 
           .k-drawer-item {
             align-items: center;
+            border-left: 2px solid transparent;
+            .k-hover,
+            &:focus,
+            &:hover {
+              background-color: #1a2334 !important;
+              border-left: 2px solid #fff;
+              color: #fff;
+
+              .child {
+                div {
+                  color: #959db3;
+                }
+              }
+            }
           }
 
           .k-state-selected {
             &:focus,
             &:hover {
               background-color: #1a2334;
+              border-left: 2px solid #fff;
+              color: #fff;
             }
           }
 
           .k-state-selected {
+            border-left: 2px solid #fff;
             background-color: #1a2334;
           }
         }

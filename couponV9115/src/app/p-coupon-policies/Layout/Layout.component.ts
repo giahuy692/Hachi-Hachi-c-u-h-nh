@@ -1,29 +1,125 @@
 import { Component, OnInit } from '@angular/core';
 import { DrawerItem, DrawerSelectEvent } from '@progress/kendo-angular-layout';
 
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-Layout',
   templateUrl: './Layout.component.html',
   styleUrls: ['./Layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-  public selected = 'Inbox';
+  public showChildren: boolean = false;
+  public selectedItem: number;
+  public expanded = false;
 
-  public items: Array<DrawerItem> = [
-    { text: 'KHUYẾN MÃI', icon: 'k-i-overlap', selected: true },
-    { separator: true },
-    { text: 'NỘI DUNG WEBSITE', icon: 'k-i-overlap' },
-    { text: 'QUẢN LÝ BANNER', icon: 'k-i-overlap' },
-    { separator: true },
-    { text: 'CHÍNH SÁCH', icon: 'k-i-overlap' },
-    { text: 'BÁO CÁO EXCEL', icon: 'k-i-overlap' },
+  public items = [
+    {
+      text: 'KHUYẾN MÃI',
+      icon: 'icon_copy.svg',
+      selected: true,
+      id: 0,
+    },
+    {
+      text: 'NỘI DUNG WEBSITE',
+      icon: 'icon_copy.svg',
+      id: 1,
+    },
+    {
+      text: 'QUẢN LÝ BANNER',
+      icon: 'icon_copy.svg',
+      id: 2,
+    },
+    {
+      text: 'CHÍNH SÁCH',
+      icon: 'icon_copy.svg',
+      id: 3,
+      child: [
+        {
+          text: 'Coupon',
+          icon: '',
+          parentId: 3,
+        },
+        {
+          text: 'xxxxxxxxxx',
+          icon: '',
+          parentId: 3,
+        },
+        {
+          text: 'xxxxxxxxxx',
+          icon: '',
+          parentId: 3,
+        },
+        {
+          text: 'xxxxxxxxxx',
+          icon: '',
+          parentId: 3,
+        },
+        {
+          text: 'xxxxxxxxxx',
+          icon: '',
+          parentId: 3,
+        },
+      ],
+    },
+
+    {
+      text: 'BÁO CÁO EXCEL',
+      icon: 'icon_copy.svg',
+      id: 4,
+      expanded: false,
+    },
+    {
+      text: 'CHÍNH SÁCH',
+      icon: 'icon_copy.svg',
+      id: 5,
+      child: [
+        {
+          text: 'Coupon',
+          icon: '',
+          parentId: 5,
+        },
+        {
+          text: 'xxxxxxxxxx',
+          icon: '',
+          parentId: 5,
+        },
+        {
+          text: 'xxxxxxxxxx',
+          icon: '',
+          parentId: 5,
+        },
+        {
+          text: 'xxxxxxxxxx',
+          icon: '',
+          parentId: 5,
+        },
+        {
+          text: 'xxxxxxxxxx',
+          icon: '',
+          parentId: 5,
+        },
+      ],
+    },
   ];
-
-  public onSelect(ev: DrawerSelectEvent): void {
-    this.selected = ev.item.text;
-  }
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.expanded);
+  }
+
+  public onSelect(ev: DrawerSelectEvent): void {
+    this.selectedItem = ev.item.id;
+  }
+
+  toggleChildren() {
+    this.showChildren = !this.showChildren;
+  }
+
+  onExpandChange(e: boolean): void {
+    if (e == false) {
+      this.showChildren = false;
+    }
+  }
 }

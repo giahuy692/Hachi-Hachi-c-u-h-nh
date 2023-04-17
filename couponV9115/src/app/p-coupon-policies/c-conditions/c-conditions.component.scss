@@ -3,14 +3,23 @@
     .wapper-Ac {
       padding: 19px 13px;
 
+      .header-Ac {
+        .text-1 {
+          font-size: 16px;
+          font-weight: 700;
+          margin: 0;
+          margin-bottom: 15px;
+        }
+      }
+
       .AC-body {
         width: 100%;
         background-color: #fff;
-        padding: 13px 32px 18px 20px;
 
         .A-unit {
           display: flex;
           column-gap: 80px;
+          padding: 13px 32px 18px 20px;
 
           .A-unit-limit {
             display: flex;

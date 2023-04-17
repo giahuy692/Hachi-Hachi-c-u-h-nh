@@ -14,14 +14,47 @@
 <kendo-drawer-container class="drawer">
   <kendo-drawer
     #drawer
+    class="p-kendo-drawer"
     [items]="items"
     mode="push"
     [mini]="true"
-    [expanded]="true"
+    [(expanded)]="expanded"
     [autoCollapse]="false"
     (select)="onSelect($event)"
+    (expandedChange)="onExpandChange($event)"
     fillMode="flat"
   >
+    <ng-template kendoDrawerItemTemplate let-item>
+      <div class="title-menu" (click)="toggleChildren()">
+        <img src="assets/img/{{ item.icon }}" alt="icon" style="fill: #fff" />
+        <div class="item-descr-wrap" *ngIf="expanded" style="user-select: none">
+          {{ item.text }}
+          <img
+            *ngIf="item.child !== undefined"
+            src="assets/img/chevron-down.svg"
+            alt="icon"
+            style="fill: #fff"
+          />
+        </div>
+      </div>
+      <div *ngIf="showChildren" style="width: 66%">
+        <div
+          class="child"
+          *ngIf="selectedItem == item.id && item.child !== undefined"
+        >
+          <kendo-buttongroup selection="single" style="flex-direction: column">
+            <button
+              class="btnChild"
+              *ngFor="let i of item.child"
+              kendoButton
+              [toggleable]="true"
+            >
+              {{ i.text }}
+            </button>
+          </kendo-buttongroup>
+        </div>
+      </div>
+    </ng-template>
   </kendo-drawer>
 
   <kendo-drawer-content>
