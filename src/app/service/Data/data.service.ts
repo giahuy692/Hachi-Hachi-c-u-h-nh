@@ -1,6 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import {
+  DataSourceRequestState,
+  toDataSourceRequest,
+} from '@progress/kendo-data-query';
 
 // Interface
 import { ProductList } from 'src/app/interface/product';
@@ -34,10 +38,27 @@ export class DataService implements OnInit {
 
   ngAfterViewInit() {}
 
+  gridState: DataSourceRequestState = {
+    skip: 0,
+    take: 50,
+    filter: {
+      logic: 'and',
+      filters: [
+        {
+          ignoreCase: true,
+          field: 'ProductName',
+          operator: 'contains',
+          value: 'Miso',
+        },
+      ],
+    },
+  };
+
   getDataApi(): Observable<ProductList> {
+    var dataSourceRequest = toDataSourceRequest(this.gridState);
     return this.http.post<ProductList>(
       'http://test.lapson.vn/api/product/GetListProduct',
-      {}
+      dataSourceRequest
     );
   }
 }

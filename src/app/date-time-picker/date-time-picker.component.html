@@ -3,16 +3,17 @@
     <kendo-datepicker
       #calendarRef
       class="h-DateTimePicker"
-      format="dd/MM/yyyy hh:mm"
+      format="dd/MM/yyyy HH:mm"
       [(value)]="date"
       [disabledDates]="disabled"
       calendarType="classic"
       class="DateEnd DateClass"
+      id="time-picker"
       [fillMode]="'flat'"
       [popupSettings]="popupSettings"
       [style.width.px]="235.77"
       (open)="onOpen()"
-      (close)="onClose()"
+      (close)="onClose($event)"
       (valueChange)="onChangeValueDate($event)"
     >
       <ng-template kendoCalendarHeaderTitleTemplate let-title>

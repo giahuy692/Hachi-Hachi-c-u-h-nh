@@ -23,6 +23,7 @@ export class DetailProgramComponent {
   ngOnInit() {
     this.dataService.getDataApi().subscribe((data: ProductList) => {
       this.productList = data.ObjectReturn.Data;
+      console.log(this.productList);
     });
   }
 
