@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import '@progress/kendo-angular-intl/locales/vi/all';
 
 //Component
@@ -28,7 +29,8 @@ import { LabelModule } from '@progress/kendo-angular-label';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { CConditionsComponent } from './p-coupon-policies/c-conditions/c-conditions.component';
 import { TreeViewModule } from '@progress/kendo-angular-treeview';
-
+import { CGridLayoutBlockComponent } from './c-grid-layout-block/c-grid-layout-block.component';
+import { CDetailComponent } from './p-coupon-policies/c-detail/c-detail.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { TreeViewModule } from '@progress/kendo-angular-treeview';
     PToolGroupsComponent,
     CInformationComponent,
     CConditionsComponent,
+    CGridLayoutBlockComponent,
+    CDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,7 @@ import { TreeViewModule } from '@progress/kendo-angular-treeview';
     LabelModule,
     GridModule,
     TreeViewModule,
+    HttpClientModule,
   ],
   providers: [ServiceService, { provide: LOCALE_ID, useValue: 'vi-VN' }],
   bootstrap: [AppComponent],

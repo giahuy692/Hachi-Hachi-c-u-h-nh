@@ -1,0 +1,96 @@
+::ng-deep {
+  app-c-detail {
+    .wrapper-detail-program {
+      padding: 19px 13px;
+      .header-detail-program {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .title-detail-program {
+          span {
+            font-weight: 700;
+            font-size: 16px;
+            color: #26282e;
+          }
+        }
+
+        .wrapper-search {
+          display: flex;
+          column-gap: 10px;
+
+          .search-input {
+            background-color: #fff;
+          }
+        }
+
+        .tool-detail-program {
+          display: flex;
+          column-gap: 10px;
+        }
+      }
+
+      .body-detail-program {
+        .k-grid {
+          tbody {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            row-gap: 12px;
+            column-gap: 20px;
+            background-color: #edeff3;
+
+            td {
+              width: 246px;
+              background-color: #fff;
+            }
+
+            .container-product {
+              position: relative;
+              padding: 14px 10px;
+
+              .content-product {
+                display: flex;
+                justify-content: space-between;
+                column-gap: 9px;
+
+                .title {
+                  display: -webkit-box;
+                  color: #353935;
+                  -webkit-line-clamp: 3;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+              }
+              .imgProduct {
+                width: 76px;
+                height: 76px;
+              }
+
+              .dustbin {
+                position: absolute;
+                top: 4px;
+                left: 5px;
+                outline: none;
+                border: none;
+                box-shadow: none;
+                background-color: transparent;
+              }
+            }
+
+            .k-table-row {
+              width: 220px !important;
+              border: 1px solid #8dc63f;
+            }
+
+            .k-table-td {
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

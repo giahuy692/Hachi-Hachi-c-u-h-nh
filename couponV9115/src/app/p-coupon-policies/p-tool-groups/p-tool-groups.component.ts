@@ -36,7 +36,7 @@ export class PToolGroupsComponent implements OnInit {
   ngOnInit() {
     $(document).ready(() => {
       $('.btn-5 .k-input-inner span').before(
-        "<img src='assets/img/plus.svg' alt='plus' />"
+        "<img src='assets/images/plus.svg' alt='plus' />"
       );
     });
   }

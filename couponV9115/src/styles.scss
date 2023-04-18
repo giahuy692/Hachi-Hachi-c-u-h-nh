@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Mulish:wght@500&display=swap");
 
+// styles.scss
+$primary: #008000;
+$kendo-color-primary: $primary;
+
+@import "~@progress/kendo-theme-default/dist/all.scss";
+
 * {
   padding: 0;
   margin: 0;
@@ -18,14 +24,4 @@ body {
   background-color: #eaeaea;
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-::ng-deep {
-  //Check
-  .k-checkbox:checked,
-  .k-checkbox.k-checked {
-    border-color: #008000;
-    color: white;
-    background-color: #008000;
-  }
 }

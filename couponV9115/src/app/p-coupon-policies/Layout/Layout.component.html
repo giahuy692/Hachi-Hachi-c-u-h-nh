@@ -7,7 +7,7 @@
       (click)="drawer.toggle()"
       class="button"
     ></button>
-    <span><img src="assets/img/HachiLogo.png" alt="Logo" /></span>
+    <span><img src="assets/images/HachiLogo.png" alt="Logo" /></span>
   </div>
   <app-Header class="header"></app-Header>
 </div>
@@ -26,12 +26,16 @@
   >
     <ng-template kendoDrawerItemTemplate let-item>
       <div class="title-menu" (click)="toggleChildren()">
-        <img src="assets/img/{{ item.icon }}" alt="icon" style="fill: #fff" />
+        <img
+          src="assets/images/{{ item.icon }}"
+          alt="icon"
+          style="fill: #fff"
+        />
         <div class="item-descr-wrap" *ngIf="expanded" style="user-select: none">
           {{ item.text }}
           <img
             *ngIf="item.child !== undefined"
-            src="assets/img/chevron-down.svg"
+            src="assets/images/chevron-down.svg"
             alt="icon"
             style="fill: #fff"
           />
@@ -61,5 +65,6 @@
     <app-p-tool-groups></app-p-tool-groups>
     <app-c-information></app-c-information>
     <app-c-conditions></app-c-conditions>
+    <app-c-detail></app-c-detail>
   </kendo-drawer-content>
 </kendo-drawer-container>
