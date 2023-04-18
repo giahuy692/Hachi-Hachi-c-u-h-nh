@@ -1,70 +1,140 @@
-<div class="custom-toolbar">
-  <div class="ws4">
-    <button
-      kendoButton
-      icon="menu"
-      fillMode="flat"
-      (click)="drawer.toggle()"
-      class="button"
-    ></button>
-    <span><img src="assets/images/HachiLogo.png" alt="Logo" /></span>
-  </div>
-  <app-Header class="header"></app-Header>
-</div>
-<kendo-drawer-container class="drawer">
+<kendo-drawer-container class="drawer-right">
   <kendo-drawer
-    #drawer
-    class="p-kendo-drawer"
-    [items]="items"
-    mode="push"
-    [mini]="true"
-    [(expanded)]="expanded"
-    [autoCollapse]="false"
-    (select)="onSelect($event)"
-    (expandedChange)="onExpandChange($event)"
+    #drawerRight
+    id="p-kendo-drawer-right"
+    [position]="'end'"
+    mode="overlay"
+    [(expanded)]="expandedRight"
     fillMode="flat"
   >
-    <ng-template kendoDrawerItemTemplate let-item>
-      <div class="title-menu" (click)="toggleChildren()">
-        <img
-          src="assets/images/{{ item.icon }}"
-          alt="icon"
-          style="fill: #fff"
-        />
-        <div class="item-descr-wrap" *ngIf="expanded" style="user-select: none">
-          {{ item.text }}
-          <img
-            *ngIf="item.child !== undefined"
-            src="assets/images/chevron-down.svg"
-            alt="icon"
-            style="fill: #fff"
-          />
-        </div>
-      </div>
-      <div *ngIf="showChildren" style="width: 66%">
-        <div
-          class="child"
-          *ngIf="selectedItem == item.id && item.child !== undefined"
-        >
-          <kendo-buttongroup selection="single" style="flex-direction: column">
-            <button
-              class="btnChild"
-              *ngFor="let i of item.child"
-              kendoButton
-              [toggleable]="true"
+    <ng-template kendoDrawerTemplate>
+      <span class="title-dl">THÊM MỚI SẢN PHẨM</span>
+      <hr />
+      <div class="wapper-content">
+        <div style="margin-top: 10px">
+          <kendo-label class="k-form" text="Nhập mã sản phẩm">
+            <kendo-textbox
+              [style.width.%]="100"
+              placeholder="Type your message here"
+              value="4904071403967"
             >
-              {{ i.text }}
-            </button>
-          </kendo-buttongroup>
+            </kendo-textbox>
+          </kendo-label>
+        </div>
+        <div style="margin-top: 10px">
+          <kendo-label class="k-form" text="Tên sản phẩm">
+            <kendo-textbox
+              [style.width.%]="100"
+              placeholder="Type your message here"
+              value="Tủ nhựa 5 ngăn Sanka 34x42x107cm - Trắng kem "
+            >
+            </kendo-textbox>
+          </kendo-label>
+        </div>
+        <img
+          class="detail_image"
+          src="assets/images/dog.jpg"
+          alt="image"
+          style="width: 100px"
+        />
+
+        <div class="option-tool">
+          <button class="cancel" kendoButton title="ĐÓNG" [themeColor]="'base'">
+            ĐÓNG
+          </button>
+          <button
+            class="update"
+            kendoButton
+            title="CẬP NHẬT"
+            [themeColor]="'primary'"
+          >
+            CẬP NHẬT
+          </button>
         </div>
       </div>
     </ng-template>
   </kendo-drawer>
 
-  <kendo-drawer-content>
-    <app-p-tool-groups></app-p-tool-groups>
-    <app-c-information></app-c-information>
-    <app-c-conditions></app-c-conditions>
-    <app-c-detail></app-c-detail>
-  </kendo-drawer-content>
+  <div class="drawer-left">
+    <kendo-drawer-content>
+      <div class="custom-toolbar">
+        <div class="ws4">
+          <button
+            kendoButton
+            icon="menu"
+            fillMode="flat"
+            (click)="drawerLeft.toggle()"
+            class="button"
+          ></button>
+          <span><img src="assets/images/HachiLogo.png" alt="Logo" /></span>
+        </div>
+        <app-Header class="header"></app-Header>
+      </div>
+      <kendo-drawer-container>
+        <kendo-drawer
+          #drawerLeft
+          class="p-kendo-drawer"
+          [items]="items"
+          mode="push"
+          [mini]="true"
+          [(expanded)]="expanded"
+          [autoCollapse]="false"
+          (select)="onSelect($event)"
+          (expandedChange)="onExpandChange($event)"
+          fillMode="flat"
+        >
+          <ng-template kendoDrawerItemTemplate let-item>
+            <div class="title-menu" (click)="toggleChildren()">
+              <img
+                src="assets/images/{{ item.icon }}"
+                alt="icon"
+                style="margin: 0 10px"
+              />
+              <div
+                class="item-descr-wrap"
+                *ngIf="expanded"
+                style="user-select: none"
+              >
+                {{ item.text }}
+                <img
+                  *ngIf="item.child !== undefined"
+                  src="assets/images/chevron-down.svg"
+                  alt="icon"
+                  style="fill: #fff"
+                />
+              </div>
+            </div>
+            <div *ngIf="showChildren" style="width: 66%">
+              <div
+                class="child"
+                *ngIf="selectedItem == item.id && item.child !== undefined"
+              >
+                <kendo-buttongroup
+                  selection="single"
+                  style="flex-direction: column"
+                >
+                  <button
+                    class="btnChild"
+                    *ngFor="let i of item.child"
+                    kendoButton
+                    [toggleable]="true"
+                  >
+                    {{ i.text }}
+                  </button>
+                </kendo-buttongroup>
+              </div>
+            </div>
+          </ng-template>
+        </kendo-drawer>
+
+        <kendo-drawer-content>
+          <button (click)="drawerRight.toggle()">toggle</button>
+          <app-p-tool-groups></app-p-tool-groups>
+          <app-c-information></app-c-information>
+          <app-c-conditions></app-c-conditions>
+          <app-c-detail></app-c-detail>
+        </kendo-drawer-content>
+      </kendo-drawer-container>
+    </kendo-drawer-content>
+  </div>
 </kendo-drawer-container>

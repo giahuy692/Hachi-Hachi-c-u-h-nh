@@ -12,27 +12,28 @@ export class LayoutComponent implements OnInit {
   public showChildren: boolean = false;
   public selectedItem: number;
   public expanded = false;
+  public expandedRight = false;
 
   public items = [
     {
       text: 'KHUYẾN MÃI',
-      icon: 'icon_copy.svg',
+      icon: 'icon_coppy.png',
       selected: true,
       id: 0,
     },
     {
       text: 'NỘI DUNG WEBSITE',
-      icon: 'icon_copy.svg',
+      icon: 'icon_coppy.png',
       id: 1,
     },
     {
       text: 'QUẢN LÝ BANNER',
-      icon: 'icon_copy.svg',
+      icon: 'icon_coppy.png',
       id: 2,
     },
     {
       text: 'CHÍNH SÁCH',
-      icon: 'icon_copy.svg',
+      icon: 'icon_coppy.png',
       id: 3,
       child: [
         {
@@ -65,41 +66,9 @@ export class LayoutComponent implements OnInit {
 
     {
       text: 'BÁO CÁO EXCEL',
-      icon: 'icon_copy.svg',
+      icon: 'icon_coppy.png',
       id: 4,
       expanded: false,
-    },
-    {
-      text: 'CHÍNH SÁCH',
-      icon: 'icon_copy.svg',
-      id: 5,
-      child: [
-        {
-          text: 'Coupon',
-          icon: '',
-          parentId: 5,
-        },
-        {
-          text: 'xxxxxxxxxx',
-          icon: '',
-          parentId: 5,
-        },
-        {
-          text: 'xxxxxxxxxx',
-          icon: '',
-          parentId: 5,
-        },
-        {
-          text: 'xxxxxxxxxx',
-          icon: '',
-          parentId: 5,
-        },
-        {
-          text: 'xxxxxxxxxx',
-          icon: '',
-          parentId: 5,
-        },
-      ],
     },
   ];
 

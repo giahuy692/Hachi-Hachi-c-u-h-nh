@@ -1,132 +1,188 @@
 ::ng-deep {
   app-Layout {
-    .selectedItem {
-      background-color: #1a2334 !important;
-      color: #fff;
-    }
+    .k-drawer-expanded {
+      #p-kendo-drawer-right {
+        margin-top: 50px;
+        width: 417px;
+        transform: translateX(100%);
+        .k-drawer-wrapper {
+          width: 100% !important;
 
-    kendo-drawer-container {
-      flex: 1 1 auto;
-      overflow-y: auto;
-      column-gap: 5px;
+          .wapper-content {
+            padding: 10px 18px;
 
-      .p-kendo-drawer {
-        background-color: #5a6276;
-
-        .k-drawer-item {
-          flex-direction: column;
-          padding: 15px 8px;
-          .title-menu {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            column-gap: 10px;
-
-            .item-descr-wrap {
-              display: flex;
-              width: 100%;
-              padding-right: 5px;
-              align-items: center;
-              justify-content: space-between;
+            .k-form {
+              .k-label {
+                margin-bottom: 5px;
+              }
             }
-          }
 
-          .child {
-            width: 100%;
-            .btnChild {
-              background-color: transparent;
-              border: none;
-              justify-content: flex-start;
-              padding: 10px 0;
+            .detail_image {
+              display: block;
+              width: 251px !important;
+              margin: 10px auto;
+            }
 
-              .k-selected {
-                border-color: none;
-                background-color: none;
+            .option-tool {
+              display: flex;
+              column-gap: 10px;
+              margin: 26px 0 auto;
+
+              .cancel {
+                width: 94px;
+                height: 33px;
+              }
+
+              .update {
+                width: 94px;
+                height: 33px;
               }
             }
           }
         }
+        .title-dl {
+          display: block;
+          font-weight: 700;
+          font-size: 13px;
+          color: #1a6634;
+          padding: 10px 12px;
+        }
+      }
+      .k-overlay {
+        margin-top: 50px;
+      }
+    }
+    .drawer-left {
+      .selectedItem {
+        background-color: #1a2334 !important;
+        color: #fff;
       }
 
-      .k-drawer-wrapper {
-        .k-drawer-items {
-          font-size: 13px;
-          font-weight: 700;
+      kendo-drawer-container {
+        flex: 1 1 auto;
+        overflow-y: auto;
+        column-gap: 5px;
+
+        .p-kendo-drawer {
           background-color: #5a6276;
-          color: #fff;
 
           .k-drawer-item {
-            align-items: center;
-            border-left: 2px solid transparent;
-            .k-hover,
-            &:focus,
-            &:hover {
-              background-color: #1a2334 !important;
-              border-left: 2px solid #fff;
-              color: #fff;
+            height: 47px;
+            flex-direction: column;
+            padding: 15px 8px;
 
-              .child {
-                div {
-                  color: #959db3;
+            .title-menu {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              column-gap: 10px;
+
+              .item-descr-wrap {
+                display: flex;
+                width: 100%;
+                padding-right: 5px;
+                align-items: center;
+                justify-content: space-between;
+              }
+            }
+
+            .child {
+              width: 100%;
+              .btnChild {
+                background-color: transparent;
+                border: none;
+                justify-content: flex-start;
+                padding: 10px 0;
+
+                .k-selected {
+                  border-color: none;
+                  background-color: none;
                 }
               }
             }
           }
+        }
 
-          .k-state-selected {
-            &:focus,
-            &:hover {
-              background-color: #1a2334;
+        .k-drawer-wrapper {
+          .k-drawer-items {
+            font-size: 13px;
+            font-weight: 700;
+            background-color: #5a6276;
+            color: #fff;
+
+            .k-drawer-item {
+              align-items: center;
+              border-left: 2px solid transparent;
+              .k-hover,
+              &:focus,
+              &:hover {
+                background-color: #1a2334 !important;
+                border-left: 2px solid #fff;
+                color: #fff;
+
+                .child {
+                  div {
+                    color: #959db3;
+                  }
+                }
+              }
+            }
+
+            .k-state-selected {
+              &:focus,
+              &:hover {
+                background-color: #1a2334;
+                border-left: 2px solid #fff;
+                color: #fff;
+              }
+            }
+
+            .k-state-selected {
               border-left: 2px solid #fff;
-              color: #fff;
+              background-color: #1a2334;
             }
           }
-
-          .k-state-selected {
-            border-left: 2px solid #fff;
-            background-color: #1a2334;
-          }
         }
       }
-    }
-    .k-icon {
-      font-size: 20px;
-    }
-    .custom-toolbar {
-      display: flex;
-      column-gap: 5px;
-      width: 100%;
-      background-color: #fff;
-      border-bottom: inset;
-      border-bottom-width: 1px;
-      color: #656565;
-      .ws4 {
+      .k-icon {
+        font-size: 20px;
+      }
+      .custom-toolbar {
         display: flex;
-        width: 240px;
-        align-items: center;
-        box-shadow: 12px 2px 4px #edeff3;
-        .button {
-          width: 50px;
-          height: 50px;
-          justify-content: space-evenly;
-          padding: 0;
-          background-color: #fff !important;
-        }
-        span {
-          img {
-            display: flex;
-            flex: 1 0 auto;
-            height: 40px;
+        column-gap: 5px;
+        width: 100%;
+        background-color: #fff;
+        border-bottom: inset;
+        border-bottom-width: 1px;
+        color: #656565;
+        .ws4 {
+          display: flex;
+          width: 240px;
+          align-items: center;
+          box-shadow: 12px 2px 4px #edeff3;
+          .button {
+            width: 50px;
+            height: 50px;
+            justify-content: space-evenly;
+            padding: 0;
+            background-color: #fff !important;
+          }
+          span {
+            img {
+              display: flex;
+              flex: 1 0 auto;
+              height: 40px;
+            }
           }
         }
-      }
 
-      .k-focus {
-        box-shadow: none;
-      }
+        .k-focus {
+          box-shadow: none;
+        }
 
-      .header {
-        flex: 1;
+        .header {
+          flex: 1;
+        }
       }
     }
   }

@@ -5,6 +5,7 @@ import { ServiceService } from 'src/app/service/service.service';
 
 //interface
 import { ProductList, ProductApi } from 'src/app/DTO';
+import { DrawerItem, DrawerSelectEvent } from '@progress/kendo-angular-layout';
 
 @Component({
   selector: 'app-c-detail',

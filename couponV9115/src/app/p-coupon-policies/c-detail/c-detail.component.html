@@ -56,13 +56,21 @@
       <kendo-grid-column [class]="'title'">
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
           <div class="container-product">
-            <button
-              kendoButton
-              [themeColor]="'base'"
-              imageUrl="assets/images/dustbin.svg"
-              class="dustbin"
-              (click)="onDelete(dataItem)"
-            ></button>
+            <div class="tool">
+              <button
+                kendoButton
+                [themeColor]="'base'"
+                imageUrl="assets/images/dustbin.svg"
+                class="dustbin"
+                (click)="onDelete(dataItem)"
+              ></button>
+              <button
+                kendoButton
+                [themeColor]="'base'"
+                imageUrl="assets/images/icon_edit.svg"
+                class="edit"
+              ></button>
+            </div>
             <div class="content-product">
               <img
                 src="{{ 'http://test.lapson.vn/' + dataItem.ImageThumb }}"

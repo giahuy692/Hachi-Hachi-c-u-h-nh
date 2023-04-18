@@ -33,12 +33,15 @@
 
       .body-detail-program {
         .k-grid {
+          .k-grid-content {
+            background-color: #edeff3;
+          }
           tbody {
             display: flex;
             justify-content: flex-start;
             flex-wrap: wrap;
             row-gap: 12px;
-            column-gap: 20px;
+            column-gap: 18px;
             background-color: #edeff3;
 
             td {
@@ -63,6 +66,11 @@
                   overflow: hidden;
                   text-overflow: ellipsis;
                 }
+
+                .ncode {
+                  margin-top: 10px;
+                  color: #353935;
+                }
               }
               .imgProduct {
                 width: 76px;
@@ -71,8 +79,18 @@
 
               .dustbin {
                 position: absolute;
-                top: 4px;
+                top: 0;
                 left: 5px;
+                outline: none;
+                border: none;
+                box-shadow: none;
+                background-color: transparent;
+              }
+
+              .edit {
+                position: absolute;
+                top: 0;
+                left: 30px;
                 outline: none;
                 border: none;
                 box-shadow: none;

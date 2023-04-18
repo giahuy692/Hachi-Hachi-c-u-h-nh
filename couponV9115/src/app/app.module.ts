@@ -31,6 +31,7 @@ import { CConditionsComponent } from './p-coupon-policies/c-conditions/c-conditi
 import { TreeViewModule } from '@progress/kendo-angular-treeview';
 import { CGridLayoutBlockComponent } from './c-grid-layout-block/c-grid-layout-block.component';
 import { CDetailComponent } from './p-coupon-policies/c-detail/c-detail.component';
+import { CConfigComponent } from './p-coupon-policies/c-config/c-config.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CDetailComponent } from './p-coupon-policies/c-detail/c-detail.componen
     CConditionsComponent,
     CGridLayoutBlockComponent,
     CDetailComponent,
+    CConfigComponent,
   ],
   imports: [
     BrowserModule,
