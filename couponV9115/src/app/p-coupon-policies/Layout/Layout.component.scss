@@ -17,6 +17,10 @@
               }
             }
 
+            .ProductName {
+              border: none;
+            }
+
             .detail_image {
               display: block;
               width: 251px !important;
@@ -62,6 +66,12 @@
         flex: 1 1 auto;
         overflow-y: auto;
         column-gap: 5px;
+
+        #wrapper-content {
+          height: 706px;
+          overflow: hidden;
+          overflow-y: scroll;
+        }
 
         .p-kendo-drawer {
           background-color: #5a6276;

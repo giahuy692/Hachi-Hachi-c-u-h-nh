@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { DrawerItem, DrawerSelectEvent } from '@progress/kendo-angular-layout';
+// Angular
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  DrawerComponent,
+  DrawerItem,
+  DrawerSelectEvent,
+} from '@progress/kendo-angular-layout';
+import { ProductList, ProductApi } from 'src/app/DTO';
+import { ServiceService } from 'src/app/service/service.service';
 
-import * as $ from 'jquery';
+//Kendo
 
 @Component({
   selector: 'app-Layout',
@@ -9,6 +16,7 @@ import * as $ from 'jquery';
   styleUrls: ['./Layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
+  // Variable Sidebar
   public showChildren: boolean = false;
   public selectedItem: number;
   public expanded = false;
@@ -72,20 +80,34 @@ export class LayoutComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  // Variable detail product
+  @ViewChild('drawerRight') public DrawerRightComponent: DrawerComponent;
+  CodeProduct: number = 0;
+  ProductName: string = '';
+  ImagesProduct: any;
+
+  constructor(private service: ServiceService) {}
 
   ngOnInit() {
-    console.log(this.expanded);
+    this.service.Product.subscribe((value: ProductApi) => {
+      this.ProductName = value.ProductName;
+      this.CodeProduct = parseInt(value.Barcode);
+      this.ImagesProduct = value.ImageThumb;
+    });
   }
 
+  //- Drawer left
+  //Handle  onSelectd in drawer left
   public onSelect(ev: DrawerSelectEvent): void {
     this.selectedItem = ev.item.id;
   }
 
+  //Handle show children in drawer left
   toggleChildren() {
     this.showChildren = !this.showChildren;
   }
 
+  //Handle expand change drawer left
   onExpandChange(e: boolean): void {
     if (e == false) {
       this.showChildren = false;

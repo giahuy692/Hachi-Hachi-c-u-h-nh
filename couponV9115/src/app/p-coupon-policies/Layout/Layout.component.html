@@ -15,31 +15,39 @@
           <kendo-label class="k-form" text="Nhập mã sản phẩm">
             <kendo-textbox
               [style.width.%]="100"
-              placeholder="Type your message here"
-              value="4904071403967"
+              placeholder="Nhập mã sản phẩm..."
+              [(value)]="CodeProduct"
             >
             </kendo-textbox>
           </kendo-label>
         </div>
         <div style="margin-top: 10px">
           <kendo-label class="k-form" text="Tên sản phẩm">
-            <kendo-textbox
+            <kendo-textarea
+              class="ProductName"
               [style.width.%]="100"
-              placeholder="Type your message here"
-              value="Tủ nhựa 5 ngăn Sanka 34x42x107cm - Trắng kem "
+              resizable="auto"
+              placeholder="Nhập tên sản phẩm..."
+              [(value)]="ProductName"
             >
-            </kendo-textbox>
+            </kendo-textarea>
           </kendo-label>
         </div>
         <img
           class="detail_image"
-          src="assets/images/dog.jpg"
+          src="{{ 'http://test.lapson.vn/' + ImagesProduct }}"
           alt="image"
           style="width: 100px"
         />
 
         <div class="option-tool">
-          <button class="cancel" kendoButton title="ĐÓNG" [themeColor]="'base'">
+          <button
+            class="cancel"
+            kendoButton
+            title="ĐÓNG"
+            [themeColor]="'base'"
+            (click)="drawerRight.toggle()"
+          >
             ĐÓNG
           </button>
           <button
@@ -128,11 +136,12 @@
         </kendo-drawer>
 
         <kendo-drawer-content>
-          <button (click)="drawerRight.toggle()">toggle</button>
-          <app-p-tool-groups></app-p-tool-groups>
-          <app-c-information></app-c-information>
-          <app-c-conditions></app-c-conditions>
-          <app-c-detail></app-c-detail>
+          <div id="wrapper-content">
+            <app-p-tool-groups></app-p-tool-groups>
+            <app-c-information></app-c-information>
+            <app-c-conditions></app-c-conditions>
+            <app-c-detail [drawerRef]="DrawerRightComponent"></app-c-detail>
+          </div>
         </kendo-drawer-content>
       </kendo-drawer-container>
     </kendo-drawer-content>

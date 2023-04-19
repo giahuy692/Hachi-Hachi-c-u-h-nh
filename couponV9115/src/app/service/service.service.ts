@@ -17,7 +17,10 @@ export class ServiceService implements OnInit {
   constructor(private http: HttpClient) {}
   gridState: DataSourceRequestState = {};
   dataSourceRequest: any;
-  private apiUrl = 'http://test.lapson.vn/api/product/GetListProduct';
+  Product = new Subject<any>();
+  private apiGetListProductUrl =
+    'http://test.lapson.vn/api/product/GetListProduct';
+  private apiGetProductUrl = 'http://test.lapson.vn/api/product/GetProduct';
 
   ngOnInit() {}
 
@@ -25,9 +28,8 @@ export class ServiceService implements OnInit {
 
   getDataApi() {
     return new Observable<any>((obs) => {
-      this.http.post<ProductList>(this.apiUrl, {}).subscribe(
+      this.http.post<ProductList>(this.apiGetListProductUrl, {}).subscribe(
         (data) => {
-          console.log(data);
           obs.next(data);
           obs.complete();
         },
@@ -39,11 +41,29 @@ export class ServiceService implements OnInit {
     });
   }
 
+  getProduct(id: any) {
+    return new Observable<any>((obs) => {
+      this.http
+        .post<ProductList>(this.apiGetProductUrl, { Code: id })
+        .subscribe(
+          (data) => {
+            obs.next(data);
+            obs.complete();
+            console.log('Get Product: ', data.ErrorString);
+          },
+          (error) => {
+            console.log(error);
+            obs.error(error);
+          }
+        );
+    });
+  }
+
   SearchDataApi(search: any) {
     return new Observable<any>((obs) => {
       this.http
         .post<ProductList>(
-          this.apiUrl,
+          this.apiGetListProductUrl,
           (this.dataSourceRequest = toDataSourceRequest(search))
         )
         .subscribe(
