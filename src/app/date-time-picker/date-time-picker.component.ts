@@ -195,4 +195,16 @@ export class DateTimePickerComponent implements AfterViewInit {
     var b = a?.slice(0, 15);
     this.date = new Date(`${b}`);
   }
+
+  onBlur() {
+    $(document).ready(() => {
+      $('.k-animation-container').toggle().css('display', 'none');
+    });
+  }
+
+  // onFocus() {
+  //   $(document).ready(() => {
+  //     $('.k-animation-container').toggle().css('display', 'none');
+  //   });
+  // }
 }
