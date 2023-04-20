@@ -11,17 +11,22 @@
       <span class="title-dl">THÊM MỚI SẢN PHẨM</span>
       <hr />
       <div class="wapper-content">
-        <div style="margin-top: 10px">
-          <kendo-label class="k-form" text="Nhập mã sản phẩm">
-            <kendo-textbox
-              [style.width.%]="100"
-              placeholder="Nhập mã sản phẩm..."
-              [(value)]="CodeProduct"
-            >
-            </kendo-textbox>
-          </kendo-label>
-        </div>
-        <div style="margin-top: 10px">
+        <kendo-label class="k-form" text="Postcode sản phẩm">
+          <kendo-textbox
+            [style.width.%]="100"
+            placeholder="Code sản phẩm..."
+            readonly="true"
+            [(value)]="CodeProduct"
+          >
+          </kendo-textbox>
+        </kendo-label>
+        <kendo-label class="k-form" text="Barcode sản phẩm">
+          <kendo-textbox
+            [style.width.%]="100"
+            placeholder="Barcode sản phẩm..."
+            [(value)]="CodeProduct"
+          >
+          </kendo-textbox>
           <kendo-label class="k-form" text="Tên sản phẩm">
             <kendo-textarea
               class="ProductName"
@@ -32,7 +37,11 @@
             >
             </kendo-textarea>
           </kendo-label>
-        </div>
+        </kendo-label>
+        <div>Giá: {{ Price }}</div>
+        <div>Xuất xứ: {{ OrginalName }}</div>
+        <div>Thương hiệu: {{ BrandName }}</div>
+
         <img
           class="detail_image"
           src="{{ 'http://test.lapson.vn/' + ImagesProduct }}"
@@ -112,20 +121,18 @@
                 />
               </div>
             </div>
-            <div *ngIf="showChildren" style="width: 66%">
+            <div *ngIf="showChildren" class="wrapper-child">
               <div
                 class="child"
                 *ngIf="selectedItem == item.id && item.child !== undefined"
               >
-                <kendo-buttongroup
-                  selection="single"
-                  style="flex-direction: column"
-                >
+                <kendo-buttongroup selection="single" [style.width.%]="100">
                   <button
                     class="btnChild"
                     *ngFor="let i of item.child"
                     kendoButton
                     [toggleable]="true"
+                    [themeColor]="'base'"
                   >
                     {{ i.text }}
                   </button>

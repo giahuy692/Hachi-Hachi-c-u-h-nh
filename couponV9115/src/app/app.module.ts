@@ -33,6 +33,7 @@ import { CGridLayoutBlockComponent } from './c-grid-layout-block/c-grid-layout-b
 import { CDetailComponent } from './p-coupon-policies/c-detail/c-detail.component';
 import { CConfigComponent } from './p-coupon-policies/c-config/c-config.component';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
+import { TooltipsModule } from '@progress/kendo-angular-tooltip';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
     TreeViewModule,
     HttpClientModule,
     DialogsModule,
+    TooltipsModule,
   ],
   providers: [ServiceService, { provide: LOCALE_ID, useValue: 'vi-VN' }],
   bootstrap: [AppComponent],

@@ -6,6 +6,7 @@ import { ServiceService } from 'src/app/service/service.service';
 //interface
 import { ProductList, ProductApi } from 'src/app/DTO';
 import { DrawerComponent } from '@progress/kendo-angular-layout';
+import { ActionsLayout, DialogAction } from '@progress/kendo-angular-dialog';
 
 @Component({
   selector: 'app-c-detail',
@@ -13,28 +14,49 @@ import { DrawerComponent } from '@progress/kendo-angular-layout';
   styleUrls: ['./c-detail.component.scss'],
 })
 export class CDetailComponent implements OnInit {
+  // Variable drawer
   @Input() drawerRef: DrawerComponent;
-  arrProduct: ProductApi[];
-  productList: any;
+  ReponProduct: any;
+  ListProduct: any[];
+
   valueSearch: string = '';
   filterData: any = {};
+
+  // Variable dialog
+  opened: boolean = false;
+  actionsLayout: ActionsLayout = 'normal';
+  ProductName: string;
+  codeProduct: number;
 
   constructor(private service: ServiceService) {}
 
   ngOnInit(): void {
-    this.service.getDataApi().subscribe((data: ProductList) => {
-      this.productList = data.ObjectReturn.Data;
-    });
-  }
-
-  // Delete
-  onDelete(value: any) {
-    alert(
-      `Đã xóa sản phẩm:\n  - ProductName: ${value.ProductName}\n  - Barcode: ${value.Barcode}`
+    this.ReponProduct = this.service.getDataApi().subscribe(
+      (data: ProductList) => {
+        this.ListProduct = data.ObjectReturn.Data;
+      },
+      (e) => {
+        console.error(e);
+      }
     );
   }
 
-  // Search
+  // <-- Start: Grid product
+
+  // Delete product
+  onDelete(value: any) {
+    if (value !== -1) {
+      for (let index = 0; index < this.ListProduct.length; index++) {
+        const element = this.ListProduct[index].Code;
+        this.ListProduct = this.ListProduct.filter(
+          (item) => item.Code !== value
+        ); // Xóa phần tử khỏi mảng tạm thời
+      }
+    }
+    this.opened = false;
+  }
+
+  // Search product
   handleSearch() {
     this.filterData = {
       skip: 0,
@@ -63,22 +85,74 @@ export class CDetailComponent implements OnInit {
         ],
       },
     };
-    this.service
-      .SearchDataApi(this.filterData)
-      .subscribe((data: ProductList) => {
-        this.productList = data.ObjectReturn.Data;
-      });
+    this.service.SearchDataApi(this.filterData).subscribe(
+      (data: ProductList) => {
+        this.ReponProduct = data.ObjectReturn.Data;
+      },
+      (e) => {
+        console.error(e);
+      }
+    );
   }
 
-  // Edit
+  // Edit product
   handleEdit(id: any) {
     this.drawerRef.toggle();
-    this.service.getProduct(id).subscribe((data: ProductList) => {
-      this.service.Product.next(data.ObjectReturn);
-    });
+    this.service.getProduct(id).subscribe(
+      (data: ProductList) => {
+        this.service.Product.next(data.ObjectReturn);
+      },
+      (e) => {
+        console.error(e);
+      }
+    );
   }
 
+  // End: Grid product -->
+
+  // <-- Start: dialog
+
+  // Log action dialog
+  onAction(action: DialogAction): void {
+    console.log(action);
+    this.opened = false;
+  }
+
+  // Close dialog
+  closeDialog(status: string): void {
+    if (status == 'yes') {
+      this.onDelete(this.codeProduct);
+    } else {
+      this.opened = false;
+    }
+  }
+
+  // Open dialog
+  openDialog(code: number): void {
+    this.opened = true;
+    this.service.getProduct(code).subscribe(
+      (data: ProductList) => {
+        this.service.Product.next(data.ObjectReturn);
+      },
+      (e) => {
+        console.error(e);
+      }
+    );
+
+    this.service.Product.subscribe(
+      (v: ProductApi) => {
+        this.ProductName = v.ProductName;
+        this.codeProduct = v.Code;
+      },
+      (e) => {
+        console.error(e);
+      }
+    );
+  }
+
+  // End: dialog -->
+
   ngOnDestroy() {
-    this.productList.unsubscribe();
+    this.ReponProduct.unsubscribe();
   }
 }

@@ -1,3 +1,4 @@
+<!-- Start: Grid  -->
 <div class="wrapper-detail-program">
   <div class="header-detail-program">
     <div class="title-detail-program">
@@ -52,7 +53,8 @@
   </div>
 
   <div class="body-detail-program mt-3">
-    <app-c-grid-layout-block [dataView]="productList">
+    <app-c-grid-layout-block [dataView]="ListProduct">
+      <!-- Start: Body grid  -->
       <kendo-grid-column [class]="'title'">
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
           <div class="container-product">
@@ -62,7 +64,8 @@
                 [themeColor]="'base'"
                 imageUrl="assets/images/dustbin.svg"
                 class="dustbin"
-                (click)="onDelete(dataItem)"
+                *ngIf="!opened"
+                (click)="openDialog(dataItem.Code)"
               ></button>
               <button
                 kendoButton
@@ -78,8 +81,10 @@
                 alt="product"
                 class="imgProduct"
               />
-              <div class="sub-title">
-                <span class="title">{{ dataItem.ProductName }}</span>
+              <div class="sub-title" kendoTooltip>
+                <span class="title" title="{{ dataItem.ProductName }}">{{
+                  dataItem.ProductName
+                }}</span>
                 <div class="ncode">
                   <span class="barcode">{{ dataItem.Barcode }}</span>
                 </div>
@@ -88,6 +93,57 @@
           </div>
         </ng-template>
       </kendo-grid-column>
+      <!-- End: Body grid  -->
     </app-c-grid-layout-block>
   </div>
+
+  <!-- Start: Dialog  -->
+  <kendo-dialog
+    *ngIf="opened"
+    (action)="onAction($event)"
+    title="XÓA SẢN PHẨM"
+    (close)="closeDialog('cancel')"
+    [minWidth]="250"
+    [width]="450"
+    themeColor="light"
+    class="wrapper-dialog"
+  >
+    <!-- Start: header dialog  -->
+    <kendo-dialog-titlebar>
+      <div class="title">
+        <img src="assets/images/warning_red.svg" alt="icon" />
+        <span>XÓA SẢN PHẨM</span>
+      </div>
+    </kendo-dialog-titlebar>
+    <!-- End: header dialog  -->
+
+    <!-- Start: Body dialog  -->
+    <div class="body_dialog">
+      <p>Bạn chắc chắn muốn xóa</p>
+      <strong>{{ ProductName }}</strong>
+      <p>
+        Sản phẩm bị xóa sẽ <span style="color: red">KHÔNG</span> thể khôi phục
+        lại.
+      </p>
+    </div>
+    <!-- Emd: Body dialog  -->
+
+    <!-- Start: action dialog  -->
+    <kendo-dialog-actions>
+      <button kendoButton (click)="closeDialog('no')" themeColor="base">
+        KHÔNG XÓA
+      </button>
+      <button
+        kendoButton
+        imageUrl="assets/images/trash_white.svg"
+        (click)="closeDialog('yes')"
+        themeColor="error"
+      >
+        XÓA
+      </button>
+    </kendo-dialog-actions>
+    <!-- End: action dialog  -->
+  </kendo-dialog>
+  <!-- End: Dialog  -->
 </div>
+<!-- End: Grid  -->

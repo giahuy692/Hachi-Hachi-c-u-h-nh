@@ -85,14 +85,22 @@ export class LayoutComponent implements OnInit {
   CodeProduct: number = 0;
   ProductName: string = '';
   ImagesProduct: any;
+  OrginalName: string = '';
+  BrandName: string = '';
+  Barcode: string = '';
+  Price: number = 0;
 
   constructor(private service: ServiceService) {}
 
   ngOnInit() {
     this.service.Product.subscribe((value: ProductApi) => {
       this.ProductName = value.ProductName;
-      this.CodeProduct = parseInt(value.Barcode);
+      this.CodeProduct = value.Code;
       this.ImagesProduct = value.ImageThumb;
+      this.Barcode = value.Barcode;
+      this.BrandName = value.BrandName;
+      this.OrginalName = value.OrginalName;
+      this.Price = value.Price;
     });
   }
 

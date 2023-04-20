@@ -2,6 +2,8 @@
   app-c-detail {
     .wrapper-detail-program {
       padding: 19px 13px;
+
+      // Start: header detail
       .header-detail-program {
         display: flex;
         justify-content: space-between;
@@ -30,8 +32,10 @@
           column-gap: 10px;
         }
       }
+      // End: header detail
 
       .body-detail-program {
+        // Start: Grid
         .k-grid {
           .k-grid-content {
             background-color: #edeff3;
@@ -46,10 +50,11 @@
             padding: 14px 0;
 
             tr {
+              flex: 1 1 246px;
               height: fit-content;
               border-radius: 10px;
               td {
-                width: 246px;
+                display: flex;
                 background-color: #fff;
                 border: 1px solid #008000;
                 border-radius: 10px;
@@ -74,11 +79,11 @@
 
                   .title {
                     display: -webkit-box;
-                    color: #353935;
-                    -webkit-line-clamp: 3;
+                    -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
-                    overflow: hidden;
                     text-overflow: ellipsis;
+                    color: #353935;
+                    overflow: hidden;
                   }
 
                   .ncode {
@@ -119,6 +124,51 @@
 
             .k-table-td {
               padding: 0;
+            }
+          }
+        }
+        // End: Grid
+
+        // Start: dialog
+      }
+      .wrapper-dialog {
+        .k-dialog {
+          .k-dialog-titlebar {
+            background-color: #fff;
+            .k-dialog-title {
+              justify-content: center;
+              color: #fd7676;
+            }
+
+            .k-i-custom-icon {
+              background-image: url("../../../assets/images/warning_red.svg");
+              background-repeat: no-repeat;
+              background-size: contain;
+            }
+
+            .k-dialog-actions {
+              display: none;
+            }
+          }
+
+          .body_dialog {
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            text-align: center;
+
+            strong {
+              color: #008000;
+            }
+          }
+
+          .k-dialog-buttongroup {
+            padding: 0;
+            column-gap: 0;
+
+            button {
+              height: 53px;
+              border-radius: 0;
             }
           }
         }

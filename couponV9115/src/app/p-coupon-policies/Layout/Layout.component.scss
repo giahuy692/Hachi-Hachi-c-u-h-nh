@@ -77,6 +77,7 @@
           background-color: #5a6276;
 
           .k-drawer-item {
+            display: contents;
             height: 47px;
             flex-direction: column;
             padding: 15px 8px;
@@ -86,7 +87,22 @@
               display: flex;
               align-items: center;
               column-gap: 10px;
+              padding: 20px 7px;
+              border-left: 2px solid transparent;
 
+              .k-hover,
+              &:focus,
+              &:hover {
+                background-color: #1a2334 !important;
+                border-left: 2px solid #fff;
+                color: #fff;
+
+                .child {
+                  div {
+                    color: #959db3;
+                  }
+                }
+              }
               .item-descr-wrap {
                 display: flex;
                 width: 100%;
@@ -96,17 +112,26 @@
               }
             }
 
-            .child {
+            .wrapper-child {
               width: 100%;
-              .btnChild {
-                background-color: transparent;
-                border: none;
-                justify-content: flex-start;
-                padding: 10px 0;
+              background-color: #1a2334;
 
-                .k-selected {
-                  border-color: none;
-                  background-color: none;
+              .child {
+                width: 100%;
+                .k-button-group {
+                  flex-direction: column;
+                  padding-left: 60px;
+                  .btnChild {
+                    background-color: transparent;
+                    border: none;
+                    justify-content: flex-start;
+                    padding: 10px 0;
+
+                    .k-selected {
+                      border-color: none;
+                      background-color: none;
+                    }
+                  }
                 }
               }
             }
