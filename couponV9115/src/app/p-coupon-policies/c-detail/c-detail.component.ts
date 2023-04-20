@@ -87,7 +87,7 @@ export class CDetailComponent implements OnInit {
     };
     this.service.SearchDataApi(this.filterData).subscribe(
       (data: ProductList) => {
-        this.ReponProduct = data.ObjectReturn.Data;
+        this.ListProduct = data.ObjectReturn.Data;
       },
       (e) => {
         console.error(e);
