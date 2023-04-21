@@ -57,24 +57,24 @@
       <!-- Start: Body grid  -->
       <kendo-grid-column [class]="'title'">
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+          <div class="tool">
+            <button
+              kendoButton
+              [themeColor]="'base'"
+              imageUrl="assets/images/dustbin.svg"
+              class="dustbin"
+              *ngIf="!opened"
+              (click)="openDialog(dataItem.Code)"
+            ></button>
+            <button
+              kendoButton
+              [themeColor]="'base'"
+              imageUrl="assets/images/icon_edit.svg"
+              class="edit"
+              (click)="handleEdit(dataItem.Code)"
+            ></button>
+          </div>
           <div class="container-product">
-            <div class="tool">
-              <button
-                kendoButton
-                [themeColor]="'base'"
-                imageUrl="assets/images/dustbin.svg"
-                class="dustbin"
-                *ngIf="!opened"
-                (click)="openDialog(dataItem.Code)"
-              ></button>
-              <button
-                kendoButton
-                [themeColor]="'base'"
-                imageUrl="assets/images/icon_edit.svg"
-                class="edit"
-                (click)="handleEdit(dataItem.Code)"
-              ></button>
-            </div>
             <div class="content-product">
               <img
                 src="{{ 'http://test.lapson.vn/' + dataItem.ImageThumb }}"
@@ -101,7 +101,6 @@
   <kendo-dialog
     *ngIf="opened"
     (action)="onAction($event)"
-    title="XÓA SẢN PHẨM"
     (close)="closeDialog('cancel')"
     [minWidth]="250"
     [width]="450"
@@ -110,8 +109,12 @@
   >
     <!-- Start: header dialog  -->
     <kendo-dialog-titlebar>
-      <div class="title">
-        <img src="assets/images/warning_red.svg" alt="icon" />
+      <div class="title-delete d-flex">
+        <span
+          class="btn-title-dialog"
+          kendoButton
+          imageUrl="assets/images/warning_red.svg"
+        ></span>
         <span>XÓA SẢN PHẨM</span>
       </div>
     </kendo-dialog-titlebar>

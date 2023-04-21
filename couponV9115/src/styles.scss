@@ -1,8 +1,10 @@
+// Font family
 @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Mulish:wght@500&display=swap");
 
 // styles.scss
 $primary: #008000;
 $kendo-color-primary: $primary;
+$kendo-checkbox-border: $primary;
 
 @import "~@progress/kendo-theme-default/dist/all.scss";
 
@@ -25,3 +27,116 @@ body {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
+
+.d-flex_around {
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important ;
+}
+
+.d-flex_between {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.font-w {
+  font-weight: 700;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.f-wrap {
+  flex-wrap: wrap;
+}
+
+.row-gap {
+  row-gap: 5px;
+}
+
+.col-gap {
+  column-gap: 5px;
+}
+
+.d-flex_both {
+  display: flex !important;
+  align-items: center !important;
+  column-gap: 5px;
+}
+
+.d-flex_column {
+  display: flex !important;
+  flex-direction: column !important;
+  row-gap: 5px;
+}
+
+// Start: dialog
+.wrapper-dialog {
+  .k-dialog {
+    .k-dialog-titlebar {
+      background-color: #fff;
+      align-items: center;
+      align-self: center;
+      .title-delete {
+        color: #fd7676;
+        column-gap: 5px;
+        font-weight: 700;
+      }
+      .btn-title-dialog {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        img {
+          width: 16px;
+        }
+      }
+
+      .title-success {
+        justify-content: center;
+        color: green;
+        column-gap: 5px;
+        font-weight: 700;
+        img {
+          width: 16px;
+        }
+      }
+
+      .k-dialog-actions {
+        display: none;
+      }
+    }
+
+    .body_dialog {
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+      text-align: center;
+
+      strong {
+        color: #008000;
+      }
+    }
+
+    .k-dialog-buttongroup {
+      padding: 0;
+      column-gap: 0;
+
+      button {
+        width: 100%;
+        height: 53px;
+        border-radius: 0;
+
+        .k-button-icon {
+          width: 30px;
+          img {
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+//End: dialog

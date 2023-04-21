@@ -64,7 +64,7 @@ export class ServiceService implements OnInit {
       this.http
         .post<ProductList>(
           this.apiGetListProductUrl,
-          (this.dataSourceRequest = toDataSourceRequest(search))
+          toDataSourceRequest(search)
         )
         .subscribe(
           (data) => {

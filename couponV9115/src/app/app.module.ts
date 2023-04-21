@@ -17,6 +17,9 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { ServiceService } from './service/service.service';
 import { TranslatePipe } from './pipe/translate.pipe';
 
+// Icon
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 //kendo
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
@@ -34,7 +37,7 @@ import { CDetailComponent } from './p-coupon-policies/c-detail/c-detail.componen
 import { CConfigComponent } from './p-coupon-policies/c-config/c-config.component';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { TooltipsModule } from '@progress/kendo-angular-tooltip';
-
+import { CDialogComponent } from './c-dialog/c-dialog.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,7 @@ import { TooltipsModule } from '@progress/kendo-angular-tooltip';
     CGridLayoutBlockComponent,
     CDetailComponent,
     CConfigComponent,
+    CDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +73,7 @@ import { TooltipsModule } from '@progress/kendo-angular-tooltip';
     HttpClientModule,
     DialogsModule,
     TooltipsModule,
+    FontAwesomeModule,
   ],
   providers: [ServiceService, { provide: LOCALE_ID, useValue: 'vi-VN' }],
   bootstrap: [AppComponent],

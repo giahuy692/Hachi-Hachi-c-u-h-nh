@@ -11,7 +11,7 @@
       <span class="title-dl">THÊM MỚI SẢN PHẨM</span>
       <hr />
       <div class="wapper-content">
-        <kendo-label class="k-form" text="Postcode sản phẩm">
+        <kendo-label class="k-form font-w" text="Postcode sản phẩm:">
           <kendo-textbox
             [style.width.%]="100"
             placeholder="Code sản phẩm..."
@@ -20,58 +20,195 @@
           >
           </kendo-textbox>
         </kendo-label>
-        <kendo-label class="k-form" text="Barcode sản phẩm">
+
+        <kendo-label class="k-form font-w" text="Barcode sản phẩm:">
           <kendo-textbox
             [style.width.%]="100"
             placeholder="Barcode sản phẩm..."
-            [(value)]="CodeProduct"
+            [(value)]="Barcode"
           >
           </kendo-textbox>
-          <kendo-label class="k-form" text="Tên sản phẩm">
-            <kendo-textarea
-              class="ProductName"
-              [style.width.%]="100"
-              resizable="auto"
-              placeholder="Nhập tên sản phẩm..."
-              [(value)]="ProductName"
-            >
-            </kendo-textarea>
-          </kendo-label>
         </kendo-label>
-        <div>Giá: {{ Price }}</div>
-        <div>Xuất xứ: {{ OrginalName }}</div>
-        <div>Thương hiệu: {{ BrandName }}</div>
 
-        <img
-          class="detail_image"
-          src="{{ 'http://test.lapson.vn/' + ImagesProduct }}"
-          alt="image"
-          style="width: 100px"
-        />
+        <kendo-label
+          class="k-form font-w"
+          text="Tên sản phẩm:"
+          style="display: block"
+        >
+          <kendo-textarea
+            class="ProductName"
+            [style.width.%]="100"
+            resizable="auto"
+            placeholder="Nhập tên sản phẩm..."
+            [(value)]="ProductName"
+          >
+          </kendo-textarea>
+        </kendo-label>
 
-        <div class="option-tool">
-          <button
-            class="cancel"
-            kendoButton
-            title="ĐÓNG"
-            [themeColor]="'base'"
-            (click)="drawerRight.toggle()"
+        <kendo-label class="k-form font-w" text="Link sản phẩm:">
+          <kendo-textbox
+            [style.width.%]="100"
+            placeholder="Link sản phẩm..."
+            [(value)]="Alias"
           >
-            ĐÓNG
-          </button>
-          <button
-            class="update"
-            kendoButton
-            title="CẬP NHẬT"
-            [themeColor]="'primary'"
+          </kendo-textbox>
+        </kendo-label>
+
+        <div class="d-flex_column">
+          <kendo-label
+            class="k-checkbox-label font-w"
+            text="FreeShippingImage:"
           >
-            CẬP NHẬT
-          </button>
+          </kendo-label>
+          <kendo-textbox
+            [style.width.%]="100"
+            placeholder="Sản phẩm này có được freeship không?"
+            [value]="FreeShippingImage.length > 0 ? FreeShippingImage : ''"
+          >
+          </kendo-textbox>
         </div>
+
+        <kendo-label class="k-form font-w" text="Trạng thái sản phẩm">
+          <kendo-dropdownlist
+            [data]="statusItem"
+            [(ngModel)]="selectedItemStatus"
+            [defaultItem]="selectedItemStatus"
+            textField="text"
+            valueField="value"
+          >
+          </kendo-dropdownlist>
+        </kendo-label>
+
+        <div class="d-flex_between f-wrap row-gap">
+          <div class="d-flex col-gap" style="width: 50%">
+            <kendo-label
+              class="k-checkbox-label font-w"
+              [for]="IsBestPrice"
+              text="Best price: "
+            ></kendo-label>
+            <input
+              type="checkbox"
+              #IsBestPrice
+              kendoCheckBox
+              [value]="IsBestPrice"
+            />
+          </div>
+          <div class="d-flex col-gap" style="width: 50%">
+            <kendo-label
+              class="k-checkbox-label font-w"
+              [for]="IsCombo"
+              text="Sản phẩm là combo: "
+            ></kendo-label>
+            <input
+              type="checkbox"
+              #IsBestPrice
+              kendoCheckBox
+              [value]="IsCombo"
+            />
+          </div>
+          <div class="d-flex col-gap" style="width: 50%">
+            <kendo-label
+              class="k-checkbox-label font-w"
+              [for]="IsGift"
+              text="Sản phẩm là quả tặng: "
+            ></kendo-label>
+            <input
+              type="checkbox"
+              #IsBestPrice
+              kendoCheckBox
+              [value]="IsGift"
+            />
+          </div>
+          <div class="d-flex col-gap" style="width: 50%">
+            <kendo-label
+              class="k-checkbox-label font-w"
+              [for]="IsHachi24h"
+              text="Hachi24h: "
+            ></kendo-label>
+            <input
+              type="checkbox"
+              #IsBestPrice
+              kendoCheckBox
+              [value]="IsHachi24h"
+            />
+          </div>
+          <div class="d-flex col-gap" style="width: 50%">
+            <kendo-label
+              class="k-checkbox-label font-w"
+              [for]="IsHachi24h"
+              text="Sản phẩm mới: "
+            ></kendo-label>
+            <input
+              type="checkbox"
+              #IsBestPrice
+              kendoCheckBox
+              [value]="IsHachi24h"
+            />
+          </div>
+        </div>
+        <kendo-label class="k-form font-w" text="Giá sản phẩm:">
+          <kendo-numerictextbox
+            [style.width.%]="100"
+            [(value)]="Price"
+            [min]="10000"
+            [autoCorrect]="false"
+            format="n0"
+            [spinners]="false"
+          >
+          </kendo-numerictextbox>
+        </kendo-label>
+        <div class="d-flex_both">
+          <kendo-label class="k-form font-w" text="Xuất xứ:">
+            <kendo-textbox
+              [style.width.%]="100"
+              placeholder="Xuất xứ..."
+              [(value)]="OrginalName"
+            >
+            </kendo-textbox>
+          </kendo-label>
+          <kendo-label class="k-form font-w" text="Thương hiệu:">
+            <kendo-textbox
+              [style.width.%]="100"
+              placeholder="Thương hiệu..."
+              [(value)]="BrandName"
+            >
+            </kendo-textbox>
+          </kendo-label>
+        </div>
+
+        <div>
+          <img
+            class="detail_image"
+            src="{{ 'http://test.lapson.vn/' + ImagesProduct }}"
+            alt="image"
+            style="width: 100px"
+          />
+        </div>
+      </div>
+      <div class="option-tool">
+        <button
+          class="cancel"
+          kendoButton
+          title="ĐÓNG"
+          [themeColor]="'base'"
+          (click)="drawerRight.toggle()"
+        >
+          ĐÓNG
+        </button>
+        <button
+          class="update"
+          kendoButton
+          title="CẬP NHẬT"
+          [themeColor]="'primary'"
+          (click)="openDialog(CodeProduct)"
+        >
+          CẬP NHẬT
+        </button>
       </div>
     </ng-template>
   </kendo-drawer>
 
+  <!-- Start: drawer Left  -->
   <div class="drawer-left">
     <kendo-drawer-content>
       <div class="custom-toolbar">
@@ -153,4 +290,54 @@
       </kendo-drawer-container>
     </kendo-drawer-content>
   </div>
+  <!-- End: drawer left  -->
 </kendo-drawer-container>
+
+<!-- Start: Dialog  -->
+<kendo-dialog
+  *ngIf="opened"
+  (action)="onAction($event)"
+  (close)="closeDialog('cancel')"
+  [minWidth]="250"
+  [width]="450"
+  themeColor="light"
+  class="wrapper-dialog"
+  style="z-index: 100000"
+>
+  <!-- Start: header dialog  -->
+  <kendo-dialog-titlebar>
+    <div class="title-success d-flex">
+      <fa-icon [style.fontSize.px]="22" [icon]="faPenSquare"></fa-icon>
+      <span>CẬP NHẬT SẢN PHẨM</span>
+    </div>
+  </kendo-dialog-titlebar>
+  <!-- End: header dialog  -->
+
+  <!-- Start: Body dialog  -->
+  <div class="body_dialog">
+    <p>Bạn chắc chắn muốn cập nhật</p>
+    <strong>{{ ProductName }}</strong>
+    <p>
+      Sản phẩm <span style="color: green">ĐƯỢC</span> cập nhật theo thông tin
+      mới đã được nhập.
+    </p>
+  </div>
+  <!-- Emd: Body dialog  -->
+
+  <!-- Start: action dialog  -->
+  <kendo-dialog-actions>
+    <button kendoButton (click)="closeDialog('no')" themeColor="base">
+      KHÔNG CẬP NHẬT
+    </button>
+    <button
+      kendoButton
+      imageUrl="assets/images/icon_successful.svg"
+      (click)="closeDialog('yes')"
+      themeColor="success"
+    >
+      CẬP NHẬT
+    </button>
+  </kendo-dialog-actions>
+  <!-- End: action dialog  -->
+</kendo-dialog>
+<!-- End: Dialog  -->

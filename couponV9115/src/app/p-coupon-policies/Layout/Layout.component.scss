@@ -1,5 +1,6 @@
 ::ng-deep {
   app-Layout {
+    // Start: Drawer right
     .k-drawer-expanded {
       #p-kendo-drawer-right {
         margin-top: 50px;
@@ -9,7 +10,12 @@
           width: 100% !important;
 
           .wapper-content {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
             padding: 10px 18px;
+            overflow: hidden;
+            overflow-y: scroll;
 
             .k-form {
               .k-label {
@@ -26,21 +32,24 @@
               width: 251px !important;
               margin: 10px auto;
             }
+          }
+          .option-tool {
+            display: flex;
+            width: 100%;
+            padding: 10px 0px;
+            -moz-column-gap: 10px;
+            column-gap: 10px;
+            position: fixed;
+            bottom: 50px;
 
-            .option-tool {
-              display: flex;
-              column-gap: 10px;
-              margin: 26px 0 auto;
+            .cancel {
+              width: 94px;
+              height: 33px;
+            }
 
-              .cancel {
-                width: 94px;
-                height: 33px;
-              }
-
-              .update {
-                width: 94px;
-                height: 33px;
-              }
+            .update {
+              width: 94px;
+              height: 33px;
             }
           }
         }
@@ -56,6 +65,9 @@
         margin-top: 50px;
       }
     }
+    // End: Drawer right
+
+    // Start: Drawer lefft
     .drawer-left {
       .selectedItem {
         background-color: #1a2334 !important;
@@ -190,6 +202,8 @@
         border-bottom: inset;
         border-bottom-width: 1px;
         color: #656565;
+        position: relative;
+        z-index: 9999999999999999;
         .ws4 {
           display: flex;
           width: 240px;
@@ -220,5 +234,6 @@
         }
       }
     }
+    // End: Drawer left
   }
 }

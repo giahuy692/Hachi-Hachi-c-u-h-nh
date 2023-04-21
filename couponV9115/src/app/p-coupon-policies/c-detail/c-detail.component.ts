@@ -6,7 +6,7 @@ import { ServiceService } from 'src/app/service/service.service';
 //interface
 import { ProductList, ProductApi } from 'src/app/DTO';
 import { DrawerComponent } from '@progress/kendo-angular-layout';
-import { ActionsLayout, DialogAction } from '@progress/kendo-angular-dialog';
+import { DialogAction } from '@progress/kendo-angular-dialog';
 
 @Component({
   selector: 'app-c-detail',
@@ -24,7 +24,6 @@ export class CDetailComponent implements OnInit {
 
   // Variable dialog
   opened: boolean = false;
-  actionsLayout: ActionsLayout = 'normal';
   ProductName: string;
   codeProduct: number;
 
@@ -47,7 +46,6 @@ export class CDetailComponent implements OnInit {
   onDelete(value: any) {
     if (value !== -1) {
       for (let index = 0; index < this.ListProduct.length; index++) {
-        const element = this.ListProduct[index].Code;
         this.ListProduct = this.ListProduct.filter(
           (item) => item.Code !== value
         ); // Xóa phần tử khỏi mảng tạm thời
@@ -60,7 +58,7 @@ export class CDetailComponent implements OnInit {
   handleSearch() {
     this.filterData = {
       skip: 0,
-      take: 255,
+      take: this.ListProduct.length,
       filter: {
         logic: 'or',
         filters: [

@@ -30,7 +30,10 @@
               },
               "src/styles.scss"
             ],
-            "scripts": []
+
+            "scripts": [
+              "node_modules/@fortawesome/free-solid-svg-icons/index.d.ts"
+            ]
           },
           "configurations": {
             "production": {

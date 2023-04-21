@@ -68,3 +68,8 @@ export class ProductList {
     Errors: null;
   };
 }
+
+export class ItemStatus {
+  text: string;
+  value: number;
+}
