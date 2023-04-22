@@ -1,13 +1,13 @@
 // Angular
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DialogAction } from '@progress/kendo-angular-dialog';
 import {
   DrawerComponent,
   DrawerItem,
   DrawerSelectEvent,
 } from '@progress/kendo-angular-layout';
-import { ProductApi, ItemStatus } from 'src/app/DTO';
-import { ServiceService } from 'src/app/service/service.service';
+import { ProductApi, Item } from 'src/app/DTO';
+import { ServiceAPI } from 'src/app/service/service.service';
 
 // Icon
 import { faCheckCircle, faPenSquare } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +20,7 @@ import { checkCircleIcon, SVGIcon } from '@progress/kendo-svg-icons';
   templateUrl: './Layout.component.html',
   styleUrls: ['./Layout.component.scss'],
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements AfterViewInit {
   // Variable icon
   faCheckCircle = faCheckCircle;
   faPenSquare = faPenSquare;
@@ -28,9 +28,9 @@ export class LayoutComponent implements OnInit {
 
   // Variable Sidebar
   public showChildren: boolean = false;
-  public selectedItem: number;
-  public expanded = false;
-  public expandedRight = false;
+  public selectedItem: number = 1;
+  public expanded: boolean = false;
+  public expandedRight: boolean = false;
 
   public items = [
     {
@@ -92,6 +92,7 @@ export class LayoutComponent implements OnInit {
 
   // Variable detail product
   @ViewChild('drawerRight') public DrawerRightComponent: DrawerComponent;
+  public drawerRef: DrawerComponent;
   CodeProduct: number = 0;
   ProductName: string = '';
   ImagesProduct: any;
@@ -99,6 +100,8 @@ export class LayoutComponent implements OnInit {
   BrandName: string = '';
   Barcode: string = '';
   Price: number = 0;
+  PriceBase: number = 0;
+  PriceVip: number = 0;
   Alias: string = '';
   FreeShippingImage: string = '';
   IsBestPrice: boolean = false;
@@ -109,28 +112,35 @@ export class LayoutComponent implements OnInit {
   IsSpecial: boolean = false;
   IsPromotion: boolean = false;
   StatusID: number = 0;
-  TypeData: string = '';
-  statusItem: Array<ItemStatus> = [
+  TypeData: number = 0;
+  statusItem: Array<Item> = [
     { value: 0, text: 'Tạo mới' },
     { value: 1, text: 'Chờ duyệt' },
     { value: 2, text: 'Đã duyệt' },
     { value: 3, text: 'Ngừng hiển thị' },
     { value: 4, text: 'Trả về' },
   ];
-  selectedItemStatus: ItemStatus = this.statusItem[this.StatusID];
+  selectedItemStatus: Item = this.statusItem[this.StatusID];
 
-  // TypeData
-  // 1: sp thuong
-  // 2: combo
-  // 3: qua tang
+  typeData: Array<Item> = [
+    { value: 1, text: 'Sản phẩm thường' },
+    { value: 2, text: 'Combo' },
+    { value: 3, text: 'Quả tặng' },
+  ];
+  selectedItemTypeData: Item = this.typeData[this.TypeData];
 
   // Variable dialog
   opened: boolean = false;
 
-  constructor(private service: ServiceService) {}
+  constructor(private service: ServiceAPI) {}
 
   ngOnInit() {
     this.service.Product.subscribe((value: ProductApi) => {
+      console.log(
+        '%cLayout.component.ts line:136 value',
+        'color: #26bfa5;',
+        value
+      );
       this.ProductName = value.ProductName;
       this.CodeProduct = value.Code;
       this.ImagesProduct = value.ImageThumb;
@@ -138,6 +148,8 @@ export class LayoutComponent implements OnInit {
       this.BrandName = value.BrandName;
       this.OrginalName = value.OrginalName;
       this.Price = value.Price;
+      this.PriceBase = value.PriceBase;
+      this.PriceVip = value.PriceVIP;
       this.Alias = value.Alias;
       this.FreeShippingImage = value.FreeShippingImage;
       this.IsBestPrice = value.IsBestPrice;
@@ -145,17 +157,14 @@ export class LayoutComponent implements OnInit {
       this.IsGift = value.IsGift;
       this.IsHachi24h = value.IsHachi24h;
       this.IsNew = value.IsNew;
-      this.TypeData = value.TypeData;
+      this.TypeData = parseInt(value.TypeData);
       this.StatusID = value.StatusID;
-      console.log(
-        '%cLayout.component.ts line:104 value',
-        'color: #007acc;',
-        value
-      );
     });
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit(): void {
+    this.drawerRef = this.DrawerRightComponent;
+  }
 
   // <- Drawer left
   //Handle  onSelectd in drawer left
@@ -178,12 +187,6 @@ export class LayoutComponent implements OnInit {
 
   // <-- Start: dialog
 
-  // Log action dialog
-  onAction(action: DialogAction): void {
-    console.log(action);
-    this.opened = false;
-  }
-
   // Close dialog
   closeDialog(status: string): void {
     if (status == 'yes') {
@@ -197,6 +200,5 @@ export class LayoutComponent implements OnInit {
   openDialog(code: number): void {
     this.opened = true;
   }
-
   // End: dialog -->
 }

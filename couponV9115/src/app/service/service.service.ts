@@ -8,27 +8,26 @@ import {
 } from '@progress/kendo-data-query';
 
 // DTO
-import { ProductList } from 'src/app/DTO';
+import { ProductApi, ProductList } from 'src/app/DTO';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ServiceService implements OnInit {
+export class ServiceAPI implements OnInit {
   constructor(private http: HttpClient) {}
   gridState: DataSourceRequestState = {};
   dataSourceRequest: any;
   Product = new Subject<any>();
-  private apiGetListProductUrl =
-    'http://test.lapson.vn/api/product/GetListProduct';
-  private apiGetProductUrl = 'http://test.lapson.vn/api/product/GetProduct';
+  private apiUrl = 'http://test.lapson.vn/api/product/';
 
   ngOnInit() {}
 
   ngAfterViewInit() {}
 
+  // GET ProductList
   getDataApi() {
     return new Observable<any>((obs) => {
-      this.http.post<ProductList>(this.apiGetListProductUrl, {}).subscribe(
+      this.http.post<ProductList>(this.apiUrl + 'GetListProduct', {}).subscribe(
         (data) => {
           obs.next(data);
           obs.complete();
@@ -41,10 +40,11 @@ export class ServiceService implements OnInit {
     });
   }
 
+  // GET Product
   getProduct(id: any) {
     return new Observable<any>((obs) => {
       this.http
-        .post<ProductList>(this.apiGetProductUrl, { Code: id })
+        .post<ProductList>(this.apiUrl + 'GetProduct', { Code: id })
         .subscribe(
           (data) => {
             obs.next(data);
@@ -59,11 +59,31 @@ export class ServiceService implements OnInit {
     });
   }
 
+  // Delete Product
+  delteProduct(id: any) {
+    return new Observable<any>((obs) => {
+      this.http
+        .post<ProductList>(this.apiUrl + 'GetProduct', { Code: id })
+        .subscribe(
+          (data) => {
+            obs.next(data);
+            obs.complete();
+            console.log('Get Product: ', data.ErrorString);
+          },
+          (error) => {
+            console.log(error);
+            obs.error(error);
+          }
+        );
+    });
+  }
+
+  // SEARCH Product
   SearchDataApi(search: any) {
     return new Observable<any>((obs) => {
       this.http
         .post<ProductList>(
-          this.apiGetListProductUrl,
+          this.apiUrl + 'GetProduct',
           toDataSourceRequest(search)
         )
         .subscribe(
@@ -79,8 +99,42 @@ export class ServiceService implements OnInit {
         );
     });
   }
+
+  // Update Product
+  UpdateProduct(id: any) {
+    return new Observable<any>((obs) => {
+      this.http
+        .post<ProductList>(this.apiUrl + 'GetProduct', toDataSourceRequest(id))
+        .subscribe(
+          (data) => {
+            console.log(data);
+            obs.next(data);
+            obs.complete();
+          },
+          (error) => {
+            console.log(error);
+            obs.error(error);
+          }
+        );
+    });
+  }
+
+  // Delete Product
+  DeletedProduct(id: any) {
+    return new Observable<any>((obs) => {
+      this.http
+        .post<ProductList>(this.apiUrl + 'GetProduct', toDataSourceRequest(id))
+        .subscribe(
+          (data) => {
+            console.log(data);
+            obs.next(data);
+            obs.complete();
+          },
+          (error) => {
+            console.log(error);
+            obs.error(error);
+          }
+        );
+    });
+  }
 }
-// return this.http.post<ProductList>(
-//   'http://test.lapson.vn/api/product/GetListProduct',
-//   (this.dataSourceRequest = toDataSourceRequest(this.gridState))
-// );

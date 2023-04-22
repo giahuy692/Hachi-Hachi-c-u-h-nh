@@ -69,7 +69,7 @@ export class ProductList {
   };
 }
 
-export class ItemStatus {
+export class Item {
   text: string;
   value: number;
 }

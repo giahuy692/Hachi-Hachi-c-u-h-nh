@@ -73,6 +73,14 @@ body {
   row-gap: 5px;
 }
 
+.mt-10 {
+  margin-top: 10px;
+}
+
+.d-block {
+  display: block;
+}
+
 // Start: dialog
 .wrapper-dialog {
   .k-dialog {
@@ -130,9 +138,9 @@ body {
         border-radius: 0;
 
         .k-button-icon {
-          width: 30px;
+          width: 20px;
           img {
-            width: 30px;
+            width: 20px;
           }
         }
       }
@@ -140,3 +148,17 @@ body {
   }
 }
 //End: dialog
+
+//Noti
+kendo-notification-container {
+  .k-notification-group {
+    margin-left: 10px;
+    z-index: 100000 !important;
+  }
+}
+
+kendo-numerictextbox {
+  .k-input-inner {
+    text-align: end;
+  }
+}

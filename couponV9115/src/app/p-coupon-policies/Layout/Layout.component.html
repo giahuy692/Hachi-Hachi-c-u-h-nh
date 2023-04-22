@@ -11,7 +11,10 @@
       <span class="title-dl">THÊM MỚI SẢN PHẨM</span>
       <hr />
       <div class="wapper-content">
-        <kendo-label class="k-form font-w" text="Postcode sản phẩm:">
+        <kendo-label
+          class="k-form font-w mt-10 d-block"
+          text="Postcode sản phẩm:"
+        >
           <kendo-textbox
             [style.width.%]="100"
             placeholder="Code sản phẩm..."
@@ -21,7 +24,10 @@
           </kendo-textbox>
         </kendo-label>
 
-        <kendo-label class="k-form font-w" text="Barcode sản phẩm:">
+        <kendo-label
+          class="k-form font-w mt-10 d-block"
+          text="Barcode sản phẩm:"
+        >
           <kendo-textbox
             [style.width.%]="100"
             placeholder="Barcode sản phẩm..."
@@ -30,22 +36,18 @@
           </kendo-textbox>
         </kendo-label>
 
-        <kendo-label
-          class="k-form font-w"
-          text="Tên sản phẩm:"
-          style="display: block"
-        >
-          <kendo-textarea
+        <kendo-label class="k-form font-w mt-10 d-block" text="Tên sản phẩm:">
+          <kendo-textbox
             class="ProductName"
             [style.width.%]="100"
             resizable="auto"
             placeholder="Nhập tên sản phẩm..."
             [(value)]="ProductName"
           >
-          </kendo-textarea>
+          </kendo-textbox>
         </kendo-label>
 
-        <kendo-label class="k-form font-w" text="Link sản phẩm:">
+        <kendo-label class="k-form font-w mt-10 d-block" text="Link sản phẩm:">
           <kendo-textbox
             [style.width.%]="100"
             placeholder="Link sản phẩm..."
@@ -54,21 +56,22 @@
           </kendo-textbox>
         </kendo-label>
 
-        <div class="d-flex_column">
-          <kendo-label
-            class="k-checkbox-label font-w"
-            text="FreeShippingImage:"
-          >
-          </kendo-label>
+        <kendo-label
+          class="k-checkbox-label font-w d-flex_column mt-10 d-block"
+          text="FreeShippingImage:"
+        >
           <kendo-textbox
             [style.width.%]="100"
             placeholder="Sản phẩm này có được freeship không?"
             [value]="FreeShippingImage.length > 0 ? FreeShippingImage : ''"
           >
           </kendo-textbox>
-        </div>
+        </kendo-label>
 
-        <kendo-label class="k-form font-w" text="Trạng thái sản phẩm">
+        <kendo-label
+          class="k-form font-w mt-10 d-block"
+          text="Trạng thái sản phẩm"
+        >
           <kendo-dropdownlist
             [data]="statusItem"
             [(ngModel)]="selectedItemStatus"
@@ -79,7 +82,19 @@
           </kendo-dropdownlist>
         </kendo-label>
 
-        <div class="d-flex_between f-wrap row-gap">
+        <kendo-label class="k-form font-w mt-10 d-block" text="Loại sản phẩm">
+          <kendo-dropdownlist
+            [data]="typeData"
+            [(ngModel)]="selectedItemTypeData"
+            [defaultItem]="selectedItemTypeData"
+            textField="text"
+            valueField="value"
+          >
+          </kendo-dropdownlist>
+        </kendo-label>
+
+        <div class="d-flex_between f-wrap row-gap mt-10 d-block">
+          <hr style="width: 100%" />
           <div class="d-flex col-gap" style="width: 50%">
             <kendo-label
               class="k-checkbox-label font-w"
@@ -145,19 +160,46 @@
               [value]="IsHachi24h"
             />
           </div>
+          <hr style="width: 100%" />
         </div>
-        <kendo-label class="k-form font-w" text="Giá sản phẩm:">
+
+        <kendo-label class="k-form font-w mt-10 d-block" text="Giá sản phẩm:">
           <kendo-numerictextbox
             [style.width.%]="100"
             [(value)]="Price"
             [min]="10000"
             [autoCorrect]="false"
-            format="n0"
+            format="c0"
             [spinners]="false"
           >
           </kendo-numerictextbox>
         </kendo-label>
-        <div class="d-flex_both">
+
+        <kendo-label class="k-form font-w mt-10 d-block" text="Giá cơ bản:">
+          <kendo-numerictextbox
+            [style.width.%]="100"
+            [(value)]="PriceBase"
+            [min]="10000"
+            [autoCorrect]="false"
+            format="c0"
+            [spinners]="false"
+          >
+          </kendo-numerictextbox>
+        </kendo-label>
+
+        <kendo-label class="k-form font-w mt-10 d-block" text="Giá VIP:">
+          <kendo-numerictextbox
+            [style.width.%]="100"
+            [(value)]="PriceVip"
+            [min]="10000"
+            [autoCorrect]="false"
+            format="c0"
+            [spinners]="false"
+          >
+          </kendo-numerictextbox>
+        </kendo-label>
+
+        <div class="d-flex_both mt-10 d-block">
           <kendo-label class="k-form font-w" text="Xuất xứ:">
             <kendo-textbox
               [style.width.%]="100"
@@ -176,15 +218,14 @@
           </kendo-label>
         </div>
 
-        <div>
-          <img
-            class="detail_image"
-            src="{{ 'http://test.lapson.vn/' + ImagesProduct }}"
-            alt="image"
-            style="width: 100px"
-          />
-        </div>
+        <img
+          class="detail_image mt-10 d-block"
+          src="{{ 'http://test.lapson.vn/' + ImagesProduct }}"
+          alt="image"
+          style="width: 100px"
+        />
       </div>
+
       <div class="option-tool">
         <button
           class="cancel"
@@ -284,7 +325,7 @@
             <app-p-tool-groups></app-p-tool-groups>
             <app-c-information></app-c-information>
             <app-c-conditions></app-c-conditions>
-            <app-c-detail [drawerRef]="DrawerRightComponent"></app-c-detail>
+            <app-c-detail [drawerRef]="drawerRef"></app-c-detail>
           </div>
         </kendo-drawer-content>
       </kendo-drawer-container>
@@ -296,7 +337,6 @@
 <!-- Start: Dialog  -->
 <kendo-dialog
   *ngIf="opened"
-  (action)="onAction($event)"
   (close)="closeDialog('cancel')"
   [minWidth]="250"
   [width]="450"

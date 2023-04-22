@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { NotificationService } from '@progress/kendo-angular-notification';
 //Service
-import { ServiceService } from 'src/app/service/service.service';
+import { ServiceAPI } from 'src/app/service/service.service';
 
 //interface
 import { ProductList, ProductApi } from 'src/app/DTO';
 import { DrawerComponent } from '@progress/kendo-angular-layout';
-import { DialogAction } from '@progress/kendo-angular-dialog';
 
 @Component({
   selector: 'app-c-detail',
@@ -20,14 +19,24 @@ export class CDetailComponent implements OnInit {
   ListProduct: any[];
 
   valueSearch: string = '';
-  filterData: any = {};
+  filterData: {
+    skip: number;
+    take: number;
+    filter: {
+      logic: string;
+      filters: any;
+    };
+  };
 
   // Variable dialog
   opened: boolean = false;
-  ProductName: string;
-  codeProduct: number;
+  ProductName: string = '';
+  codeProduct: number = 0;
 
-  constructor(private service: ServiceService) {}
+  constructor(
+    private service: ServiceAPI,
+    private notificationService: NotificationService
+  ) {}
 
   ngOnInit(): void {
     this.ReponProduct = this.service.getDataApi().subscribe(
@@ -40,19 +49,9 @@ export class CDetailComponent implements OnInit {
     );
   }
 
-  // <-- Start: Grid product
+  ngAfterViewInit() {}
 
-  // Delete product
-  onDelete(value: any) {
-    if (value !== -1) {
-      for (let index = 0; index < this.ListProduct.length; index++) {
-        this.ListProduct = this.ListProduct.filter(
-          (item) => item.Code !== value
-        ); // Xóa phần tử khỏi mảng tạm thời
-      }
-    }
-    this.opened = false;
-  }
+  // <-- Start: Grid product
 
   // Search product
   handleSearch() {
@@ -83,6 +82,7 @@ export class CDetailComponent implements OnInit {
         ],
       },
     };
+
     this.service.SearchDataApi(this.filterData).subscribe(
       (data: ProductList) => {
         this.ListProduct = data.ObjectReturn.Data;
@@ -94,26 +94,35 @@ export class CDetailComponent implements OnInit {
   }
 
   // Edit product
-  handleEdit(id: any) {
+  handleEdit(code: any) {
     this.drawerRef.toggle();
-    this.service.getProduct(id).subscribe(
-      (data: ProductList) => {
-        this.service.Product.next(data.ObjectReturn);
-      },
-      (e) => {
-        console.error(e);
-      }
-    );
+    this.service.getProduct(code).subscribe((v) => {
+      this.service.Product.next(v.ObjectReturn);
+    });
   }
 
   // End: Grid product -->
 
   // <-- Start: dialog
 
-  // Log action dialog
-  onAction(action: DialogAction): void {
-    console.log(action);
+  // Delete product
+  onDelete(value: any) {
+    if (value !== -1) {
+      for (let index = 0; index < this.ListProduct.length; index++) {
+        this.ListProduct = this.ListProduct.filter(
+          (item) => item.Code !== value
+        ); // Xóa phần tử khỏi mảng tạm thời
+      }
+    }
     this.opened = false;
+    this.notificationService.show({
+      content: 'Xóa sản phẩm thành công',
+      cssClass: 'button-notification',
+      hideAfter: 2000,
+      animation: { type: 'fade', duration: 400 },
+      position: { horizontal: 'left', vertical: 'bottom' },
+      type: { style: 'success', icon: true },
+    });
   }
 
   // Close dialog
@@ -128,26 +137,14 @@ export class CDetailComponent implements OnInit {
   // Open dialog
   openDialog(code: number): void {
     this.opened = true;
-    this.service.getProduct(code).subscribe(
-      (data: ProductList) => {
-        this.service.Product.next(data.ObjectReturn);
-      },
-      (e) => {
-        console.error(e);
+    if (code !== -1) {
+      for (let index = 0; index < this.ListProduct.length; index++) {
+        var v = this.ListProduct.filter((item) => item.Code === code);
+        this.ProductName = v[0].ProductName;
+        this.codeProduct = v[0].Code;
       }
-    );
-
-    this.service.Product.subscribe(
-      (v: ProductApi) => {
-        this.ProductName = v.ProductName;
-        this.codeProduct = v.Code;
-      },
-      (e) => {
-        console.error(e);
-      }
-    );
+    }
   }
-
   // End: dialog -->
 
   ngOnDestroy() {

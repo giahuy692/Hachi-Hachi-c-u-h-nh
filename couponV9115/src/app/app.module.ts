@@ -14,7 +14,7 @@ import { HeaderComponent } from './p-coupon-policies/Header/Header.component';
 import { PToolGroupsComponent } from './p-coupon-policies/p-tool-groups/p-tool-groups.component';
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
-import { ServiceService } from './service/service.service';
+import { ServiceAPI } from './service/service.service';
 import { TranslatePipe } from './pipe/translate.pipe';
 
 // Icon
@@ -38,6 +38,8 @@ import { CConfigComponent } from './p-coupon-policies/c-config/c-config.componen
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { TooltipsModule } from '@progress/kendo-angular-tooltip';
 import { CDialogComponent } from './c-dialog/c-dialog.component';
+import { NotificationModule } from '@progress/kendo-angular-notification';
+
 
 @NgModule({
   declarations: [
@@ -74,8 +76,9 @@ import { CDialogComponent } from './c-dialog/c-dialog.component';
     DialogsModule,
     TooltipsModule,
     FontAwesomeModule,
+    NotificationModule,
   ],
-  providers: [ServiceService, { provide: LOCALE_ID, useValue: 'vi-VN' }],
+  providers: [ServiceAPI, { provide: LOCALE_ID, useValue: 'vi-VN' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
