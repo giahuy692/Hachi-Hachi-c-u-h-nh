@@ -59,21 +59,18 @@
               [style.width.%]="'100'"
               [ngModel]="ProductNameVi"
               [hidden]="isVi"
-              (blur)="onBlur()"
               (valueChange)="onChangeProductNameVi($event)"
             ></kendo-textbox>
             <kendo-textbox
               [style.width.%]="'100'"
               [ngModel]="ProductNameJa"
               [hidden]="isJa"
-              (blur)="onBlur()"
               (valueChange)="onChangeProductNameJa($event)"
             ></kendo-textbox>
             <kendo-textbox
               [style.width.%]="'100'"
               [ngModel]="ProductNameEn"
               [hidden]="isEn"
-              (blur)="onBlur()"
               (valueChange)="onChangeProductNameEn($event)"
             ></kendo-textbox>
           </kendo-label>
@@ -97,21 +94,18 @@
             <kendo-textbox
               [hidden]="isVi"
               [ngModel]="ConditionVi"
-              (blur)="onBlur()"
               (valueChange)="onChangeConditionVi($event)"
             >
             </kendo-textbox>
             <kendo-textbox
               [hidden]="isJa"
               [value]="ConditionJa"
-              (blur)="onBlur()"
               (valueChange)="onChangeConditionJa($event)"
             >
             </kendo-textbox>
             <kendo-textbox
               [hidden]="isEn"
               [value]="ConditionEn"
-              (blur)="onBlur()"
               (valueChange)="onChangeConditionEn($event)"
             >
             </kendo-textbox>
@@ -148,7 +142,6 @@
               resizable="auto"
               [(ngModel)]="DescriptionVi"
               resizable="none"
-              (blur)="onBlur()"
               (valueChange)="onChangeDescriptionVi($event)"
             ></kendo-textarea>
             <kendo-textarea
@@ -158,7 +151,6 @@
               resizable="auto"
               [(ngModel)]="DescriptionJa"
               resizable="none"
-              (blur)="onBlur()"
               (valueChange)="onChangeDescriptionJa($event)"
             ></kendo-textarea>
             <kendo-textarea
@@ -168,7 +160,6 @@
               resizable="auto"
               [(ngModel)]="DescriptionEn"
               resizable="none"
-              (blur)="onBlur()"
               (valueChange)="onChangeDescriptionEn($event)"
             ></kendo-textarea>
           </kendo-label>

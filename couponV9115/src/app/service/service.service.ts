@@ -83,7 +83,7 @@ export class ServiceAPI implements OnInit {
     return new Observable<any>((obs) => {
       this.http
         .post<ProductList>(
-          this.apiUrl + 'GetProduct',
+          'http://test.lapson.vn/api/product/GetListProduct',
           toDataSourceRequest(search)
         )
         .subscribe(
@@ -101,10 +101,33 @@ export class ServiceAPI implements OnInit {
   }
 
   // Update Product
-  UpdateProduct(id: any) {
+  UpdateProduct(
+    id: number,
+    Barcode: string,
+    Price: number,
+    PriceBase: number,
+    PriceVIP: number
+  ) {
     return new Observable<any>((obs) => {
+      console.log(
+        '%cservice.service.ts line:112 id, Barcode, Price, PriceBase, PriceVip ',
+        'color: #007acc;',
+        id,
+        Barcode,
+        Price,
+        PriceBase,
+        PriceVIP
+      );
       this.http
-        .post<ProductList>(this.apiUrl + 'GetProduct', toDataSourceRequest(id))
+        .post<ProductList>(this.apiUrl + 'UpdateProduct', {
+          DTO: {
+            Code: id,
+            Barcode: Barcode,
+            Price: Price,
+            PriceBase: PriceBase,
+          },
+          Properties: ['Price', 'PriceBase'],
+        })
         .subscribe(
           (data) => {
             console.log(data);
@@ -123,7 +146,31 @@ export class ServiceAPI implements OnInit {
   DeletedProduct(id: any) {
     return new Observable<any>((obs) => {
       this.http
-        .post<ProductList>(this.apiUrl + 'GetProduct', toDataSourceRequest(id))
+        .post<ProductList>(
+          this.apiUrl + 'DeleteListProduct',
+          toDataSourceRequest(id)
+        )
+        .subscribe(
+          (data) => {
+            console.log(data);
+            obs.next(data);
+            obs.complete();
+          },
+          (error) => {
+            console.log(error);
+            obs.error(error);
+          }
+        );
+    });
+  }
+
+  AddProduct(barcode: any) {
+    return new Observable<any>((obs) => {
+      this.http
+        .post<ProductList>(
+          this.apiUrl + 'DeleteListProduct',
+          toDataSourceRequest(barcode)
+        )
         .subscribe(
           (data) => {
             console.log(data);

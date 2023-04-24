@@ -12,6 +12,7 @@ import { ServiceAPI } from 'src/app/service/service.service';
 // Icon
 import { faCheckCircle, faPenSquare } from '@fortawesome/free-solid-svg-icons';
 import { checkCircleIcon, SVGIcon } from '@progress/kendo-svg-icons';
+import { NotificationService } from '@progress/kendo-angular-notification';
 
 //Kendo
 
@@ -132,15 +133,17 @@ export class LayoutComponent implements AfterViewInit {
   // Variable dialog
   opened: boolean = false;
 
-  constructor(private service: ServiceAPI) {}
+  constructor(
+    private service: ServiceAPI,
+    private notificationService: NotificationService
+  ) {}
 
   ngOnInit() {
+    this.loadValue();
+  }
+
+  loadValue() {
     this.service.Product.subscribe((value: ProductApi) => {
-      console.log(
-        '%cLayout.component.ts line:136 value',
-        'color: #26bfa5;',
-        value
-      );
       this.ProductName = value.ProductName;
       this.CodeProduct = value.Code;
       this.ImagesProduct = value.ImageThumb;
@@ -190,7 +193,26 @@ export class LayoutComponent implements AfterViewInit {
   // Close dialog
   closeDialog(status: string): void {
     if (status == 'yes') {
-      console.log('%cLayout.component.ts line:165 Update');
+      this.service
+        .UpdateProduct(
+          this.CodeProduct,
+          this.Barcode,
+          this.Price,
+          this.PriceBase,
+          this.PriceVip
+        )
+        .subscribe((v) => {
+          this.notificationService.show({
+            content: 'Cập nhật sản phẩm thành công',
+            cssClass: 'button-notification',
+            hideAfter: 2000,
+            animation: { type: 'fade', duration: 400 },
+            position: { horizontal: 'left', vertical: 'bottom' },
+            type: { style: 'success', icon: true },
+          });
+        });
+      this.opened = false;
+      this.DrawerRightComponent.toggle();
     } else {
       this.opened = false;
     }

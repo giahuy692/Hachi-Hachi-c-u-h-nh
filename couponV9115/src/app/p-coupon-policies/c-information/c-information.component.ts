@@ -53,19 +53,6 @@ export class CInformationComponent implements OnInit {
     this.onTranslate('vi');
   }
 
-  public onBlur(): void {
-    console.log(`ProductNameVi: ${this.ProductNameVi}`);
-    console.log(`ProductNameJa:  ${this.ProductNameJa}`);
-    console.log(`ProductNameEn:  ${this.ProductNameEn}`);
-    console.log(`ConditionVi:  ${this.ConditionVi}`);
-    console.log(`ConditionJa:  ${this.ConditionJa}`);
-    console.log(`ConditionEn:  ${this.ConditionEn}`);
-    console.log(`DescriptionVi:  ${this.DescriptionVi}`);
-    console.log(`DescriptionJa:  ${this.DescriptionJa}`);
-    console.log(`DescriptionEn:  ${this.DescriptionEn}`);
-    console.log(`-------------------------------------`);
-  }
-
   public onChangeProductNameVi(value: string): void {
     this.ProductNameVi = value;
   }

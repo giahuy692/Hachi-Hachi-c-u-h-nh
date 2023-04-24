@@ -13,6 +13,9 @@
           type="text"
           class="search-input"
           [(ngModel)]="valueSearch"
+          (blur)="handleSearch()"
+          (change)="handleSearch()"
+          (keyup.enter)="handleSearch()"
         >
           <ng-template kendoTextBoxPrefixTemplate>
             <kendo-textbox-separator></kendo-textbox-separator>

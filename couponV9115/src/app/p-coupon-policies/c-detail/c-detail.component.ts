@@ -55,9 +55,12 @@ export class CDetailComponent implements OnInit {
 
   // Search product
   handleSearch() {
+    if (this.valueSearch == undefined || this.valueSearch == null) {
+      this.valueSearch = '';
+    }
     this.filterData = {
       skip: 0,
-      take: this.ListProduct.length,
+      take: 50,
       filter: {
         logic: 'or',
         filters: [
@@ -83,7 +86,7 @@ export class CDetailComponent implements OnInit {
       },
     };
 
-    this.service.SearchDataApi(this.filterData).subscribe(
+    this.service.SearchDataApi(JSON.stringify(this.filterData)).subscribe(
       (data: ProductList) => {
         this.ListProduct = data.ObjectReturn.Data;
       },
