@@ -167,7 +167,7 @@ export class LayoutComponent implements AfterViewInit {
       this.IsNew = value.IsNew;
       this.TypeData = parseInt(value.TypeData);
       this.StatusID = value.StatusID;
-      this.Discount = value.Discount;
+      this.Discount = value.Discount / 100;
     });
   }
 
@@ -209,14 +209,25 @@ export class LayoutComponent implements AfterViewInit {
             this.PriceVip
           )
           .subscribe((v) => {
-            this.notificationService.show({
-              content: 'Cập nhật sản phẩm thành công ' + this.ProductName,
-              cssClass: 'button-notification',
-              hideAfter: 2000,
-              animation: { type: 'fade', duration: 400 },
-              position: { horizontal: 'left', vertical: 'bottom' },
-              type: { style: 'success', icon: true },
-            });
+            if (v.ErrorString != null) {
+              this.notificationService.show({
+                content: v.ErrorString,
+                cssClass: 'button-notification',
+                hideAfter: 2000,
+                animation: { type: 'fade', duration: 400 },
+                position: { horizontal: 'left', vertical: 'bottom' },
+                type: { style: 'error', icon: true },
+              });
+            } else {
+              this.notificationService.show({
+                content: 'Cập nhật sản phẩm thành công ' + this.ProductName,
+                cssClass: 'button-notification',
+                hideAfter: 2000,
+                animation: { type: 'fade', duration: 400 },
+                position: { horizontal: 'left', vertical: 'bottom' },
+                type: { style: 'success', icon: true },
+              });
+            }
           });
         this.opened = false;
         this.DrawerRightComponent.toggle();
@@ -230,14 +241,25 @@ export class LayoutComponent implements AfterViewInit {
               v
             );
 
-            this.notificationService.show({
-              content: 'Thêm sản phẩm thành công ' + this.ProductName,
-              cssClass: 'button-notification',
-              hideAfter: 2000,
-              animation: { type: 'fade', duration: 400 },
-              position: { horizontal: 'left', vertical: 'bottom' },
-              type: { style: 'success', icon: true },
-            });
+            if (v.ErrorString != null) {
+              this.notificationService.show({
+                content: v.ErrorString,
+                cssClass: 'button-notification',
+                hideAfter: 2000,
+                animation: { type: 'fade', duration: 400 },
+                position: { horizontal: 'left', vertical: 'bottom' },
+                type: { style: 'error', icon: true },
+              });
+            } else {
+              this.notificationService.show({
+                content: 'Thêm sản phẩm thành công ' + this.ProductName,
+                cssClass: 'button-notification',
+                hideAfter: 2000,
+                animation: { type: 'fade', duration: 400 },
+                position: { horizontal: 'left', vertical: 'bottom' },
+                type: { style: 'success', icon: true },
+              });
+            }
             this.opened = false;
             this.DrawerRightComponent.toggle();
           });

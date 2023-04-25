@@ -154,6 +154,24 @@ kendo-notification-container {
   .k-notification-group {
     margin-left: 10px;
     z-index: 100000 !important;
+    .k-notification {
+      display: flex;
+      height: 50px;
+
+      .k-notification-wrap {
+        align-items: center;
+
+        .k-icon {
+          &:first-child {
+            font-size: 35px;
+            border-right: 1px solid #fff;
+            padding: 0 5px;
+            display: block;
+            width: 48px;
+          }
+        }
+      }
+    }
   }
 }
 

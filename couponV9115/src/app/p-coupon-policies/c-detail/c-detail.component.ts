@@ -173,17 +173,30 @@ export class CDetailComponent implements OnInit {
   // Delete product
   onDelete(value: any) {
     if (value !== -1) {
-      this.service.DeletedProduct(value).subscribe((v) => {});
+      this.service.DeletedProduct(value).subscribe((v) => {
+        if (v.ErrorString != null) {
+          this.notificationService.show({
+            content: v.ErrorString,
+            cssClass: 'button-notification',
+            hideAfter: 2000,
+            animation: { type: 'fade', duration: 400 },
+            position: { horizontal: 'left', vertical: 'bottom' },
+            type: { style: 'error', icon: true },
+          });
+        } else {
+          this.notificationService.show({
+            content: 'Xóa sản phẩm thành công ' + this.ProductName,
+            cssClass: 'button-notification',
+            hideAfter: 2000,
+            animation: { type: 'fade', duration: 400 },
+            position: { horizontal: 'left', vertical: 'bottom' },
+            type: { style: 'success', icon: true },
+          });
+        }
+      });
     }
     this.opened = false;
-    this.notificationService.show({
-      content: 'Xóa sản phẩm thành công ' + this.ProductName,
-      cssClass: 'button-notification',
-      hideAfter: 2000,
-      animation: { type: 'fade', duration: 400 },
-      position: { horizontal: 'left', vertical: 'bottom' },
-      type: { style: 'success', icon: true },
-    });
+
     this.loadData();
   }
 
@@ -220,14 +233,25 @@ export class CDetailComponent implements OnInit {
           this.PriceVip
         )
         .subscribe((v) => {
-          this.notificationService.show({
-            content: 'Cập nhật sản phẩm thành công ' + this.ProductName,
-            cssClass: 'button-notification',
-            hideAfter: 2000,
-            animation: { type: 'fade', duration: 400 },
-            position: { horizontal: 'left', vertical: 'bottom' },
-            type: { style: 'success', icon: true },
-          });
+          if (v.ErrorString != null) {
+            this.notificationService.show({
+              content: v.ErrorString,
+              cssClass: 'button-notification',
+              hideAfter: 2000,
+              animation: { type: 'fade', duration: 400 },
+              position: { horizontal: 'left', vertical: 'bottom' },
+              type: { style: 'error', icon: true },
+            });
+          } else {
+            this.notificationService.show({
+              content: 'Cập nhật sản phẩm thành công ' + this.ProductName,
+              cssClass: 'button-notification',
+              hideAfter: 2000,
+              animation: { type: 'fade', duration: 400 },
+              position: { horizontal: 'left', vertical: 'bottom' },
+              type: { style: 'success', icon: true },
+            });
+          }
         });
       this.openedUpdate = false;
     } else {
@@ -247,7 +271,7 @@ export class CDetailComponent implements OnInit {
         this.Barcode = v.ObjectReturn.Barcode;
         this.Price = v.ObjectReturn.Price;
         this.PriceBase = v.ObjectReturn.PriceBase;
-        this.PriceVip = v.ObjectReturn.PriceVip;
+        this.PriceVip = v.ObjectReturn.PriceVIP;
         this.Alias = v.ObjectReturn.Alias;
         this.FreeShippingImage = v.ObjectReturn.FreeShippingImage;
         this.IsBestPrice = v.ObjectReturn.IsBestPrice;
@@ -259,7 +283,12 @@ export class CDetailComponent implements OnInit {
         this.IsPromotion = v.ObjectReturn.IsPromotion;
         this.StatusID = v.ObjectReturn.StatusID;
         this.TypeData = v.ObjectReturn.TypeData;
-        this.Discount = v.ObjectReturn.Discount;
+        this.Discount = v.ObjectReturn.Discount / 100;
+        console.log(
+          '%cc-detail.component.ts line:263 this.PriceVIP',
+          'color: #007acc;',
+          this.PriceVip
+        );
       });
     }
   }

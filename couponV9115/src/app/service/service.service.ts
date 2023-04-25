@@ -114,15 +114,6 @@ export class ServiceAPI implements OnInit {
     PriceVIP: number
   ) {
     return new Observable<any>((obs) => {
-      console.log(
-        '%cservice.service.ts line:112 id, Barcode, Price, PriceBase, PriceVip ',
-        'color: #007acc;',
-        id,
-        Barcode,
-        Price,
-        PriceBase,
-        PriceVIP
-      );
       this.http
         .post<ProductList>(this.apiUrl + 'UpdateProduct', {
           DTO: {
@@ -130,8 +121,9 @@ export class ServiceAPI implements OnInit {
             Barcode: Barcode,
             Price: Price,
             PriceBase: PriceBase,
+            PriceVIP: PriceVIP,
           },
-          Properties: ['Price', 'PriceBase'],
+          Properties: ['Price', 'PriceBase', 'PriceVIP'],
         })
         .subscribe(
           (data) => {

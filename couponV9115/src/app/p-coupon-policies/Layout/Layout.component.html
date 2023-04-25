@@ -243,9 +243,11 @@
           <kendo-numerictextbox
             [style.width.%]="100"
             [(value)]="Discount"
-            [min]="10000"
             [autoCorrect]="false"
             format="p"
+            [step]="0.1"
+            [min]="0"
+            [max]="1"
             [spinners]="false"
             [readonly]="true"
           >
