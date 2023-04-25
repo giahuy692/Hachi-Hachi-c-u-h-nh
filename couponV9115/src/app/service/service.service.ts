@@ -18,6 +18,7 @@ export class ServiceAPI implements OnInit {
   gridState: DataSourceRequestState = {};
   dataSourceRequest: any;
   Product = new Subject<any>();
+  tempStatus = new Subject<number>();
   private apiUrl = 'http://test.lapson.vn/api/product/';
 
   ngOnInit() {}
@@ -27,16 +28,20 @@ export class ServiceAPI implements OnInit {
   // GET ProductList
   getDataApi() {
     return new Observable<any>((obs) => {
-      this.http.post<ProductList>(this.apiUrl + 'GetListProduct', {}).subscribe(
-        (data) => {
-          obs.next(data);
-          obs.complete();
-        },
-        (error) => {
-          console.log(error);
-          obs.error(error);
-        }
-      );
+      this.http
+        .post<ProductList>(this.apiUrl + 'GetListProduct', {
+          sort: 'Code-desc',
+        })
+        .subscribe(
+          (data) => {
+            obs.next(data);
+            obs.complete();
+          },
+          (error) => {
+            console.log(error);
+            obs.error(error);
+          }
+        );
     });
   }
 
@@ -164,13 +169,18 @@ export class ServiceAPI implements OnInit {
     });
   }
 
-  AddProduct(barcode: any) {
+  AddProduct(barcode: string, Price: number, PriceBase: number) {
     return new Observable<any>((obs) => {
       this.http
-        .post<ProductList>(
-          this.apiUrl + 'DeleteListProduct',
-          toDataSourceRequest(barcode)
-        )
+        .post<ProductList>(this.apiUrl + 'UpdateProduct', {
+          DTO: {
+            Code: 0,
+            Barcode: barcode,
+            Price: Price,
+            PriceBase: PriceBase,
+          },
+          Properties: ['Price', 'PriceBase'],
+        })
         .subscribe(
           (data) => {
             console.log(data);

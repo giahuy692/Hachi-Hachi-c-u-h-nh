@@ -8,12 +8,18 @@
     fillMode="flat"
   >
     <ng-template kendoDrawerTemplate>
-      <span class="title-dl">THÊM MỚI SẢN PHẨM</span>
+      <ng-container *ngIf="tempStatus == 0; else elseTitle">
+        <span class="title-dl">THÊM MỚI SẢN PHẨM</span>
+      </ng-container>
+      <ng-template #elseTitle>
+        <span class="title-dl">CẬP NHẬT SẢN PHẨM</span>
+      </ng-template>
       <hr />
       <div class="wapper-content">
         <kendo-label
           class="k-form font-w mt-10 d-block"
           text="Postcode sản phẩm:"
+          *ngIf="tempStatus == 1"
         >
           <kendo-textbox
             [style.width.%]="100"
@@ -32,26 +38,39 @@
             [style.width.%]="100"
             placeholder="Barcode sản phẩm..."
             [(value)]="Barcode"
+            [readonly]="
+              tempStatus == 0 ? false : tempStatus == 1 ? true : false
+            "
           >
           </kendo-textbox>
         </kendo-label>
 
-        <kendo-label class="k-form font-w mt-10 d-block" text="Tên sản phẩm:">
+        <kendo-label
+          class="k-form font-w mt-10 d-block"
+          text="Tên sản phẩm:"
+          *ngIf="tempStatus == 1"
+        >
           <kendo-textbox
             class="ProductName"
             [style.width.%]="100"
             resizable="auto"
             placeholder="Nhập tên sản phẩm..."
             [(value)]="ProductName"
+            [readonly]="true"
           >
           </kendo-textbox>
         </kendo-label>
 
-        <kendo-label class="k-form font-w mt-10 d-block" text="Link sản phẩm:">
+        <kendo-label
+          class="k-form font-w mt-10 d-block"
+          text="Link sản phẩm:"
+          *ngIf="tempStatus == 1"
+        >
           <kendo-textbox
             [style.width.%]="100"
             placeholder="Link sản phẩm..."
             [(value)]="Alias"
+            [readonly]="true"
           >
           </kendo-textbox>
         </kendo-label>
@@ -59,8 +78,10 @@
         <kendo-label
           class="k-checkbox-label font-w d-flex_column mt-10 d-block"
           text="FreeShippingImage:"
+          *ngIf="tempStatus == 1"
         >
           <kendo-textbox
+            [readonly]="true"
             [style.width.%]="100"
             placeholder="Sản phẩm này có được freeship không?"
             [value]="FreeShippingImage.length > 0 ? FreeShippingImage : ''"
@@ -71,6 +92,7 @@
         <kendo-label
           class="k-form font-w mt-10 d-block"
           text="Trạng thái sản phẩm"
+          *ngIf="tempStatus == 1"
         >
           <kendo-dropdownlist
             [data]="statusItem"
@@ -78,22 +100,31 @@
             [defaultItem]="selectedItemStatus"
             textField="text"
             valueField="value"
+            [readonly]="true"
           >
           </kendo-dropdownlist>
         </kendo-label>
 
-        <kendo-label class="k-form font-w mt-10 d-block" text="Loại sản phẩm">
+        <kendo-label
+          class="k-form font-w mt-10 d-block"
+          text="Loại sản phẩm"
+          *ngIf="tempStatus == 1"
+        >
           <kendo-dropdownlist
             [data]="typeData"
             [(ngModel)]="selectedItemTypeData"
             [defaultItem]="selectedItemTypeData"
             textField="text"
             valueField="value"
+            [readonly]="true"
           >
           </kendo-dropdownlist>
         </kendo-label>
 
-        <div class="d-flex_between f-wrap row-gap mt-10 d-block">
+        <div
+          class="d-flex_between f-wrap row-gap mt-10 d-block"
+          *ngIf="tempStatus == 1"
+        >
           <hr style="width: 100%" />
           <div class="d-flex col-gap" style="width: 50%">
             <kendo-label
@@ -106,6 +137,7 @@
               #IsBestPrice
               kendoCheckBox
               [value]="IsBestPrice"
+              [readonly]="true"
             />
           </div>
           <div class="d-flex col-gap" style="width: 50%">
@@ -119,6 +151,7 @@
               #IsBestPrice
               kendoCheckBox
               [value]="IsCombo"
+              [readonly]="true"
             />
           </div>
           <div class="d-flex col-gap" style="width: 50%">
@@ -132,6 +165,7 @@
               #IsBestPrice
               kendoCheckBox
               [value]="IsGift"
+              [readonly]="true"
             />
           </div>
           <div class="d-flex col-gap" style="width: 50%">
@@ -145,6 +179,7 @@
               #IsBestPrice
               kendoCheckBox
               [value]="IsHachi24h"
+              [readonly]="true"
             />
           </div>
           <div class="d-flex col-gap" style="width: 50%">
@@ -158,6 +193,7 @@
               #IsBestPrice
               kendoCheckBox
               [value]="IsHachi24h"
+              [readonly]="true"
             />
           </div>
           <hr style="width: 100%" />
@@ -199,12 +235,30 @@
           </kendo-numerictextbox>
         </kendo-label>
 
-        <div class="d-flex_both mt-10 d-block">
+        <kendo-label
+          class="k-form font-w mt-10 d-block"
+          text="Giảm giá:"
+          *ngIf="tempStatus == 1"
+        >
+          <kendo-numerictextbox
+            [style.width.%]="100"
+            [(value)]="Discount"
+            [min]="10000"
+            [autoCorrect]="false"
+            format="p"
+            [spinners]="false"
+            [readonly]="true"
+          >
+          </kendo-numerictextbox>
+        </kendo-label>
+
+        <div class="d-flex_both mt-10 d-block" *ngIf="tempStatus == 1">
           <kendo-label class="k-form font-w" text="Xuất xứ:">
             <kendo-textbox
               [style.width.%]="100"
               placeholder="Xuất xứ..."
               [(value)]="OrginalName"
+              [readonly]="true"
             >
             </kendo-textbox>
           </kendo-label>
@@ -213,6 +267,7 @@
               [style.width.%]="100"
               placeholder="Thương hiệu..."
               [(value)]="BrandName"
+              [readonly]="true"
             >
             </kendo-textbox>
           </kendo-label>
@@ -223,6 +278,7 @@
           src="{{ 'http://test.lapson.vn/' + ImagesProduct }}"
           alt="image"
           style="width: 100px"
+          *ngIf="tempStatus == 1"
         />
       </div>
 
@@ -236,15 +292,30 @@
         >
           ĐÓNG
         </button>
-        <button
-          class="update"
-          kendoButton
-          title="CẬP NHẬT"
-          [themeColor]="'primary'"
-          (click)="openDialog(CodeProduct)"
-        >
-          CẬP NHẬT
-        </button>
+        <ng-container>
+          <button
+            class="update"
+            kendoButton
+            title="CẬP NHẬT"
+            [themeColor]="'primary'"
+            (click)="openDialog()"
+            *ngIf="tempStatus == 1; else elseAddProduct"
+          >
+            CẬP NHẬT
+          </button>
+        </ng-container>
+
+        <ng-template #elseAddProduct>
+          <button
+            class="update"
+            kendoButton
+            [themeColor]="'primary'"
+            (click)="openDialog()"
+            [style.width]="'auto'"
+          >
+            THÊM SẢN PHẨM
+          </button>
+        </ng-template>
       </div>
     </ng-template>
   </kendo-drawer>
@@ -347,8 +418,14 @@
   <!-- Start: header dialog  -->
   <kendo-dialog-titlebar>
     <div class="title-success d-flex">
-      <fa-icon [style.fontSize.px]="22" [icon]="faPenSquare"></fa-icon>
-      <span>CẬP NHẬT SẢN PHẨM</span>
+      <ng-container *ngIf="tempStatus == 0; else TitleDialog">
+        <fa-icon [style.fontSize.px]="22" [icon]="faPenSquare"></fa-icon>
+        <span class="title-dl">THÊM MỚI SẢN PHẨM</span>
+      </ng-container>
+      <ng-template #TitleDialog>
+        <fa-icon [style.fontSize.px]="22" [icon]="faPenSquare"></fa-icon>
+        <span class="title-dl">CẬP NHẬT SẢN PHẨM</span>
+      </ng-template>
     </div>
   </kendo-dialog-titlebar>
   <!-- End: header dialog  -->
@@ -357,10 +434,18 @@
   <div class="body_dialog">
     <p>Bạn chắc chắn muốn cập nhật</p>
     <strong>{{ ProductName }}</strong>
-    <p>
-      Sản phẩm <span style="color: green">ĐƯỢC</span> cập nhật theo thông tin
-      mới đã được nhập.
-    </p>
+    <ng-container *ngIf="tempStatus == 0; else ContentDialog">
+      <p>
+        Sản phẩm <span style="color: green">ĐƯỢC</span> thêm theo thông tin mới
+        đã được nhập.
+      </p>
+    </ng-container>
+    <ng-template #ContentDialog>
+      <p>
+        Sản phẩm <span style="color: green">ĐƯỢC</span> cập nhật theo thông tin
+        mới đã được nhập.
+      </p>
+    </ng-template>
   </div>
   <!-- Emd: Body dialog  -->
 
@@ -369,14 +454,26 @@
     <button kendoButton (click)="closeDialog('no')" themeColor="base">
       KHÔNG CẬP NHẬT
     </button>
-    <button
-      kendoButton
-      imageUrl="assets/images/icon_successful.svg"
-      (click)="closeDialog('yes')"
-      themeColor="success"
-    >
-      CẬP NHẬT
-    </button>
+    <ng-container *ngIf="tempStatus == 0; else btnDialog">
+      <button
+        kendoButton
+        imageUrl="assets/images/icon_successful.svg"
+        (click)="closeDialog('yes')"
+        themeColor="success"
+      >
+        THÊM SẢN PHẨM
+      </button>
+    </ng-container>
+    <ng-template #btnDialog>
+      <button
+        kendoButton
+        imageUrl="assets/images/icon_successful.svg"
+        (click)="closeDialog('yes')"
+        themeColor="success"
+      >
+        CẬP NHẬT
+      </button>
+    </ng-template>
   </kendo-dialog-actions>
   <!-- End: action dialog  -->
 </kendo-dialog>

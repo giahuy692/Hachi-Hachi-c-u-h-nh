@@ -36,9 +36,7 @@ export class CDetailComponent implements OnInit {
   constructor(
     private service: ServiceAPI,
     private notificationService: NotificationService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.ReponProduct = this.service.getDataApi().subscribe(
       (data: ProductList) => {
         this.ListProduct = data.ObjectReturn.Data;
@@ -49,9 +47,19 @@ export class CDetailComponent implements OnInit {
     );
   }
 
+  ngOnInit(): void {}
+
   ngAfterViewInit() {}
 
   // <-- Start: Grid product
+
+  // Add product
+  handleAddProduct(status: number) {
+    this.service.tempStatus.next(status);
+    if (status == 0) {
+      this.drawerRef.toggle();
+    }
+  }
 
   // Search product
   handleSearch() {
@@ -97,11 +105,19 @@ export class CDetailComponent implements OnInit {
   }
 
   // Edit product
-  handleEdit(code: any) {
-    this.drawerRef.toggle();
-    this.service.getProduct(code).subscribe((v) => {
-      this.service.Product.next(v.ObjectReturn);
-    });
+  handleEdit(code: any, status: number) {
+    this.service.tempStatus.next(status);
+    console.log(
+      '%cc-detail.component.ts line:110 Status',
+      'color: #007acc;',
+      status
+    );
+    if (status == 1) {
+      this.drawerRef.toggle();
+      this.service.getProduct(code).subscribe((v) => {
+        this.service.Product.next(v.ObjectReturn);
+      });
+    }
   }
 
   // End: Grid product -->

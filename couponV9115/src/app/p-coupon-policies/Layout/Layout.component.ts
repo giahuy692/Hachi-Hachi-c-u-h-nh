@@ -114,6 +114,7 @@ export class LayoutComponent implements AfterViewInit {
   IsPromotion: boolean = false;
   StatusID: number = 0;
   TypeData: number = 0;
+  Discount: number = 0;
   statusItem: Array<Item> = [
     { value: 0, text: 'Tạo mới' },
     { value: 1, text: 'Chờ duyệt' },
@@ -129,6 +130,7 @@ export class LayoutComponent implements AfterViewInit {
     { value: 3, text: 'Quả tặng' },
   ];
   selectedItemTypeData: Item = this.typeData[this.TypeData];
+  tempStatus: number = 0;
 
   // Variable dialog
   opened: boolean = false;
@@ -136,11 +138,14 @@ export class LayoutComponent implements AfterViewInit {
   constructor(
     private service: ServiceAPI,
     private notificationService: NotificationService
-  ) {}
-
-  ngOnInit() {
+  ) {
+    this.service.tempStatus.subscribe((v) => {
+      this.tempStatus = v;
+    });
     this.loadValue();
   }
+
+  ngOnInit() {}
 
   loadValue() {
     this.service.Product.subscribe((value: ProductApi) => {
@@ -162,6 +167,7 @@ export class LayoutComponent implements AfterViewInit {
       this.IsNew = value.IsNew;
       this.TypeData = parseInt(value.TypeData);
       this.StatusID = value.StatusID;
+      this.Discount = value.Discount;
     });
   }
 
@@ -193,33 +199,50 @@ export class LayoutComponent implements AfterViewInit {
   // Close dialog
   closeDialog(status: string): void {
     if (status == 'yes') {
-      this.service
-        .UpdateProduct(
-          this.CodeProduct,
-          this.Barcode,
-          this.Price,
-          this.PriceBase,
-          this.PriceVip
-        )
-        .subscribe((v) => {
-          this.notificationService.show({
-            content: 'Cập nhật sản phẩm thành công',
-            cssClass: 'button-notification',
-            hideAfter: 2000,
-            animation: { type: 'fade', duration: 400 },
-            position: { horizontal: 'left', vertical: 'bottom' },
-            type: { style: 'success', icon: true },
+      if (this.tempStatus == 1) {
+        this.service
+          .UpdateProduct(
+            this.CodeProduct,
+            this.Barcode,
+            this.Price,
+            this.PriceBase,
+            this.PriceVip
+          )
+          .subscribe((v) => {
+            this.notificationService.show({
+              content: 'Cập nhật sản phẩm thành công',
+              cssClass: 'button-notification',
+              hideAfter: 2000,
+              animation: { type: 'fade', duration: 400 },
+              position: { horizontal: 'left', vertical: 'bottom' },
+              type: { style: 'success', icon: true },
+            });
           });
-        });
-      this.opened = false;
-      this.DrawerRightComponent.toggle();
+        this.opened = false;
+        this.DrawerRightComponent.toggle();
+      } else {
+        this.service
+          .AddProduct(this.Barcode, this.Price, this.PriceBase)
+          .subscribe((v) => {
+            this.notificationService.show({
+              content: 'Thêm sản phẩm thành công',
+              cssClass: 'button-notification',
+              hideAfter: 2000,
+              animation: { type: 'fade', duration: 400 },
+              position: { horizontal: 'left', vertical: 'bottom' },
+              type: { style: 'success', icon: true },
+            });
+            this.opened = false;
+            this.DrawerRightComponent.toggle();
+          });
+      }
     } else {
       this.opened = false;
     }
   }
 
   // Open dialog
-  openDialog(code: number): void {
+  openDialog(): void {
     this.opened = true;
   }
   // End: dialog -->
