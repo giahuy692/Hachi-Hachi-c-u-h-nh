@@ -149,12 +149,14 @@ export class ServiceAPI implements OnInit {
 
   // Delete Product
   DeletedProduct(id: any) {
+    console.log('%cservice.service.ts line:152 id', 'color: #007acc;', id);
     return new Observable<any>((obs) => {
       this.http
-        .post<ProductList>(
-          this.apiUrl + 'DeleteListProduct',
-          toDataSourceRequest(id)
-        )
+        .post<ProductList>(this.apiUrl + 'DeleteListProduct', [
+          {
+            Code: id,
+          },
+        ])
         .subscribe(
           (data) => {
             console.log(data);

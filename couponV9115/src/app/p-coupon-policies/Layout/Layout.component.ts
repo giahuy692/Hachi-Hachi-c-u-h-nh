@@ -210,7 +210,7 @@ export class LayoutComponent implements AfterViewInit {
           )
           .subscribe((v) => {
             this.notificationService.show({
-              content: 'Cập nhật sản phẩm thành công',
+              content: 'Cập nhật sản phẩm thành công ' + this.ProductName,
               cssClass: 'button-notification',
               hideAfter: 2000,
               animation: { type: 'fade', duration: 400 },
@@ -224,8 +224,14 @@ export class LayoutComponent implements AfterViewInit {
         this.service
           .AddProduct(this.Barcode, this.Price, this.PriceBase)
           .subscribe((v) => {
+            console.log(
+              '%cLayout.component.ts line:227 v',
+              'color: #007acc;',
+              v
+            );
+
             this.notificationService.show({
-              content: 'Thêm sản phẩm thành công',
+              content: 'Thêm sản phẩm thành công ' + this.ProductName,
               cssClass: 'button-notification',
               hideAfter: 2000,
               animation: { type: 'fade', duration: 400 },

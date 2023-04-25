@@ -16,7 +16,6 @@ export class CDetailComponent implements OnInit {
   // Variable drawer
   @Input() drawerRef: DrawerComponent;
   ReponProduct: any;
-  ListProduct: any[];
 
   valueSearch: string = '';
   filterData: {
@@ -37,9 +36,13 @@ export class CDetailComponent implements OnInit {
     private service: ServiceAPI,
     private notificationService: NotificationService
   ) {
-    this.ReponProduct = this.service.getDataApi().subscribe(
+    this.loadData();
+  }
+
+  loadData() {
+    this.service.getDataApi().subscribe(
       (data: ProductList) => {
-        this.ListProduct = data.ObjectReturn.Data;
+        this.ReponProduct = data.ObjectReturn.Data;
       },
       (e) => {
         console.error(e);
@@ -59,6 +62,7 @@ export class CDetailComponent implements OnInit {
     if (status == 0) {
       this.drawerRef.toggle();
     }
+    this.loadData();
   }
 
   // Search product
@@ -96,7 +100,7 @@ export class CDetailComponent implements OnInit {
 
     this.service.SearchDataApi(JSON.stringify(this.filterData)).subscribe(
       (data: ProductList) => {
-        this.ListProduct = data.ObjectReturn.Data;
+        this.ReponProduct = data.ObjectReturn.Data;
       },
       (e) => {
         console.error(e);
@@ -118,6 +122,7 @@ export class CDetailComponent implements OnInit {
         this.service.Product.next(v.ObjectReturn);
       });
     }
+    this.loadData();
   }
 
   // End: Grid product -->
@@ -127,21 +132,20 @@ export class CDetailComponent implements OnInit {
   // Delete product
   onDelete(value: any) {
     if (value !== -1) {
-      for (let index = 0; index < this.ListProduct.length; index++) {
-        this.ListProduct = this.ListProduct.filter(
-          (item) => item.Code !== value
-        ); // Xóa phần tử khỏi mảng tạm thời
-      }
+      this.service.DeletedProduct(value).subscribe((v) => {
+        console.log('%cc-detail.component.ts line:131 v', 'color: #007acc;', v);
+      });
     }
     this.opened = false;
     this.notificationService.show({
-      content: 'Xóa sản phẩm thành công',
+      content: 'Xóa sản phẩm thành công ' + this.ProductName,
       cssClass: 'button-notification',
       hideAfter: 2000,
       animation: { type: 'fade', duration: 400 },
       position: { horizontal: 'left', vertical: 'bottom' },
       type: { style: 'success', icon: true },
     });
+    this.loadData();
   }
 
   // Close dialog
@@ -157,8 +161,8 @@ export class CDetailComponent implements OnInit {
   openDialog(code: number): void {
     this.opened = true;
     if (code !== -1) {
-      for (let index = 0; index < this.ListProduct.length; index++) {
-        var v = this.ListProduct.filter((item) => item.Code === code);
+      for (let index = 0; index < this.ReponProduct.length; index++) {
+        var v = this.ReponProduct.filter((item) => item.Code === code);
         this.ProductName = v[0].ProductName;
         this.codeProduct = v[0].Code;
       }
