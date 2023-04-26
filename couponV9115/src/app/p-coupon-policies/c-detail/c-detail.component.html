@@ -132,7 +132,7 @@
     <!-- Start: Body dialog  -->
     <div class="body_dialog">
       <p>Bạn chắc chắn muốn xóa</p>
-      <strong>{{ ProductName }}</strong>
+      <strong>{{ products.ProductName }}</strong>
       <p>
         Sản phẩm bị xóa sẽ <span style="color: red">KHÔNG</span> thể khôi phục
         lại.
@@ -182,25 +182,12 @@
       <div class="wapper-content">
         <kendo-label
           class="k-form font-w mt-10 d-block"
-          text="Postcode sản phẩm:"
-        >
-          <kendo-textbox
-            [style.width.%]="100"
-            placeholder="Code sản phẩm..."
-            readonly="true"
-            [(value)]="CodeProduct"
-          >
-          </kendo-textbox>
-        </kendo-label>
-
-        <kendo-label
-          class="k-form font-w mt-10 d-block"
           text="Barcode sản phẩm:"
         >
           <kendo-textbox
             [style.width.%]="100"
             placeholder="Barcode sản phẩm..."
-            [(value)]="Barcode"
+            [(value)]="products.Barcode"
             [readonly]="true"
           >
           </kendo-textbox>
@@ -212,7 +199,7 @@
             [style.width.%]="100"
             resizable="auto"
             placeholder="Nhập tên sản phẩm..."
-            [(value)]="ProductName"
+            [(value)]="products.ProductName"
             [readonly]="true"
           >
           </kendo-textbox>
@@ -222,7 +209,7 @@
           <kendo-textbox
             [style.width.%]="100"
             placeholder="Link sản phẩm..."
-            [(value)]="Alias"
+            [(value)]="products.Alias"
             [readonly]="true"
           >
           </kendo-textbox>
@@ -236,7 +223,11 @@
             [readonly]="true"
             [style.width.%]="100"
             placeholder="Sản phẩm này có được freeship không?"
-            [value]="FreeShippingImage.length > 0 ? FreeShippingImage : ''"
+            [value]="
+              products.FreeShippingImage.length > 0
+                ? products.FreeShippingImage
+                : ''
+            "
           >
           </kendo-textbox>
         </kendo-label>
@@ -292,9 +283,9 @@
             ></kendo-label>
             <input
               type="checkbox"
-              #IsBestPrice
+              #IsCombo
               kendoCheckBox
-              [value]="IsCombo"
+              [value]="products.IsCombo"
               [readonly]="true"
             />
           </div>
@@ -306,9 +297,9 @@
             ></kendo-label>
             <input
               type="checkbox"
-              #IsBestPrice
+              #IsGift
               kendoCheckBox
-              [value]="IsGift"
+              [value]="products.IsGift"
               [readonly]="true"
             />
           </div>
@@ -320,23 +311,23 @@
             ></kendo-label>
             <input
               type="checkbox"
-              #IsBestPrice
+              #IsHachi24h
               kendoCheckBox
-              [value]="IsHachi24h"
+              [value]="products.IsHachi24h"
               [readonly]="true"
             />
           </div>
           <div class="d-flex col-gap" style="width: 50%">
             <kendo-label
               class="k-checkbox-label font-w"
-              [for]="IsHachi24h"
+              [for]="IsNew"
               text="Sản phẩm mới: "
             ></kendo-label>
             <input
               type="checkbox"
-              #IsBestPrice
+              #IsNew
               kendoCheckBox
-              [value]="IsHachi24h"
+              [value]="products.IsNew"
               [readonly]="true"
             />
           </div>
@@ -346,7 +337,7 @@
         <kendo-label class="k-form font-w mt-10 d-block" text="Giá sản phẩm:">
           <kendo-numerictextbox
             [style.width.%]="100"
-            [(value)]="Price"
+            [(value)]="products.Price"
             [min]="10000"
             [autoCorrect]="false"
             format="c0"
@@ -358,7 +349,7 @@
         <kendo-label class="k-form font-w mt-10 d-block" text="Giá cơ bản:">
           <kendo-numerictextbox
             [style.width.%]="100"
-            [(value)]="PriceBase"
+            [(value)]="products.PriceBase"
             [min]="10000"
             [autoCorrect]="false"
             format="c0"
@@ -370,7 +361,7 @@
         <kendo-label class="k-form font-w mt-10 d-block" text="Giá VIP:">
           <kendo-numerictextbox
             [style.width.%]="100"
-            [(value)]="PriceVip"
+            [(value)]="products.PriceVIP"
             [min]="10000"
             [autoCorrect]="false"
             format="c0"
@@ -382,7 +373,7 @@
         <kendo-label class="k-form font-w mt-10 d-block" text="Giảm giá:">
           <kendo-numerictextbox
             [style.width.%]="100"
-            [(value)]="Discount"
+            [(value)]="products.Discount"
             [autoCorrect]="false"
             format="p"
             [step]="0.01"
@@ -399,7 +390,7 @@
             <kendo-textbox
               [style.width.%]="100"
               placeholder="Xuất xứ..."
-              [(value)]="OrginalName"
+              [(value)]="products.OrginalName"
               [readonly]="true"
             >
             </kendo-textbox>
@@ -408,7 +399,7 @@
             <kendo-textbox
               [style.width.%]="100"
               placeholder="Thương hiệu..."
-              [(value)]="BrandName"
+              [(value)]="products.BrandName"
               [readonly]="true"
             >
             </kendo-textbox>
@@ -417,7 +408,7 @@
 
         <img
           class="detail_image mt-10 d-block"
-          src="{{ 'http://test.lapson.vn/' + ImagesProduct }}"
+          src="{{ 'http://test.lapson.vn/' + products.ImageThumb }}"
           alt="image"
           style="width: 300px; margin: 10px auto"
         />

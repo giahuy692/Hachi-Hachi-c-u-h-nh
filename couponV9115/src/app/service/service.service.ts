@@ -188,4 +188,25 @@ export class ServiceAPI implements OnInit {
         );
     });
   }
+
+  GetProduct(barcode: string) {
+    return new Observable((obs) => {
+      this.http
+        .post<ProductList>(this.apiUrl + 'GetProduct', {
+          Code: 0,
+          Barcode: barcode,
+        })
+        .subscribe(
+          (data) => {
+            console.log(data);
+            obs.next(data);
+            obs.complete();
+          },
+          (error) => {
+            console.log(error);
+            obs.error(error);
+          }
+        );
+    });
+  }
 }

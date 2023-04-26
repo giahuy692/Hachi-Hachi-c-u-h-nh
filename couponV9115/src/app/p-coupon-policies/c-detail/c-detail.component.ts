@@ -36,27 +36,7 @@ export class CDetailComponent implements OnInit {
 
   // Variable dialog
   opened: boolean = false;
-  CodeProduct: number = 0;
-  ProductName: string = '';
-  ImagesProduct: any;
-  OrginalName: string = '';
-  BrandName: string = '';
-  Barcode: string = '';
-  Price: number = 0;
-  PriceBase: number = 0;
-  PriceVip: number = 0;
-  Alias: string = '';
-  FreeShippingImage: string = '';
-  IsBestPrice: boolean = false;
-  IsCombo: boolean = false;
-  IsGift: boolean = false;
-  IsHachi24h: boolean = false;
-  IsNew: boolean = false;
-  IsSpecial: boolean = false;
-  IsPromotion: boolean = false;
-  StatusID: number = 0;
-  TypeData: number = 0;
-  Discount: number = 0;
+  products = new ProductApi();
   statusItem: Array<Item> = [
     { value: 0, text: 'Tạo mới' },
     { value: 1, text: 'Chờ duyệt' },
@@ -64,14 +44,14 @@ export class CDetailComponent implements OnInit {
     { value: 3, text: 'Ngừng hiển thị' },
     { value: 4, text: 'Trả về' },
   ];
-  selectedItemStatus: Item = this.statusItem[this.StatusID];
+  selectedItemStatus: Item = this.statusItem[this.products.StatusID];
 
   typeData: Array<Item> = [
     { value: 1, text: 'Sản phẩm thường' },
     { value: 2, text: 'Combo' },
     { value: 3, text: 'Quả tặng' },
   ];
-  selectedItemTypeData: Item = this.typeData[this.TypeData];
+  selectedItemTypeData: Item = this.typeData[this.products.TypeData];
   tempStatus: number = 0;
 
   // Variable dialog update
@@ -107,7 +87,6 @@ export class CDetailComponent implements OnInit {
     if (status == 0) {
       this.drawerRef.toggle();
     }
-    this.loadData();
   }
 
   // Search product
@@ -160,10 +139,20 @@ export class CDetailComponent implements OnInit {
     if (status == 1) {
       this.drawerRef.toggle();
       this.service.getProduct(code).subscribe((v) => {
-        this.service.Product.next(v.ObjectReturn);
+        if (v.ErrorString != null) {
+          this.notificationService.show({
+            content: v.ErrorString,
+            cssClass: 'button-notification',
+            hideAfter: 2000,
+            animation: { type: 'fade', duration: 400 },
+            position: { horizontal: 'left', vertical: 'bottom' },
+            type: { style: 'error', icon: true },
+          });
+        } else {
+          this.service.Product.next(v.ObjectReturn);
+        }
       });
     }
-    this.loadData();
   }
 
   // End: Grid product -->
@@ -185,7 +174,7 @@ export class CDetailComponent implements OnInit {
           });
         } else {
           this.notificationService.show({
-            content: 'Xóa sản phẩm thành công ' + this.ProductName,
+            content: 'Xóa sản phẩm thành công ' + this.products.ProductName,
             cssClass: 'button-notification',
             hideAfter: 2000,
             animation: { type: 'fade', duration: 400 },
@@ -203,7 +192,7 @@ export class CDetailComponent implements OnInit {
   // Close dialog
   closeDialog(status: string): void {
     if (status == 'yes') {
-      this.onDelete(this.CodeProduct);
+      this.onDelete(this.products.Code);
     } else {
       this.opened = false;
     }
@@ -214,8 +203,8 @@ export class CDetailComponent implements OnInit {
     this.opened = true;
     if (code !== -1) {
       this.service.getProduct(code).subscribe((v) => {
-        this.ProductName = v.ObjectReturn.ProductName;
-        this.CodeProduct = v.ObjectReturn.Code;
+        this.products.ProductName = v.ObjectReturn.ProductName;
+        this.products.Code = v.ObjectReturn.Code;
       });
     }
   }
@@ -226,11 +215,11 @@ export class CDetailComponent implements OnInit {
     if (status == 'yes') {
       this.service
         .UpdateProduct(
-          this.CodeProduct,
-          this.Barcode,
-          this.Price,
-          this.PriceBase,
-          this.PriceVip
+          this.products.Code,
+          this.products.Barcode,
+          this.products.Price,
+          this.products.PriceBase,
+          this.products.PriceVIP
         )
         .subscribe((v) => {
           if (v.ErrorString != null) {
@@ -244,7 +233,8 @@ export class CDetailComponent implements OnInit {
             });
           } else {
             this.notificationService.show({
-              content: 'Cập nhật sản phẩm thành công ' + this.ProductName,
+              content:
+                'Cập nhật sản phẩm thành công ' + this.products.ProductName,
               cssClass: 'button-notification',
               hideAfter: 2000,
               animation: { type: 'fade', duration: 400 },
@@ -263,32 +253,7 @@ export class CDetailComponent implements OnInit {
     this.openedUpdate = true;
     if (code !== -1) {
       this.service.getProduct(code).subscribe((v) => {
-        this.CodeProduct = v.ObjectReturn.Code;
-        this.ProductName = v.ObjectReturn.ProductName;
-        this.ImagesProduct = v.ObjectReturn.ImageThumb;
-        this.OrginalName = v.ObjectReturn.OrginalName;
-        this.BrandName = v.ObjectReturn.BrandName;
-        this.Barcode = v.ObjectReturn.Barcode;
-        this.Price = v.ObjectReturn.Price;
-        this.PriceBase = v.ObjectReturn.PriceBase;
-        this.PriceVip = v.ObjectReturn.PriceVIP;
-        this.Alias = v.ObjectReturn.Alias;
-        this.FreeShippingImage = v.ObjectReturn.FreeShippingImage;
-        this.IsBestPrice = v.ObjectReturn.IsBestPrice;
-        this.IsCombo = v.ObjectReturn.IsCombo;
-        this.IsGift = v.ObjectReturn.IsGift;
-        this.IsHachi24h = v.ObjectReturn.IsHachi24h;
-        this.IsNew = v.ObjectReturn.IsNew;
-        this.IsSpecial = v.ObjectReturn.IsSpecial;
-        this.IsPromotion = v.ObjectReturn.IsPromotion;
-        this.StatusID = v.ObjectReturn.StatusID;
-        this.TypeData = v.ObjectReturn.TypeData;
-        this.Discount = v.ObjectReturn.Discount / 100;
-        console.log(
-          '%cc-detail.component.ts line:263 this.PriceVIP',
-          'color: #007acc;',
-          this.PriceVip
-        );
+        this.products = v.ObjectReturn;
       });
     }
   }

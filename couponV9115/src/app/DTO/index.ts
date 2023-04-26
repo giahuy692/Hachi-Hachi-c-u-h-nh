@@ -28,34 +28,34 @@ export class Product {
 }
 
 export class ProductApi {
-  Code: number;
-  Barcode: string;
-  ProductName: string;
-  Alias: null;
-  ImageThumb: string;
-  ImageSmall: null;
-  ImageLarge: null;
-  FreeShippingImage: string;
-  TypeData: string;
-  StatusID: number;
-  IsNew: boolean;
-  IsHachi24h: boolean;
-  IsBestPrice: boolean;
-  IsSpecial: boolean;
-  IsGift: boolean;
-  IsPromotion: boolean;
-  PromotionID: null;
+  Code: number = 0;
+  Barcode: string = '';
+  ProductName: string = '';
+  Alias: string = '';
+  ImageThumb: string = '';
+  ImageSmall: string = '';
+  ImageLarge: string = '';
+  FreeShippingImage: string = '';
+  TypeData: string = '';
+  StatusID: number = 0;
+  IsNew: boolean = false;
+  IsHachi24h: boolean = false;
+  IsBestPrice: boolean = false;
+  IsSpecial: boolean = false;
+  IsGift: boolean = false;
+  IsPromotion: boolean = false;
+  PromotionID: number = 0;
   GroupIDList: [];
-  IsCombo: boolean;
-  Price: number;
-  PriceBase: number;
-  PriceVIP: number;
-  Discount: number;
-  CategoryID: number;
-  OrginalID: number;
-  OrginalName: string;
-  BrandID: number;
-  BrandName: string;
+  IsCombo: boolean = false;
+  Price: number = 0;
+  PriceBase: number = 0;
+  PriceVIP: number = 0;
+  Discount: number = 0;
+  CategoryID: number = 0;
+  OrginalID: number = 0;
+  OrginalName: string = '';
+  BrandID: number = 0;
+  BrandName: string = '';
 }
 
 export class ProductList {

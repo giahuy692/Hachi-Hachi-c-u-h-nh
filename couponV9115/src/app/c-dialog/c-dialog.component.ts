@@ -9,4 +9,11 @@ export class CDialogComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  private baseImageUrl =
+    'https://demos.telerik.com/kendo-ui/content/web/panelbar/';
+
+  public imageUrl(imageName: string): string {
+    return this.baseImageUrl + imageName + '.jpg';
+  }
 }
