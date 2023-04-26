@@ -42,7 +42,7 @@
           }
           tbody {
             display: flex;
-            justify-content: flex-start;
+            justify-content: start;
             flex-wrap: wrap;
             row-gap: 12px;
             column-gap: 18px;
@@ -50,7 +50,7 @@
             padding: 14px 0;
 
             tr {
-              flex: 1 0 272px;
+              flex: 0 0 272px;
               height: fit-content;
               border-radius: 10px;
 

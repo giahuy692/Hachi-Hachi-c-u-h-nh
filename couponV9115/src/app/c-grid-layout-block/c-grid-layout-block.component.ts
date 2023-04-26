@@ -12,6 +12,7 @@ import * as $ from 'jquery';
 
 //kendo
 import { ColumnComponent, GridComponent } from '@progress/kendo-angular-grid';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-c-grid-layout-block',
@@ -21,7 +22,7 @@ import { ColumnComponent, GridComponent } from '@progress/kendo-angular-grid';
 export class CGridLayoutBlockComponent implements OnInit {
   @ContentChildren(ColumnComponent) columns: any;
   @ViewChild('cumstomGrid') public GridRef: GridComponent;
-  @Input() dataView: any;
+  @Input() dataView: Observable<any>;
   pageIndex: number = 1;
   skip: number = 0;
   limit: number = 20;

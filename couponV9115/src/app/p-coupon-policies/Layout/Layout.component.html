@@ -99,9 +99,15 @@
           </kendo-dropdownlist>
         </kendo-label>
 
-        <div class="d-flex_between f-wrap row-gap mt-10 d-block">
+        <div
+          class="d-flex_between f-wrap row-gap mt-10 d-block col-gap"
+          style="row-gap: 18px"
+        >
           <hr style="width: 100%" />
-          <div class="d-flex col-gap" style="width: 50%">
+          <div
+            class="d-flex col-gap"
+            style="width: 45%; justify-content: space-between"
+          >
             <kendo-label
               class="k-checkbox-label font-w"
               [for]="products.IsBestPrice"
@@ -115,7 +121,10 @@
               [readonly]="true"
             />
           </div>
-          <div class="d-flex col-gap" style="width: 50%">
+          <div
+            class="d-flex col-gap"
+            style="width: 45%; justify-content: space-between"
+          >
             <kendo-label
               class="k-checkbox-label font-w"
               [for]="IsCombo"
@@ -129,7 +138,10 @@
               [readonly]="true"
             />
           </div>
-          <div class="d-flex col-gap" style="width: 50%">
+          <div
+            class="d-flex col-gap"
+            style="width: 45%; justify-content: space-between"
+          >
             <kendo-label
               class="k-checkbox-label font-w"
               [for]="IsGift"
@@ -143,7 +155,10 @@
               [readonly]="true"
             />
           </div>
-          <div class="d-flex col-gap" style="width: 50%">
+          <div
+            class="d-flex col-gap"
+            style="width: 45%; justify-content: space-between"
+          >
             <kendo-label
               class="k-checkbox-label font-w"
               [for]="IsHachi24h"
@@ -157,7 +172,10 @@
               [readonly]="true"
             />
           </div>
-          <div class="d-flex col-gap" style="width: 50%">
+          <div
+            class="d-flex col-gap"
+            style="width: 45%; justify-content: space-between"
+          >
             <kendo-label
               class="k-checkbox-label font-w"
               [for]="IsNew"
@@ -323,42 +341,44 @@
           fillMode="flat"
         >
           <ng-template kendoDrawerItemTemplate let-item>
-            <div class="title-menu" (click)="toggleChildren()">
-              <img
-                src="assets/images/{{ item.icon }}"
-                alt="icon"
-                style="margin: 0 10px"
-              />
-              <div
-                class="item-descr-wrap"
-                *ngIf="expanded"
-                style="user-select: none"
-              >
-                {{ item.text }}
+            <div class="d-flex_column" style="width: 100%">
+              <div class="title-menu" (click)="toggleChildren()">
                 <img
-                  *ngIf="item.child !== undefined"
-                  src="assets/images/chevron-down.svg"
+                  src="assets/images/{{ item.icon }}"
                   alt="icon"
-                  style="fill: #fff"
+                  style="margin: 0 10px"
                 />
+                <div
+                  class="item-descr-wrap"
+                  *ngIf="expanded"
+                  style="user-select: none"
+                >
+                  {{ item.text }}
+                  <img
+                    *ngIf="item.child !== undefined"
+                    src="assets/images/chevron-down.svg"
+                    alt="icon"
+                    style="fill: #fff"
+                  />
+                </div>
               </div>
-            </div>
-            <div *ngIf="showChildren" class="wrapper-child">
-              <div
-                class="child"
-                *ngIf="selectedItem == item.id && item.child !== undefined"
-              >
-                <kendo-buttongroup selection="single" [style.width.%]="100">
-                  <button
-                    class="btnChild"
-                    *ngFor="let i of item.child"
-                    kendoButton
-                    [toggleable]="true"
-                    [themeColor]="'base'"
-                  >
-                    {{ i.text }}
-                  </button>
-                </kendo-buttongroup>
+              <div *ngIf="showChildren" class="wrapper-child">
+                <div
+                  class="child"
+                  *ngIf="selectedItem == item.id && item.child !== undefined"
+                >
+                  <kendo-buttongroup selection="single" [style.width.%]="100">
+                    <button
+                      class="btnChild"
+                      *ngFor="let i of item.child"
+                      kendoButton
+                      [toggleable]="true"
+                      [themeColor]="'base'"
+                    >
+                      {{ i.text }}
+                    </button>
+                  </kendo-buttongroup>
+                </div>
               </div>
             </div>
           </ng-template>

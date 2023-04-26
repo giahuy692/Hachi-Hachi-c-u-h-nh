@@ -1,12 +1,5 @@
-import {
-  Component,
-  Input,
-  ContentChildren,
-  ViewChild,
-  AfterViewInit,
-} from '@angular/core';
+import { Component, Input, AfterViewInit } from '@angular/core';
 import { PopupSettings } from '@progress/kendo-angular-dateinputs';
-import { DatePickerComponent } from '@progress/kendo-angular-dateinputs';
 
 @Component({
   selector: 'app-date-time-picker',
@@ -108,8 +101,6 @@ export class DateTimePickerComponent implements AfterViewInit {
     popupClass: 'DateTimePicker-wrapper',
   };
 
-  constructor() {}
-
   ngOnInit() {}
 
   ngAfterViewInit() {
@@ -121,12 +112,15 @@ export class DateTimePickerComponent implements AfterViewInit {
 
   onOpen() {
     $(document).ready(() => {
-      $('.k-calendar-classic ').append(this.timePicker);
+      $('.k-calendar-classic').append(this.timePicker);
+      $('.k-datetime-footer').append(this.timePicker);
     });
   }
 
-  onClose() {
+  onClose(event: any) {
+    $('.k-animation-container').css('display', 'block');
     $('.wrapperTime').append(this.timePicker);
+    event.preventDefault();
   }
 
   disabled = (date: Date): boolean => {
@@ -171,19 +165,40 @@ export class DateTimePickerComponent implements AfterViewInit {
   valueChangeTime(value: any): void {
     this.valueTime = value;
     this.date = new Date(`${this.valueDate.toDateString()} ${this.valueTime}`);
+    console.log(this.date);
+    $('.k-animation-container').css('display', 'none');
   }
 
   selectionChangeTime(value: any): void {
     this.valueTime = value;
     this.date = new Date(`${this.valueDate.toDateString()} ${this.valueTime}`);
+    $('.k-animation-container').css('display', 'none');
   }
 
   onChangeValueDate(value: Date): void {
-    this.valueDate = value;
-    this.date = new Date(`${this.valueDate.toDateString()} ${this.valueTime}`);
+    if (this.isChecked) {
+      this.valueDate = value;
+      console.log(this.valueChangeTime);
+      this.date = new Date(`${this.valueDate.toDateString()} 00:00`);
+      $('.k-animation-container').css('display', 'none');
+    } else {
+      this.valueDate = value;
+      console.log(this.valueChangeTime);
+      this.date = new Date(
+        `${this.valueDate.toDateString()} ${this.valueTime}`
+      );
+    }
   }
 
   onAllDate() {
-    this.date = this.valueDate;
+    var a = $(' .k-calendar-tbody').attr('ng-reflect-selected-dates');
+    var b = a?.slice(0, 15);
+    this.date = new Date(`${b}`);
+  }
+
+  onBlur() {
+    $(document).ready(() => {
+      $('.k-animation-container').toggle().css('display', 'none');
+    });
   }
 }

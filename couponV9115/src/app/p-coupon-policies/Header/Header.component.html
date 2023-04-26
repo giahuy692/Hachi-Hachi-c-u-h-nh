@@ -1,7 +1,12 @@
 <div class="Wrapper-header">
   <kendo-buttongroup selection="single" class="buttongroup">
-    <button *ngFor="let item of NavItems" kendoButton [toggleable]="true">
-      {{ item }}
+    <button
+      *ngFor="let item of NavItems"
+      kendoButton
+      [toggleable]="true"
+      [selected]="item.selected"
+    >
+      {{ item.text }}
     </button>
   </kendo-buttongroup>
   <div class="action">

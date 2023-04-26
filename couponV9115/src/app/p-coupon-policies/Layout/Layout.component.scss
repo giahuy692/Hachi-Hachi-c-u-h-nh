@@ -95,26 +95,17 @@
           background-color: #5a6276;
 
           .k-drawer-item {
-            display: contents;
-            height: 47px;
-            flex-direction: column;
-            padding: 15px 8px;
-
             .title-menu {
               width: 100%;
+              height: 50px;
               display: flex;
+              overflow: hidden;
               align-items: center;
               column-gap: 10px;
-              padding: 20px 7px;
-              border-left: 2px solid transparent;
 
               .k-hover,
               &:focus,
               &:hover {
-                background-color: #1a2334 !important;
-                border-left: 2px solid #fff;
-                color: #fff;
-
                 .child {
                   div {
                     color: #959db3;
@@ -127,6 +118,7 @@
                 padding-right: 5px;
                 align-items: center;
                 justify-content: space-between;
+                height: 50px;
               }
             }
 
@@ -144,26 +136,28 @@
                     border: none;
                     justify-content: flex-start;
                     padding: 10px 0;
-
-                    .k-selected {
-                      border-color: none;
-                      background-color: none;
-                    }
                   }
                 }
               }
             }
           }
+          .k-state-selected {
+            background-color: #1a2334 !important;
+            border-left: 2px solid #fff;
+            color: #fff;
+          }
         }
 
         .k-drawer-wrapper {
           .k-drawer-items {
+            box-sizing: border-box;
             font-size: 13px;
             font-weight: 700;
             background-color: #5a6276;
             color: #fff;
 
             .k-drawer-item {
+              box-sizing: border-box;
               align-items: center;
               border-left: 2px solid transparent;
               .k-hover,
@@ -179,20 +173,6 @@
                   }
                 }
               }
-            }
-
-            .k-state-selected {
-              &:focus,
-              &:hover {
-                background-color: #1a2334;
-                border-left: 2px solid #fff;
-                color: #fff;
-              }
-            }
-
-            .k-state-selected {
-              border-left: 2px solid #fff;
-              background-color: #1a2334;
             }
           }
         }
@@ -214,7 +194,7 @@
           display: flex;
           width: 240px;
           align-items: center;
-          box-shadow: 12px 2px 4px #edeff3;
+          box-shadow: 12px 0px 4px #edeff3;
           .button {
             width: 50px;
             height: 50px;

@@ -1,0 +1,122 @@
+::ng-deep {
+  app-c-config {
+    .k-checkbox-label {
+      user-select: none !important;
+      color: #959db3;
+    }
+
+    .k-radio {
+      background-color: #fff;
+      border: 1px solid #999999;
+    }
+
+    .k-checkbox:disabled,
+    .k-checkbox.k-disabled {
+      border: #1a663459;
+    }
+
+    .wrapper-notice {
+      .config-notice {
+        padding: 19px 13px;
+
+        .headerConfigNotice {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-bottom: 15px;
+
+          .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            column-gap: 10px;
+            .text-1 {
+              font-size: 16px;
+              font-weight: 700;
+              margin: 0;
+            }
+          }
+
+          .option {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-right: 27px;
+
+            .h-btn {
+              position: relative;
+              padding: 0px 6px;
+            }
+
+            .btn-1 {
+              background-color: transparent;
+              font-size: 13px;
+              outline: none;
+              border: none;
+              color: #bbc0bb;
+            }
+            .btn-2 {
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              column-gap: 5px;
+              background-color: transparent;
+              font-size: 13px;
+              outline: none;
+              border: none;
+              color: #bbc0bb;
+            }
+            .btn-3 {
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              column-gap: 5px;
+              background-color: transparent;
+              font-size: 13px;
+              outline: none;
+              border: none;
+              color: #bbc0bb;
+            }
+          }
+        }
+      }
+
+      .bodyConfigNotice {
+        display: flex;
+        row-gap: 10px;
+        flex-direction: column;
+        padding: 13px 32px 18px 20px;
+        background-color: #ffffff !important;
+
+        .content-notice {
+          border-left: 1px solid #dbdee7;
+          overflow: hidden;
+          overflow-y: scroll;
+        }
+      }
+      .line {
+        display: flex;
+        align-items: center;
+      }
+      .line::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 2px;
+        height: 20px;
+        background-color: #bbc0bb;
+      }
+
+      .d-flex_column {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .k-radio:checked,
+      .k-radio.k-checked {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3e%3ccircle cx='50%25' cy='50%25' r='4' fill='green'/%3e%3c/svg%3e") !important;
+        background-color: #ffff !important;
+      }
+    }
+  }
+}

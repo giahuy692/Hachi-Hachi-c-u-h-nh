@@ -9,15 +9,15 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   NavItems = [
-    'CẤU HÌNH',
-    'MUA HÀNG',
-    'KHO HÀNG',
-    'ĐIỀU PHỐI',
-    'MARKETING',
-    'E-COMMERCE',
-    'KINH DOANH',
-    'NHÂN SỰ',
-    'BÁO CÁO',
+    { text: 'CẤU HÌNH', selected: true },
+    { text: 'MUA HÀNG' },
+    { text: 'KHO HÀNG' },
+    { text: 'ĐIỀU PHỐI' },
+    { text: 'MARKETING' },
+    { text: 'E-COMMERCE' },
+    { text: 'KINH DOANH' },
+    { text: 'NHÂN SỰ' },
+    { text: 'BÁO CÁO' },
   ];
 
   ngOnInit() {}
