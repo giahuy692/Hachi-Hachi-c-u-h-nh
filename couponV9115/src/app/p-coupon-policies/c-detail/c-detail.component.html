@@ -391,7 +391,7 @@
         <kendo-label class="k-form font-w mt-10 d-block" text="Giảm giá:">
           <kendo-numerictextbox
             [style.width.%]="100"
-            [(value)]="products.Discount"
+            [value]="products.Discount / 100"
             [autoCorrect]="false"
             format="p"
             [step]="0.1"

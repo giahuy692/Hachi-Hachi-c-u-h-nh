@@ -68,7 +68,6 @@ export class CDetailComponent implements OnInit {
     this.service.getDataApi().subscribe(
       (data: ProductList) => {
         this.ReponProduct = data.ObjectReturn.Data;
-        this.products.Discount = this.products.Discount / 100;
       },
       (e) => {
         console.error(e);

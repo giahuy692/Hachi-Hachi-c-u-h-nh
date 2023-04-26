@@ -138,7 +138,6 @@ export class LayoutComponent implements AfterViewInit {
   loadValue() {
     this.service.Product.subscribe((value: ProductApi) => {
       this.products = value;
-      this.products.Discount = this.products.Discount / 100;
       this.selectedItemStatus = this.statusItem[this.products.StatusID];
       this.selectedItemTypeData =
         this.typeData[parseInt(this.products.TypeData) - 1];
