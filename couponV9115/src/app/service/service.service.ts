@@ -18,6 +18,7 @@ export class ServiceAPI implements OnInit {
   gridState: DataSourceRequestState = {};
   dataSourceRequest: any;
   Product = new Subject<any>();
+  SearchShare = new Subject<any>();
   tempStatus = new Subject<number>();
   private apiUrl = 'http://test.lapson.vn/api/product/';
 
@@ -32,6 +33,26 @@ export class ServiceAPI implements OnInit {
         .post<ProductList>(this.apiUrl + 'GetListProduct', {
           sort: 'Code-desc',
         })
+        .subscribe(
+          (data) => {
+            obs.next(data);
+            obs.complete();
+          },
+          (error) => {
+            console.log(error);
+            obs.error(error);
+          }
+        );
+    });
+  }
+
+  loaddData(v: any) {
+    return new Observable<any>((obs) => {
+      this.http
+        .post<ProductList>(
+          this.apiUrl + 'GetListProduct',
+          toDataSourceRequest(v)
+        )
         .subscribe(
           (data) => {
             obs.next(data);
@@ -141,7 +162,6 @@ export class ServiceAPI implements OnInit {
 
   // Delete Product
   DeletedProduct(id: any) {
-    console.log('%cservice.service.ts line:152 id', 'color: #007acc;', id);
     return new Observable<any>((obs) => {
       this.http
         .post<ProductList>(this.apiUrl + 'DeleteListProduct', [

@@ -25,7 +25,7 @@
             [style.width.%]="100"
             placeholder="Barcode sản phẩm..."
             [(value)]="products.Barcode"
-            [readonly]="
+            [disabled]="
               tempStatus == 0 ? false : tempStatus == 1 ? true : false
             "
             (blur)="onChangeBarcode(products.Barcode)"
@@ -395,7 +395,10 @@
             <app-p-tool-groups></app-p-tool-groups>
             <app-c-information></app-c-information>
             <app-c-conditions></app-c-conditions>
-            <app-c-detail [drawerRef]="drawerRef"></app-c-detail>
+            <app-c-detail
+              [drawerRef]="drawerRef"
+              [ReponProduct]="ReponProduct"
+            ></app-c-detail>
           </div>
         </kendo-drawer-content>
       </kendo-drawer-container>

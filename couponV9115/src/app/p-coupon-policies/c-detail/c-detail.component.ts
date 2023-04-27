@@ -18,7 +18,7 @@ import { faCheckCircle, faPenSquare } from '@fortawesome/free-solid-svg-icons';
 export class CDetailComponent implements OnInit {
   // Variable drawer
   @Input() drawerRef: DrawerComponent;
-  ReponProduct: any;
+  @Input() ReponProduct: any;
 
   valueSearch: string = '';
   filterData: {
@@ -75,6 +75,17 @@ export class CDetailComponent implements OnInit {
     );
   }
 
+  reload(v: any) {
+    this.service.loaddData(v).subscribe(
+      (data: ProductList) => {
+        this.ReponProduct = data.ObjectReturn.Data;
+      },
+      (e) => {
+        console.error(e);
+      }
+    );
+  }
+
   ngOnInit(): void {}
 
   ngAfterViewInit() {}
@@ -121,6 +132,8 @@ export class CDetailComponent implements OnInit {
         ],
       },
     };
+
+    this.service.SearchShare.next(this.filterData);
 
     this.service.SearchDataApi(this.filterData).subscribe(
       (data: ProductList) => {
@@ -184,9 +197,13 @@ export class CDetailComponent implements OnInit {
         }
       });
     }
-    this.opened = false;
-
-    this.loadData();
+    if (this.valueSearch == '') {
+      this.loadData();
+      this.opened = false;
+    } else {
+      this.reload(this.filterData);
+      this.opened = false;
+    }
   }
 
   // Close dialog
@@ -205,7 +222,6 @@ export class CDetailComponent implements OnInit {
       this.service.getProduct(code).subscribe((v) => {
         this.products.ProductName = v.ObjectReturn.ProductName;
         this.products.Code = v.ObjectReturn.Code;
-        this.products.Discount = this.products.Discount / 100;
       });
     }
   }
@@ -244,8 +260,12 @@ export class CDetailComponent implements OnInit {
             });
           }
         });
+      this.valueSearch = '';
+      this.loadData();
       this.openedUpdate = false;
     } else {
+      this.valueSearch = '';
+      this.loadData();
       this.openedUpdate = false;
     }
   }

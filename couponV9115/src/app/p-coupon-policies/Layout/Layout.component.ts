@@ -12,7 +12,7 @@ import {
   DrawerItem,
   DrawerSelectEvent,
 } from '@progress/kendo-angular-layout';
-import { ProductApi, Item } from 'src/app/DTO';
+import { ProductApi, Item, ProductList } from 'src/app/DTO';
 import { ServiceAPI } from 'src/app/service/service.service';
 
 // Icon
@@ -102,6 +102,7 @@ export class LayoutComponent implements AfterViewInit {
   @ViewChild('drawerRight') public DrawerRightComponent: DrawerComponent;
   @ViewChildren(NgModel) myInputs!: QueryList<NgModel>;
   public drawerRef: DrawerComponent;
+  ReponProduct: any;
   products = new ProductApi();
   statusItem: Array<Item> = [
     { value: 0, text: 'Tạo mới' },
@@ -135,6 +136,10 @@ export class LayoutComponent implements AfterViewInit {
 
   ngOnInit() {}
 
+  ngAfterViewInit(): void {
+    this.drawerRef = this.DrawerRightComponent;
+  }
+
   loadValue() {
     this.service.Product.subscribe((value: ProductApi) => {
       this.products = value;
@@ -144,8 +149,26 @@ export class LayoutComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    this.drawerRef = this.DrawerRightComponent;
+  loadData() {
+    this.service.getDataApi().subscribe(
+      (data: ProductList) => {
+        this.ReponProduct = data.ObjectReturn.Data;
+      },
+      (e) => {
+        console.error(e);
+      }
+    );
+  }
+
+  reload(v: any) {
+    this.service.loaddData(v).subscribe(
+      (data: ProductList) => {
+        this.ReponProduct = data.ObjectReturn.Data;
+      },
+      (e) => {
+        console.error(e);
+      }
+    );
   }
 
   // <- Drawer left
@@ -241,9 +264,9 @@ export class LayoutComponent implements AfterViewInit {
               });
             }
           });
-        this.opened = false;
-        this.DrawerRightComponent.toggle();
         this.loadValue();
+        this.DrawerRightComponent.toggle();
+        this.opened = false;
       } else {
         this.service
           .AddProduct(
@@ -273,9 +296,11 @@ export class LayoutComponent implements AfterViewInit {
               });
             }
           });
-        this.opened = false;
+        this.service.SearchShare.subscribe((v) => {
+          this.reload(v);
+        });
         this.DrawerRightComponent.toggle();
-        this.loadValue();
+        this.opened = false;
       }
     } else {
       this.opened = false;
