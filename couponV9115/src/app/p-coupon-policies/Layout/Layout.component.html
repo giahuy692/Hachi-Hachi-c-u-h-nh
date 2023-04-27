@@ -342,7 +342,7 @@
         >
           <ng-template kendoDrawerItemTemplate let-item>
             <div class="d-flex_column" style="width: 100%">
-              <div class="title-menu" (click)="toggleChildren()">
+              <div class="title-menu">
                 <img
                   src="assets/images/{{ item.icon }}"
                   alt="icon"
@@ -354,12 +354,18 @@
                   style="user-select: none"
                 >
                   {{ item.text }}
-                  <img
+                  <div
                     *ngIf="item.child !== undefined"
-                    src="assets/images/chevron-down.svg"
-                    alt="icon"
-                    style="fill: #fff"
-                  />
+                    class="wapper-chevron"
+                    (click)="toggleChildren()"
+                  >
+                    <img
+                      *ngIf="item.child !== undefined"
+                      src="assets/images/chevron-down.svg"
+                      alt="icon"
+                      style="fill: #fff"
+                    />
+                  </div>
                 </div>
               </div>
               <div *ngIf="showChildren" class="wrapper-child">

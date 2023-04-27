@@ -97,7 +97,7 @@
           .k-drawer-item {
             .title-menu {
               width: 100%;
-              height: 50px;
+              height: 30px;
               display: flex;
               overflow: hidden;
               align-items: center;
@@ -118,7 +118,12 @@
                 padding-right: 5px;
                 align-items: center;
                 justify-content: space-between;
-                height: 50px;
+                height: 30px;
+
+                .wapper-chevron {
+                  width: 54px;
+                  text-align: end;
+                }
               }
             }
 
