@@ -5,6 +5,7 @@
       kendoButton
       [toggleable]="true"
       [selected]="item.selected"
+      (click)="selected(item.text)"
     >
       {{ item.text }}
     </button>

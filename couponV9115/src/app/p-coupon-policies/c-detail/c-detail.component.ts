@@ -281,6 +281,6 @@ export class CDetailComponent implements OnInit {
   // End: Dialog Update
 
   ngOnDestroy() {
-    this.ReponProduct.unsubscribe();
+    // this.ReponProduct.unsubscribe();
   }
 }

@@ -1,0 +1,123 @@
+<div class="wrapper">
+  <div class="wrapper-selected-data">
+    <div class="selected--data_left">
+      <div class="FilterTheData">
+        <div class="filterTitle">
+          <img src="assets/images/filter.svg" alt="icon filter" />
+
+          <h2>LỌC DỮ LIỆU</h2>
+        </div>
+        <button (click)="handleReset()">Reset bộ lọc</button>
+      </div>
+      <div class="searchWrapper">
+        <span>Tìm kiếm sản phẩm</span>
+        <div class="inputSearch">
+          <div class="searchLeft">
+            <fa-icon [icon]="faSearch"></fa-icon>
+            <input
+              placeholder="Tìm theo barcode, tên sản phẩm, người bán, thương hiệu"
+              [(ngModel)]="textSearch"
+              (change)="handleSearch()"
+              (keyup.enter)="handleSearch()"
+              (keyup)="onKeyUp($event)"
+            />
+          </div>
+          <button>
+            <fa-icon [icon]="faSearch"></fa-icon>
+            Tìm
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="selected--data_right">
+      <button
+        kendoButton
+        [themeColor]="'primary'"
+        imageUrl="assets/images/uflow.svg"
+      >
+        THÊM ĐIỂM LÀM VIỆC
+      </button>
+      <button
+        kendoButton
+        [themeColor]="'primary'"
+        imageUrl="assets/images/uflow.svg"
+      >
+        THÊM ĐIỂM LÀM VIỆC CON
+      </button>
+    </div>
+  </div>
+
+  <kendo-panelbar>
+    <kendo-panelbar-item
+      [expanded]="true"
+      *ngFor="let a of ListLocationTree.ObjectReturn"
+    >
+      <ng-template kendoPanelBarItemTitle>
+        <div class="Location-tool">
+          <button kendoButton imageUrl="assets/images/ellipse.svg"></button>
+        </div>
+        <div class="Location--title">
+          <div class="Location--title_left">
+            <img src="assets/images/Location.svg" alt="icon_location" />
+            <span>{{ a.LocationName }}</span>
+          </div>
+          <span class="Location--right">{{ a.LocationID }}</span>
+        </div>
+      </ng-template>
+
+      <kendo-panelbar-item *ngFor="let b of a.ListChild" class="pr-30">
+        <ng-template kendoPanelBarItemTitle>
+          <div class="Location-tool">
+            <button kendoButton imageUrl="assets/images/ellipse.svg"></button>
+          </div>
+          <div class="Location--title">
+            <div class="Location--title_left">
+              <img src="assets/images/Location.svg" alt="icon_location" />
+              <span>{{ b.LocationName }}</span>
+            </div>
+            <span class="Location--right">{{ b.LocationID }}</span>
+          </div>
+        </ng-template>
+        <kendo-panelbar-item
+          *ngFor="let c of b.ListChild"
+          style="padding-left: 38px"
+        >
+          <ng-template kendoPanelBarItemTitle>
+            <div class="Location-tool">
+              <button kendoButton imageUrl="assets/images/ellipse.svg"></button>
+            </div>
+            <div class="Location--title">
+              <div class="Location--title_left">
+                <img src="assets/images/Location.svg" alt="icon_location" />
+                <span>{{ c.LocationName }}</span>
+              </div>
+              <span class="Location--right">{{ c.LocationID }}</span>
+            </div>
+          </ng-template>
+        </kendo-panelbar-item>
+      </kendo-panelbar-item>
+    </kendo-panelbar-item>
+  </kendo-panelbar>
+
+  <kendo-treeview
+    [nodes]="ListLocationTreeView"
+    textField="LocationName"
+    kendoTreeViewHierarchyBinding
+    childrenField="ListChild"
+    kendoTreeViewExpandable
+    [style.width.%]="100"
+  >
+    <ng-template kendoTreeViewNodeTemplate let-dataItem style="width: 100%">
+      <div class="Location--title">
+        <div class="Location--title_left">
+          <img src="assets/images/Location.svg" alt="icon_location" />
+          <span>{{ dataItem.LocationName }}</span>
+        </div>
+        <span class="Location--right">{{ dataItem.LocationID }}</span>
+        <div class="Location-tool">
+          <button kendoButton imageUrl="assets/images/ellipse.svg"></button>
+        </div>
+      </div>
+    </ng-template>
+  </kendo-treeview>
+</div>

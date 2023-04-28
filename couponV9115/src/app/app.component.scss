@@ -1,0 +1,231 @@
+::ng-deep {
+  app-root {
+    // Start: Drawer right
+    .k-drawer-expanded {
+      #p-kendo-drawer-right {
+        margin-top: 50px;
+        width: 417px;
+        transform: translateX(100%);
+        .k-drawer-wrapper {
+          width: 100% !important;
+          height: calc(100% - 50px);
+
+          .wapper-content {
+            height: calc(100% - 102px);
+            display: block;
+            padding: 10px 18px;
+            overflow: hidden;
+            overflow-y: scroll;
+
+            .k-form {
+              .k-label {
+                margin-bottom: 5px;
+              }
+            }
+
+            .ProductName {
+              border: none;
+            }
+
+            .detail_image {
+              display: block;
+              width: 251px !important;
+              margin: 10px auto;
+            }
+          }
+          .option-tool {
+            display: flex;
+            width: 100%;
+            height: 50px;
+            padding: 10px 0px;
+            padding-left: 18px;
+            -moz-column-gap: 10px;
+            column-gap: 10px;
+            position: fixed;
+            bottom: 50px;
+            background-color: #fff;
+            z-index: 1;
+
+            .cancel {
+              width: 94px;
+              height: 33px;
+            }
+
+            .update {
+              width: 94px;
+              height: 33px;
+            }
+          }
+        }
+        .title-dl {
+          display: block;
+          height: 50px;
+          line-height: 50px;
+          font-weight: 700;
+          font-size: 13px;
+          color: #1a6634;
+          padding: 0px 18px;
+        }
+      }
+      .k-overlay {
+        margin-top: 50px;
+      }
+    }
+    // End: Drawer right
+
+    // Start: Drawer lefft
+    .drawer-left {
+      width: 100%;
+      .selectedItem {
+        background-color: #1a2334 !important;
+        color: #fff;
+      }
+
+      kendo-drawer-container {
+        flex: 1 1 auto;
+        overflow-y: auto;
+        column-gap: 5px;
+
+        #wrapper-content {
+          height: 706px;
+          overflow: hidden;
+          overflow-y: scroll;
+        }
+
+        .p-kendo-drawer {
+          background-color: #5a6276;
+
+          .k-drawer-item {
+            .title-menu {
+              width: 100%;
+              height: 30px;
+              display: flex;
+              overflow: hidden;
+              align-items: center;
+              column-gap: 10px;
+
+              .k-hover,
+              &:focus,
+              &:hover {
+                .child {
+                  div {
+                    color: #959db3;
+                  }
+                }
+              }
+              .item-descr-wrap {
+                display: flex;
+                width: 100%;
+                padding-right: 5px;
+                align-items: center;
+                justify-content: space-between;
+                height: 30px;
+
+                .wapper-chevron {
+                  width: 54px;
+                  text-align: end;
+                }
+              }
+            }
+
+            .wrapper-child {
+              width: 100%;
+              background-color: #1a2334;
+
+              .child {
+                width: 100%;
+                .k-button-group {
+                  flex-direction: column;
+                  padding-left: 60px;
+                  .btnChild {
+                    background-color: transparent;
+                    border: none;
+                    justify-content: flex-start;
+                    padding: 10px 0;
+                  }
+                }
+              }
+            }
+          }
+          .k-state-selected {
+            background-color: #1a2334 !important;
+            border-left: 2px solid #fff;
+            color: #fff;
+          }
+        }
+
+        .k-drawer-wrapper {
+          .k-drawer-items {
+            box-sizing: border-box;
+            font-size: 13px;
+            font-weight: 700;
+            background-color: #5a6276;
+            color: #fff;
+
+            .k-drawer-item {
+              box-sizing: border-box;
+              align-items: center;
+              border-left: 2px solid transparent;
+              .k-hover,
+              &:focus,
+              &:hover {
+                background-color: #1a2334 !important;
+                border-left: 2px solid #fff;
+                color: #fff;
+
+                .child {
+                  div {
+                    color: #959db3;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .k-icon {
+        font-size: 20px;
+      }
+      .custom-toolbar {
+        display: flex;
+        column-gap: 5px;
+        width: 100%;
+        background-color: #fff;
+        border-bottom: inset;
+        border-bottom-width: 1px;
+        color: #656565;
+        position: relative;
+        z-index: 9999999999999999;
+        .ws4 {
+          display: flex;
+          width: 240px;
+          align-items: center;
+          box-shadow: 12px 0px 4px #edeff3;
+          .button {
+            width: 50px;
+            height: 50px;
+            justify-content: space-evenly;
+            padding: 0;
+            background-color: #fff !important;
+          }
+          span {
+            img {
+              display: flex;
+              flex: 1 0 auto;
+              height: 40px;
+            }
+          }
+        }
+
+        .k-focus {
+          box-shadow: none;
+        }
+
+        .header {
+          flex: 1;
+        }
+      }
+    }
+    // End: Drawer left
+  }
+}

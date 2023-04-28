@@ -39,6 +39,7 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { TooltipsModule } from '@progress/kendo-angular-tooltip';
 import { CDialogComponent } from './c-dialog/c-dialog.component';
 import { NotificationModule } from '@progress/kendo-angular-notification';
+import { PPesonnelLocationComponent } from './p-pesonnel-location/p-pesonnel-location.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { NotificationModule } from '@progress/kendo-angular-notification';
     CDetailComponent,
     CConfigComponent,
     CDialogComponent,
+    PPesonnelLocationComponent,
   ],
   imports: [
     BrowserModule,

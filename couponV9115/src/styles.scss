@@ -78,6 +78,10 @@ body {
   margin-top: 10px;
 }
 
+.pr-30 {
+  padding-left: 30px;
+}
+
 .d-block {
   display: block;
 }
@@ -184,4 +188,145 @@ kendo-numerictextbox {
 
 .button-notification {
   z-index: 100000000000;
+}
+
+// Location tree \\
+kendo-panelbar {
+  kendo-panelbar-item {
+    @mixin k-link {
+      flex-direction: row-reverse !important;
+      .Location-tool {
+        margin-left: auto;
+      }
+
+      .Location--title {
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        column-gap: 130px;
+        margin-left: 10px;
+        .Location--title_left {
+          display: flex;
+          align-items: center;
+          column-gap: 19px;
+          font-weight: 700;
+        }
+        .Location--right {
+        }
+      }
+      .k-panelbar-toggle {
+        margin: 0 !important;
+      }
+    }
+
+    .k-link {
+      @include k-link;
+    }
+
+    .ng-trigger {
+      .k-panel {
+        .k-panelbar-item {
+          .k-link {
+            @include k-link;
+          }
+        }
+      }
+    }
+  }
+}
+
+// kendo-treeview \\
+kendo-treeview {
+  .k-treeview-group {
+    .k-treeview-item {
+      margin: 5px 0;
+      background-color: #fff;
+      .k-treeview-group {
+        .k-treeview-item {
+          margin: 5px 0;
+          background-color: #fff;
+          .k-treeview-mid {
+            .k-treeview-toggle {
+            }
+
+            .k-treeview-leaf {
+              width: 100%;
+              .k-image {
+                margin: 0;
+              }
+              .k-icon {
+                margin: 0;
+              }
+              .k-treeview-leaf-text {
+                width: 100%;
+                .Location-tool {
+                  margin-left: auto;
+                }
+
+                .Location--title {
+                  display: flex;
+                  align-items: center;
+                  font-weight: 400;
+                  column-gap: 130px;
+                  margin-left: 10px;
+                  .Location--title_left {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 19px;
+                    font-weight: 700;
+
+                    img {
+                      margin: 0;
+                    }
+                  }
+                  .Location--right {
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .k-treeview-mid {
+        .k-treeview-toggle {
+        }
+
+        .k-treeview-leaf {
+          width: 100%;
+          .k-image {
+            margin: 0;
+          }
+          .k-icon {
+            margin: 0;
+          }
+          .k-treeview-leaf-text {
+            width: 100%;
+            .Location-tool {
+              margin-left: auto;
+            }
+
+            .Location--title {
+              display: flex;
+              align-items: center;
+              font-weight: 400;
+              column-gap: 130px;
+              margin-left: 10px;
+              .Location--title_left {
+                display: flex;
+                align-items: center;
+                column-gap: 19px;
+                font-weight: 700;
+
+                img {
+                  margin: 0;
+                }
+              }
+              .Location--right {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
