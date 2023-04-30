@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <kendo-panelbar>
+  <!-- <kendo-panelbar>
     <kendo-panelbar-item
       [expanded]="true"
       *ngFor="let a of ListLocationTree.ObjectReturn"
@@ -65,23 +65,8 @@
         </div>
       </ng-template>
 
-      <kendo-panelbar-item *ngFor="let b of a.ListChild" class="pr-30">
-        <ng-template kendoPanelBarItemTitle>
-          <div class="Location-tool">
-            <button kendoButton imageUrl="assets/images/ellipse.svg"></button>
-          </div>
-          <div class="Location--title">
-            <div class="Location--title_left">
-              <img src="assets/images/Location.svg" alt="icon_location" />
-              <span>{{ b.LocationName }}</span>
-            </div>
-            <span class="Location--right">{{ b.LocationID }}</span>
-          </div>
-        </ng-template>
-        <kendo-panelbar-item
-          *ngFor="let c of b.ListChild"
-          style="padding-left: 38px"
-        >
+      <div>
+        <kendo-panelbar-item *ngFor="let b of a.ListChild" class="pr-30">
           <ng-template kendoPanelBarItemTitle>
             <div class="Location-tool">
               <button kendoButton imageUrl="assets/images/ellipse.svg"></button>
@@ -89,13 +74,33 @@
             <div class="Location--title">
               <div class="Location--title_left">
                 <img src="assets/images/Location.svg" alt="icon_location" />
-                <span>{{ c.LocationName }}</span>
+                <span>{{ b.LocationName }}</span>
               </div>
-              <span class="Location--right">{{ c.LocationID }}</span>
+              <span class="Location--right">{{ b.LocationID }}</span>
             </div>
           </ng-template>
+          <kendo-panelbar-item
+            *ngFor="let c of b.ListChild"
+            style="padding-left: 38px"
+          >
+            <ng-template kendoPanelBarItemTitle>
+              <div class="Location-tool">
+                <button
+                  kendoButton
+                  imageUrl="assets/images/ellipse.svg"
+                ></button>
+              </div>
+              <div class="Location--title">
+                <div class="Location--title_left">
+                  <img src="assets/images/Location.svg" alt="icon_location" />
+                  <span>{{ c.LocationName }}</span>
+                </div>
+                <span class="Location--right">{{ c.LocationID }}</span>
+              </div>
+            </ng-template>
+          </kendo-panelbar-item>
         </kendo-panelbar-item>
-      </kendo-panelbar-item>
+      </div>
     </kendo-panelbar-item>
   </kendo-panelbar>
 
@@ -119,5 +124,33 @@
         </div>
       </div>
     </ng-template>
-  </kendo-treeview>
+  </kendo-treeview> -->
+
+  <kendo-treelist
+    [data]="rootData"
+    [fetchChildren]="fetchChildren"
+    [hasChildren]="hasChildren"
+    [height]="410"
+    scrollable="none"
+    kendoTreeListExpandable
+  >
+    <kendo-treelist-column [expandable]="true" class="d-flex">
+      <ng-template kendoTreeListCellTemplate let-dataItem>
+        <div class="Location--title">
+          <div class="Location--title_left">
+            <img src="assets/images/Location.svg" alt="icon_location" />
+            <span>{{ dataItem.LocationName }}</span>
+          </div>
+          <span class="Location--right">{{ dataItem.LocationID }}</span>
+        </div>
+      </ng-template>
+    </kendo-treelist-column>
+    <kendo-treelist-column [width]="50">
+      <ng-template kendoTreeListCellTemplate let-dataItem>
+        <div class="Location-tool">
+          <button kendoButton imageUrl="assets/images/ellipse.svg"></button>
+        </div>
+      </ng-template>
+    </kendo-treelist-column>
+  </kendo-treelist>
 </div>

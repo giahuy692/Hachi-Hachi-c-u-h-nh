@@ -40,6 +40,8 @@ import { TooltipsModule } from '@progress/kendo-angular-tooltip';
 import { CDialogComponent } from './c-dialog/c-dialog.component';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import { PPesonnelLocationComponent } from './p-pesonnel-location/p-pesonnel-location.component';
+import { TreeListModule } from '@progress/kendo-angular-treelist';
+
 
 
 @NgModule({
@@ -79,6 +81,7 @@ import { PPesonnelLocationComponent } from './p-pesonnel-location/p-pesonnel-loc
     TooltipsModule,
     FontAwesomeModule,
     NotificationModule,
+    TreeListModule,
   ],
   providers: [ServiceAPI, { provide: LOCALE_ID, useValue: 'vi-VN' }],
   bootstrap: [AppComponent],

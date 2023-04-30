@@ -1,9 +1,3 @@
-export class DTOLocationTree {
-  StatusCode: number;
-  ErrorString: any;
-  ObjectReturn: LocationDTO[];
-}
-
 export class LocationDTO {
   ParentCode: any;
   ProvinceCode: any;

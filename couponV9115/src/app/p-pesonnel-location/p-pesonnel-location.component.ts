@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { DTOLocationTree, ListLocationTree } from '../DTO/mock-data';
+import { ListLocationTree, LocationDTO } from '../DTO/mock-data';
 
 @Component({
   selector: 'app-p-pesonnel-location',
@@ -30,4 +30,14 @@ export class PPesonnelLocationComponent implements OnInit {
     if (event.target.value === '') {
     }
   }
+
+  public rootData: LocationDTO[] = ListLocationTree.ObjectReturn;
+
+  public fetchChildren = (item: LocationDTO): LocationDTO[] => {
+    return item.ListChild;
+  };
+
+  public hasChildren = (item: LocationDTO): boolean => {
+    return item.ListChild && item.ListChild.length > 0;
+  };
 }

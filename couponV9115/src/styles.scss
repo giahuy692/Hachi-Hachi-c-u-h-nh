@@ -330,3 +330,128 @@ kendo-treeview {
     }
   }
 }
+
+// .Location--title {
+//   display: flex;
+//   align-items: center;
+//   font-weight: 400;
+//   column-gap: 130px;
+//   margin-left: 10px;
+//   .Location--title_left {
+//     display: flex;
+//     align-items: center;
+//     column-gap: 19px;
+//     font-weight: 700;
+
+//     img {
+//       margin: 0;
+//     }
+//   }
+//   .Location--right {
+//   }
+// }
+// .Location-tool {
+//   height: 16px;
+// }
+
+kendo-treelist {
+  .k-grid-aria-root {
+    background-color: #edeff3;
+    table {
+      border-spacing: 0 5px;
+      .k-grid-header {
+        display: none;
+      }
+      tbody {
+        tr {
+          align-items: stretch;
+          background-color: #fff !important;
+          td {
+            border-color: transparent;
+            .Location--title {
+              display: flex;
+              align-items: center;
+              font-weight: 400;
+              column-gap: 130px;
+              margin-left: 10px;
+              .Location--title_left {
+                display: flex;
+                align-items: center;
+                column-gap: 19px;
+                font-weight: 700;
+
+                img {
+                  margin: 0;
+                }
+              }
+              .Location--right {
+              }
+            }
+            .Location-tool {
+              width: fit-content;
+              .k-icon-button {
+                height: 16px;
+                border: none;
+                outline: none;
+                background-color: transparent;
+                box-shadow: none;
+              }
+            }
+            .k-icon {
+            }
+          }
+        }
+      }
+    }
+    // .k-grid-container {
+    //   .k-grid-content {
+    //     .k-grid-table-wrap {
+    //       background-color: #edeff3;
+    //       .k-grid-table {
+    //         border-spacing: 0 5px;
+    //         tbody {
+    //           tr {
+    //             align-items: stretch;
+    //             background-color: #fff;
+    //             td {
+    //               border-color: transparent;
+    //               .Location--title {
+    //                 display: flex;
+    //                 align-items: center;
+    //                 font-weight: 400;
+    //                 column-gap: 130px;
+    //                 margin-left: 10px;
+    //                 .Location--title_left {
+    //                   display: flex;
+    //                   align-items: center;
+    //                   column-gap: 19px;
+    //                   font-weight: 700;
+
+    //                   img {
+    //                     margin: 0;
+    //                   }
+    //                 }
+    //                 .Location--right {
+    //                 }
+    //               }
+    //               .Location-tool {
+    //                 width: fit-content;
+    //                 .k-icon-button {
+    //                   height: 16px;
+    //                   border: none;
+    //                   outline: none;
+    //                   background-color: transparent;
+    //                   box-shadow: none;
+    //                 }
+    //               }
+    //               .k-icon {
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+  }
+}
